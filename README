@@ -1,0 +1,17 @@
+Here follows a set of implementations of various algorithms and data structures
+which I developed for learning purposes through the years. The list here is not
+intended to be either complete or exaustive but I'll try to improve that as
+soon as I have some time to spend.
+
+What you'll find:
+.
+|-- sorting/ (sorting algorithms)
+|   `-- insertion sort
+|   `-- selection sort
+`-- trees/ (various trees implementations)
+    `-- heap
+    `-- trie
+
+TODO:
+- lay out a better organization
+- have running examples of every algorithm/data structure
