@@ -5,6 +5,8 @@ soon as I have some time to spend.
 
 What you'll find:
 .
+|-- optimization/ (combinatorial optimization algorithms)
+|   `-- Simulated Annealing
 |-- sorting/ (sorting algorithms)
 |   `-- insertion sort
 |   `-- selection sort
