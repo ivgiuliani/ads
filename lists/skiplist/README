@@ -8,3 +8,22 @@ On my desktop computer, inserting 40000000 items takes only 25s
 (I have 1.5Gb of RAM so it swaps just a little, if you can keep
 everything in memory I'd expect much lower values) while
 searching for a random value takes less than 0.0001s.
+
+Original skip list's paper:
+@article{Pugh:1990:SLP:78973.78977,
+ author = {Pugh, William},
+ title = {Skip lists: a probabilistic alternative to balanced trees},
+ journal = {Commun. ACM},
+ volume = {33},
+ issue = {6},
+ month = {June},
+ year = {1990},
+ issn = {0001-0782},
+ pages = {668--676},
+ numpages = {9},
+ url = {http://doi.acm.org/10.1145/78973.78977},
+ doi = {http://doi.acm.org/10.1145/78973.78977},
+ acmid = {78977},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {data structures, searching, trees},
