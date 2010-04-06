@@ -1,0 +1,10 @@
+Skip lists are a probabilistic alternative to balanced trees.
+The search time is O(logn) but has lower constants than balanced
+trees and is easier to implement.
+The version here proposed is a simplicistic version of skip lists,
+indeed keys are integers from 0 to MAX_INT and values are integers
+as well.
+On my desktop computer, inserting 40000000 items takes only 25s
+(I have 1.5Gb of RAM so it swaps just a little, if you can keep
+everything in memory I'd expect much lower values) while
+searching for a random value takes less than 0.0001s.
