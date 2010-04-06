@@ -84,6 +84,8 @@ test() {
   stop = clock();
   time = (double)(stop-start)/CLOCKS_PER_SEC;
   printf("%f secs (%d levels)\n", time, skip_get_level(map));
+
+  skip_free(map);
 }
 
 int
