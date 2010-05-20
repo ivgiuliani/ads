@@ -12,6 +12,8 @@ What you'll find:
 |-- sorting/ (sorting algorithms)
 |   `-- insertion sort
 |   `-- selection sort
+|   `-- merge sort
+|   `-- quick sort
 `-- trees/ (various trees implementations)
     `-- heap
     `-- trie
