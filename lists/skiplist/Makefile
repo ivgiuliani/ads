@@ -11,7 +11,7 @@ OBJECTS = $(SOURCES:.c=.o)
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) $(CFLAGS) $(LDFLAGS) -o $@
 
 .c.o:
 	$(CC) -c $(CFLAGS) $< -o $@

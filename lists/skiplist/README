@@ -28,3 +28,5 @@ Original skip list's paper:
  address = {New York, NY, USA},
  keywords = {data structures, searching, trees},
 }
+
+This code depends on GLib-2.0.
