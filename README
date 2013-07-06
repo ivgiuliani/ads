@@ -9,11 +9,12 @@ What you'll find:
     `-- skip lists (a probabilistic alternative to balanced trees)
 |-- optimization/ (combinatorial optimization algorithms)
 |   `-- Simulated Annealing
-|-- sorting/ (sorting algorithms)
+|-- sorting/ (sorting algorithms & related)
 |   `-- insertion sort
 |   `-- selection sort
 |   `-- merge sort
 |   `-- quick sort
+|   `-- binary search
 `-- trees/ (various trees implementations)
     `-- heap
     `-- trie
