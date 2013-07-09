@@ -77,7 +77,7 @@ public class ChainedDict {
   private LinkedItem[] hashtable = new LinkedItem[TABLE_SIZE];
 
   private int hash(String key) {
-    int alpha = 65537;
+    int alpha = 127;  // assume all ascii as alphabet
     int hash = 0;
     int idx = 0;
     for (char ch : key.toCharArray()) {
