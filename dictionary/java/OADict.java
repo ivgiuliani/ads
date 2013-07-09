@@ -25,9 +25,9 @@ public class OADict {
   public void add(String key, String val) {
     final double base_hash = hash(key);
     double hash = base_hash;
-    int i = 1;
+    int i = 0;
 
-    while (getForHash(hash) != null) {
+    while (getForHash(hash) != null && i < TABLE_SIZE) {
       // use quadratic probing for seeking the empty spot
       ValueHolder holder = getForHash(hash);
       if (holder.key.equals(key)) {
@@ -59,9 +59,9 @@ public class OADict {
   private ValueHolder find(String key) {
     final double base_hash = hash(key);
     double hash = base_hash;
-    int i = 1;
+    int i = 0;
 
-    while (getForHash(hash) != null) {
+    while (getForHash(hash) != null && i < TABLE_SIZE) {
       ValueHolder holder = getForHash(hash);
       if (holder.key.equals(key)) {
         if (holder.tombstone) return null;
