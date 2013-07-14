@@ -9,20 +9,24 @@ public class InsertionSort {
   public static <T extends Comparable<T>> T[] insertionsort(T[] items) {
     int size = items.length;
     int i, j;
-    T tmp;
 
     for (i = 1; i < size; i++) {
       j = i;
 
       while (j > 0 && (items[j].compareTo(items[j - 1]) < 0)) {
-        tmp = items[j - 1];
-        items[j - 1] = items[j];
-        items[j] = tmp;
+        swap(items, j, j - 1);
         j--;
       }
     }
 
     return items;
+  }
+
+  private static <T extends Comparable<T>> void swap(T[] items, int x, int y) {
+    T tmp;
+    tmp = items[x];
+    items[x] = items[y];
+    items[y] = tmp;
   }
 
   public static void main(String[] args) {

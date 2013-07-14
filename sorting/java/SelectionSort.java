@@ -9,7 +9,6 @@ public class SelectionSort {
   public static <T extends Comparable<T>> T[] selectionsort(T[] items) {
     int size = items.length;
     int i, j, min;
-    T tmp;
 
     for (i = 0; i < size; i++) {
       min = i;
@@ -20,12 +19,17 @@ public class SelectionSort {
         }
       }
 
-      tmp = items[i];
-      items[i] = items[min];
-      items[min] = tmp;
+      swap(items, i, min);
     }
 
     return items;
+  }
+
+  private static <T extends Comparable<T>> void swap(T[] items, int x, int y) {
+    T tmp;
+    tmp = items[x];
+    items[x] = items[y];
+    items[y] = tmp;
   }
 
   public static void main(String[] args) {
