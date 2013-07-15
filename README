@@ -8,13 +8,15 @@ What you'll find:
 |-- lists/
     `-- skip lists (a probabilistic alternative to balanced trees)
 |-- optimization/ (combinatorial optimization algorithms)
-|   `-- Simulated Annealing
+    `-- Simulated Annealing
+|-- sets/ (set related algorithms)
+    `-- union find
 |-- sorting/ (sorting algorithms & related)
-|   `-- insertion sort
-|   `-- selection sort
-|   `-- merge sort
-|   `-- quick sort
-|   `-- binary search
+    `-- insertion sort
+    `-- selection sort
+    `-- merge sort
+    `-- quick sort
+    `-- binary search
 `-- trees/ (various trees implementations)
     `-- heap
     `-- trie
