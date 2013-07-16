@@ -17,6 +17,7 @@ What you'll find:
     `-- selection sort
     `-- merge sort
     `-- quick sort
+    `-- heapsort
     `-- binary search
 `-- trees/ (various trees implementations)
     `-- heap

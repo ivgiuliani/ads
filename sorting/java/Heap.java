@@ -83,6 +83,19 @@ public class Heap {
     }
   }
 
+  public static int[] heapsort(int[] items) {
+    int[] sorted = new int[items.length];
+    Heap heap = new Heap();
+    for (int item : items) {
+      heap.add(item);
+    }
+    for (int i = 0; i < items.length; i++) {
+      sorted[i] = heap.min();
+      heap.pop();
+    }
+    return sorted;
+  }
+
   public static void main(String[] args) {
     Heap heap;
 
@@ -111,6 +124,8 @@ public class Heap {
       test(heap.min() == i);
       heap.pop();
     }
+
+    System.out.println(Arrays.toString(heapsort(new int[] { 1, 39, 43, 33, 12, 2, 45, 99, 33, 22, 11 })));
   }
 
   public static void test(boolean condition) {
