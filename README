@@ -5,6 +5,11 @@ soon as I have some spare time.
 
 What you'll find:
 .
+`-- dictionary/
+    `-- chaineddict (chained lists for collision resolution)
+    `-- oadict (open addressing for collision resolution)
+`-- cache/
+    `-- lru cache
 `-- lists/
     `-- linked list
     `-- skip lists (a probabilistic alternative to balanced trees)
