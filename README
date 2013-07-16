@@ -1,17 +1,17 @@
 Here follows a set of implementations of various algorithms and data structures
 which I developed for learning purposes through the years. The list here is not
 intended to be either complete or exaustive but I'll try to improve that as
-soon as I have some time to spend.
+soon as I have some spare time.
 
 What you'll find:
 .
-|-- lists/
+`-- lists/
     `-- skip lists (a probabilistic alternative to balanced trees)
-|-- optimization/ (combinatorial optimization algorithms)
-    `-- Simulated Annealing
-|-- sets/ (set related algorithms)
+`-- optimization/ (combinatorial optimization algorithms)
+    `-- simulated annealing
+`-- sets/ (set related algorithms)
     `-- union find
-|-- sorting/ (sorting algorithms & related)
+`-- sorting/ (sorting algorithms & related)
     `-- insertion sort
     `-- selection sort
     `-- merge sort
