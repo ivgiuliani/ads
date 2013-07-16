@@ -2,6 +2,9 @@ package sorting.java;
 
 import java.util.Arrays;
 
+/**
+ * Implementation of a min-heap
+ */
 public class Heap {
   private int SIZE = 1024;
   private int[] items = new int[SIZE];
@@ -69,9 +72,11 @@ public class Heap {
     int right = childRight(index);
     int minIndex = index;
 
+    // find out who is the smaller item, if the root, the left or the right child
     if (left <= count && items[minIndex] > items[left]) minIndex = left;
     if (right <= count && items[minIndex] > items[right]) minIndex = right;
 
+    // stop bubbling down if the smallest item is the root
     if (minIndex != index) {
       swap(items, index, minIndex);
       bubbleDown(minIndex);
