@@ -85,6 +85,8 @@ public class BinarySearch {
   public static <T extends Comparable<T>> Range bsRange(T[] items, T item) {
     int left = bsRangeLeft(items, item, 0, items.length - 1);
     int right = bsRangeRight(items, item, 0, items.length - 1);
+    if (left >= items.length || items[left] != item) left = -1;
+    if (right >= items.length || items[right] != item) right = -1;
     return new Range(left, right);
   }
 
@@ -134,6 +136,8 @@ public class BinarySearch {
     test(bsRange(new Integer[] {1, 2, 3, 3, 3, 3, 4, 5, 6}, 3).right == 5);
     test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 1).left == 0);
     test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 1).right == 8);
+    test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 2).left == -1);
+    test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 2).right == -1);
   }
 
   public static void test(boolean condition) {
