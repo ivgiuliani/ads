@@ -6,6 +6,7 @@ soon as I have some spare time.
 What you'll find:
 .
 `-- lists/
+    `-- linked list
     `-- skip lists (a probabilistic alternative to balanced trees)
 `-- optimization/ (combinatorial optimization algorithms)
     `-- simulated annealing
