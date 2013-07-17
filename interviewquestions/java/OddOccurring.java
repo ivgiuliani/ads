@@ -7,7 +7,7 @@ import java.util.Map;
  * Given an integer array, one element occurs odd number of times and all
  * others have even occurrences. Find the element with odd occurrences.
  */
-public class EvenOccurring {
+public class OddOccurring {
   public static Character occurring(String string) {
     Map<Character, Integer> occurrences = new HashMap<Character, Integer>();
     for (char ch : string.toCharArray()) {
