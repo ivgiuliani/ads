@@ -38,6 +38,7 @@ simple interview problems:
 - pretty-print a BST
 - balanced parenthesis
 - first non repeated character in a string
+- even occurring character in stream
 
 TODO:
 - lay out a better organization
