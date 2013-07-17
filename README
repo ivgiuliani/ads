@@ -39,6 +39,7 @@ simple interview problems:
 - balanced parenthesis
 - first non repeated character in a string
 - odd occurring character in stream
+- remove duplicate charaters from string
 
 TODO:
 - lay out a better organization
