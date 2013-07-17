@@ -30,6 +30,12 @@ What you'll find:
     `-- heap
     `-- trie
 
+In 'interview questions' there also some implementations of solution for
+simple interview problems:
+- largest continuous sum of items in an array
+- missing element
+- string shuffling detection
+
 TODO:
 - lay out a better organization
 - have running examples of every algorithm/data structure
