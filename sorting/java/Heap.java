@@ -11,14 +11,13 @@ public class Heap {
   private int count = 0;
 
   public void add(int val) {
+    items[count] = val;
+    bubbleUp(count);
     count++;
 
     if (count >= SIZE) {
       dynamicExpand();
     }
-
-    items[count] = val;
-    bubbleUp(count);
   }
 
   private void dynamicExpand() {
@@ -28,28 +27,28 @@ public class Heap {
   }
 
   public int min() {
-    return items[1];
+    return items[0];
   }
 
   public void pop() {
     if (count == 0) return;
 
-    items[1] = items[count];
     count--;
-    bubbleDown(1);
+    items[0] = items[count];
+    bubbleDown(0);
   }
 
   private int parent(int index) {
-    if (index == 1) return -1;
-    return index / 2;
+    if (index == 0) return -1;
+    return (index - 1) / 2;
   }
 
   private int childLeft(int index) {
-    return 2 * index;
+    return (2 * index) + 1;
   }
 
   private int childRight(int index) {
-    return (2 * index) + 1;
+    return (2 * index) + 2;
   }
 
   private static void swap(int[] items, int x, int y) {
@@ -73,8 +72,8 @@ public class Heap {
     int minIndex = index;
 
     // find out who is the smaller item, if the root, the left or the right child
-    if (left <= count && items[minIndex] > items[left]) minIndex = left;
-    if (right <= count && items[minIndex] > items[right]) minIndex = right;
+    if (left < count && items[minIndex] > items[left]) minIndex = left;
+    if (right < count && items[minIndex] > items[right]) minIndex = right;
 
     // stop bubbling down if the smallest item is the root
     if (minIndex != index) {
