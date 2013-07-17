@@ -37,6 +37,7 @@ simple interview problems:
 - string shuffling detection
 - pretty-print a BST
 - balanced parenthesis
+- first non repeated character in a string
 
 TODO:
 - lay out a better organization
