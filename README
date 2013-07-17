@@ -36,6 +36,7 @@ simple interview problems:
 - missing element
 - string shuffling detection
 - pretty-print a BST
+- balanced parenthesis
 
 TODO:
 - lay out a better organization
