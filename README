@@ -35,6 +35,7 @@ simple interview problems:
 - largest continuous sum of items in an array
 - missing element
 - string shuffling detection
+- pretty-print a BST
 
 TODO:
 - lay out a better organization
