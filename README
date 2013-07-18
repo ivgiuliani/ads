@@ -40,6 +40,7 @@ simple interview problems:
 - first non repeated character in a string
 - odd occurring character in stream
 - remove duplicate charaters from string
+- insert item into correct position of a sorted array
 
 TODO:
 - lay out a better organization
