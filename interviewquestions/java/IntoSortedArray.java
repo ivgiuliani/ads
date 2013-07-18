@@ -60,6 +60,14 @@ public class IntoSortedArray {
     test(items[6] == 99);
     test(items[7] == 100);
     test(items[8] == 150);
+
+    items = new int[1024];
+    for (int i = 0; i < 100; i++) {
+      add(items, i, 100 - i);
+    }
+    for (int i = 0; i < 100; i++) {
+      test(items[i] == i + 1);
+    }
   }
 
   public static void test(boolean condition) {
