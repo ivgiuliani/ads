@@ -43,6 +43,7 @@ simple interview problems:
 - insert item into correct position of a sorted array
 - exact price on lottery ticket
 - love formula calculator
+- strange computer (bitmask interview)
 
 TODO:
 - lay out a better organization
