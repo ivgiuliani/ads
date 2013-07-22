@@ -36,22 +36,18 @@ public class LRU<K,V> {
   }
 
   public void put(K key, V value) {
-    Node node = null;
+    Node node;
     if (!mapping.containsKey(key)) {
       node = new Node(key, value);
-      cache.addFirst(node);
     } else {
-      // Update the value in the linked list
-      for (Node tmp : cache) {
-        if (tmp.key.equals(key)) {
-          tmp.value = value;
-          node = tmp;
-          break;
-        }
-      }
+      node = mapping.get(key);
+      node.value = value;
+
+      // remove the node and push it at the beginning of the list
+      cache.remove(node);
     }
 
-    assert(node != null);
+    cache.addFirst(node);
     mapping.put(key, node);
 
     if (cache.size() > capacity) {
@@ -98,6 +94,25 @@ public class LRU<K,V> {
     cache.put("item 4", 4);
     cache.put("item 5", 5);
     cache.get("item 1");
+    cache.put("item 6", 6);
+    cache.put("item 7", 7);
+    test(cache.get("item 7") == 7);
+    test(cache.get("item 6") == 6);
+    test(cache.get("item 5") == 5);
+    test(cache.get("item 4") == 4);
+    test(cache.get("item 3") == null);
+    test(cache.get("item 2") == null);
+    test(cache.get("item 1") == 1);
+
+    cache.clear();
+
+    // same as above, but test that 'put' moves things up in the cache
+    cache.put("item 1", 1);
+    cache.put("item 2", 2);
+    cache.put("item 3", 3);
+    cache.put("item 4", 4);
+    cache.put("item 5", 5);
+    cache.put("item 1", 1);  // this will move item 1 to the top of the queue
     cache.put("item 6", 6);
     cache.put("item 7", 7);
     test(cache.get("item 7") == 7);
