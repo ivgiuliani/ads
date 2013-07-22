@@ -44,6 +44,9 @@ public class LRU<K,V> {
       node.value = value;
 
       // remove the node and push it at the beginning of the list
+      // this isn't O(n) because we pass the reference to the node
+      // and since this is a doubly linked list we can update the
+      // prev and next pointers in O(1)
       cache.remove(node);
     }
 
@@ -63,6 +66,8 @@ public class LRU<K,V> {
   public V get(K item) {
     if (!mapping.containsKey(item)) return null;
     Node node = mapping.get(item);
+
+    // this is O(1) for the same reasons as put() (see above)
     cache.remove(node);
     cache.addFirst(node);
     return node.value;
