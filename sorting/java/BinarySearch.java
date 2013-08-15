@@ -138,6 +138,10 @@ public class BinarySearch {
     test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 1).right == 8);
     test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 2).left == -1);
     test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 1}, 2).right == -1);
+    test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 4}, 4).left == 8);
+    test(bsRange(new Integer[] {1, 1, 1, 1, 1, 1, 1, 1, 4}, 4).right == 8);
+    test(bsRange(new Integer[] {1, 4, 4, 4, 4, 4, 4, 4, 4}, 1).left == 0);
+    test(bsRange(new Integer[] {1, 4, 4, 4, 4, 4, 4, 4, 4}, 1).right == 0);
   }
 
   public static void test(boolean condition) {
