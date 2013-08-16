@@ -48,6 +48,7 @@ simple interview problems:
 - clear rows/columns if there's a 0 in a matrix
 - sum of numbers represented as linkedlist
 - stack with min() in O(1)
+- a queue using two stacks
 
 TODO:
 - lay out a better organization
