@@ -47,6 +47,7 @@ simple interview problems:
 - determine if a string has all unique characters
 - clear rows/columns if there's a 0 in a matrix
 - sum of numbers represented as linkedlist
+- stack with min() in O(1)
 
 TODO:
 - lay out a better organization
