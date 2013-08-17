@@ -49,6 +49,7 @@ simple interview problems:
 - sum of numbers represented as linkedlist
 - stack with min() in O(1)
 - a queue using two stacks
+- generate all valid combinations of parenthesis
 
 TODO:
 - lay out a better organization
