@@ -53,6 +53,7 @@ simple interview problems:
 - generate the powerset of a set
 - permutations of a string
 - sort a list of items using stacks
+- check if binary tree is balanced
 
 TODO:
 - lay out a better organization
