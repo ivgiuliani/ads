@@ -35,6 +35,11 @@ public class Powersets {
     test(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 3))));
     test(powerset.contains(new HashSet<Integer>(Arrays.asList(2, 3))));
     test(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 2, 3))));
+
+    // the powerset is never empty, it always contains at least the empty set
+    initial = new HashSet<Integer>();
+    test(powerset(initial).size() == 1);
+    test(powerset(initial).contains(initial));
   }
 
   public static void test(boolean condition) {
