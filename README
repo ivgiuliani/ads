@@ -51,6 +51,7 @@ simple interview problems:
 - a queue using two stacks
 - generate all valid combinations of parenthesis
 - generate the powerset of a set
+- permutations of a string
 
 TODO:
 - lay out a better organization
