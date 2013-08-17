@@ -52,6 +52,7 @@ simple interview problems:
 - generate all valid combinations of parenthesis
 - generate the powerset of a set
 - permutations of a string
+- sort a list of items using stacks
 
 TODO:
 - lay out a better organization
