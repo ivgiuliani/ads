@@ -44,6 +44,13 @@ public class GenParenthesis {
     test(s3.contains("(())()"));
     test(s3.contains("(()())"));
     test(s3.contains("((()))"));
+
+    Set<String> s1 = gen(1);
+    test(s1.size() == 1);
+    test(s1.contains("()"));
+
+    Set<String> s0 = gen(0);
+    test(s0.isEmpty());
   }
 
   public static void test(boolean condition) {
