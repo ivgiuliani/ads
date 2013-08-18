@@ -14,21 +14,15 @@ public class StackSort {
     Deque<Integer> s2 = new ArrayDeque<Integer>();
     int tmp;
 
-    // use two stacks; keep filling the aux stack as long as
-    // everything is in order. Once you find an item that
-    // should be in another position, move everything onto the
-    // original stack until you can push the out-of-position item
-    // in the aux stack.
     while (!stack.isEmpty()) {
       tmp = stack.pop();
-      while (!s2.isEmpty() && s2.peek() > tmp) {
+      while (!s2.isEmpty() && s2.peek() < tmp) {
         stack.push(s2.pop());
       }
       s2.push(tmp);
     }
 
-    while (!s2.isEmpty()) stack.push(s2.pop());
-    for (Integer item : stack) sorted.add(item);
+    for (Integer item : s2) sorted.add(item);
     return sorted;
   }
 
@@ -45,7 +39,6 @@ public class StackSort {
     stack.push(1);
 
     List<Integer> sorted = sort(stack);
-    System.out.println(sorted);
     test(sorted.size() == 9);
     test(sorted.get(0) == 1);
     test(sorted.get(1) == 1);
