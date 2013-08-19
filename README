@@ -31,31 +31,7 @@ What you'll find:
     `-- trie
 
 In 'interview questions' there also some implementations of solution for
-simple interview problems:
-- largest continuous sum of items in an array
-- missing element
-- string shuffling detection
-- pretty-print a BST
-- balanced parenthesis
-- first non repeated character in a string
-- odd occurring character in stream
-- remove duplicate charaters from string
-- insert item into correct position of a sorted array
-- exact price on lottery ticket
-- love formula calculator
-- strange computer (bitmask interview)
-- determine if a string has all unique characters
-- clear rows/columns if there's a 0 in a matrix
-- sum of numbers represented as linkedlist
-- stack with min() in O(1)
-- a queue using two stacks
-- generate all valid combinations of parenthesis
-- generate the powerset of a set
-- permutations of a string
-- sort a list of items using stacks
-- check if binary tree is balanced
-- penguin tiles games
-- bored friends
+some interview problems.
 
 TODO:
 - lay out a better organization
