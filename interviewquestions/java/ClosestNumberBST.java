@@ -58,6 +58,16 @@ public class ClosestNumberBST {
     test(find(root, 1) == 1);
     test(find(root, 14) == 15);
     test(find(root, Integer.MAX_VALUE) == 100);
+
+    Node unbalanced = new Node(1, null,
+        new Node(2, null,
+            new Node(3, null,
+                new Node(4, null,
+                    new Node(5, null,
+                      new Node(6))))));
+
+    test(find(unbalanced, 7) == 6);
+    test(find(unbalanced, 3) == 3);
   }
 
   public static void test(boolean condition) {
