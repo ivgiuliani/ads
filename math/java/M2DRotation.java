@@ -1,4 +1,4 @@
-package matrix.java;
+package math.java;
 
 import java.util.Arrays;
 

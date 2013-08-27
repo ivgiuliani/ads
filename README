@@ -13,7 +13,7 @@ What you'll find:
 `-- lists/
     `-- linked list
     `-- skip lists (a probabilistic alternative to balanced trees)
-`-- matrix/
+`-- math/
     `-- 90° degrees matrix rotation
 `-- optimization/ (combinatorial optimization algorithms)
     `-- simulated annealing
