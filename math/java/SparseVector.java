@@ -111,7 +111,7 @@ public class SparseVector implements Comparable<SparseVector> {
     SparseVector v2 = that;
     double sum = 0;
 
-    // iterate over the item with the largest number of zero items
+    // iterate over the vector with the largest number of zeros
     if (this.nzero() > that.nzero()) {
       v1 = that;
       v2 = this;
