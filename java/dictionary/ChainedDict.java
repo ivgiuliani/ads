@@ -1,4 +1,4 @@
-package dictionary.java;
+package dictionary;
 
 /**
  * Implementation of a chain-based dictionary with single linked lists.

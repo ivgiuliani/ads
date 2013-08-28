@@ -1,4 +1,4 @@
-package sets;
+package interviewquestions;
 
 import java.util.Arrays;
 

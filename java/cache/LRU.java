@@ -1,4 +1,4 @@
-package cache.java;
+package cache;
 
 import java.util.HashMap;
 import java.util.LinkedList;
