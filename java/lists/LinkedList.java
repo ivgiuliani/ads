@@ -1,4 +1,4 @@
-package lists.java;
+package lists;
 
 /**
  * A linked list

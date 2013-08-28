@@ -1,4 +1,4 @@
-package sorting.java;
+package sorting;
 
 /**
  * Simple implementation of a binary search on a sorted array

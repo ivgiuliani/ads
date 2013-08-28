@@ -1,4 +1,4 @@
-package dictionary.java;
+package dictionary;
 
 /**
  * Dict implementation based on (quadratic probing) open addressing.
