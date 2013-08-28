@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * You are given two Strings: init and goal. Both init and goal contain lowercase

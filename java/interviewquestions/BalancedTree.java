@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Check if a binary tree is balanced. A balanced tree is defined to be a

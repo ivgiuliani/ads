@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * There is an array of strictly positive integers. A second array is formed by

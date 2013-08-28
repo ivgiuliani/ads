@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * A strange computer has its memory consisting of several bits, each initially

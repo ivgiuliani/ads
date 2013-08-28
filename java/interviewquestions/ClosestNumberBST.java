@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Given a binary search tree and a number 'number', find the node

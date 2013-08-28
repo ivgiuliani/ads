@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Given a string 'S' and a character 't'. Print out the position of the rightmost

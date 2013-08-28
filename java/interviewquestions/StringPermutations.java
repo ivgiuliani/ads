@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 import java.util.HashSet;
 import java.util.Set;

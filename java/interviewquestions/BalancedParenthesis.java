@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 import java.util.Deque;
 import java.util.LinkedList;

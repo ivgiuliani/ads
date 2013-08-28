@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Choose a number, reverse its digits and add it to the original. If the sum

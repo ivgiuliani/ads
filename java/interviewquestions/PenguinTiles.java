@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Percy has just received a new game called Penguin Tiles. The game is played

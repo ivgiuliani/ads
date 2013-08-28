@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * We are given 3 strings: str1, str2, and str3. Str3 is said to be a shuffle of str1 and str2

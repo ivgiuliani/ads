@@ -1,4 +1,4 @@
-package interviewquestions.java;
+package interviewquestions;
 
 /**
  * Write an algorithm such that if an element in an MxN matrix is 0,
