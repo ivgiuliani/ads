@@ -30,7 +30,7 @@ Sets                      +-------+-------+-------+-------+--------+
   Union Find              |       |       |   x   |       |        |
 Sorting & Search          +-------+-------+-------+-------+--------+
   Bubble Sort             |       |       |       |       |        |
-  Selection Sort          |   x   |       |   x   |       |        |
+  Selection Sort          |   x   |       |   x   |   x   |        |
   Insertion Sort          |   x   |       |   x   |       |        |
   Merge Sort              |       |   x   |   x   |       |        |
   Quick Sort              |       |   x   |   x   |       |        |
