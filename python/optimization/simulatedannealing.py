@@ -30,12 +30,12 @@ def main(args):
     pprint.pprint(items)
 
     start_sol = generate_random_solution(items, max_weight=40)
-    print "Random solution: %s" % start_sol
-    print "value: (cost: %d, weight: %f)" % compute_cost(start_sol, items)
+    print("Random solution: %s" % start_sol)
+    print("value: (cost: %d, weight: %f)" % compute_cost(start_sol, items))
 
     solution = simulated_annealing(start_sol, items, max_weight=40)
-    print "Final solution: %s" % solution
-    print "value: (cost: %d, weight: %f)" % compute_cost(solution, items)
+    print("Final solution: %s" % solution)
+    print("value: (cost: %d, weight: %f)" % compute_cost(solution, items))
 
     return False
 
