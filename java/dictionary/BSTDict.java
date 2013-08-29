@@ -1,4 +1,4 @@
-package sorting;
+package dictionary;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,10 +8,6 @@ import java.util.List;
  */
 public class BSTDict {
   private class BSTNode {
-    public static final int NONE = 0;
-    public static final int LEFT = 1;
-    public static final int RIGHT = 2;
-
     public String key;
     public String value;
     public BSTNode parent;
@@ -46,7 +42,7 @@ public class BSTDict {
   }
 
   public void del(String key) {
-
+    // TODO
   }
 
   private static BSTNode min(BSTNode node) {
@@ -126,6 +122,8 @@ public class BSTDict {
 
     dict.add("key4", "value444");
     test(dict.get("key4").equals("value444"));
+
+    // TODO: implement deletion
 
 //    test(dict.contains("key4"));
 //    dict.del("key4");
