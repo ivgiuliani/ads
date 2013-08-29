@@ -1,39 +1,49 @@
-Here follows a set of implementations of various algorithms and data structures
-which I developed for learning purposes through the years. The list here is not
-intended to be either complete or exaustive but I'll try to improve that as
-soon as I have some spare time.
+This repository contains a set of self-contained implementations of several
+common algorithms and data structures in different programming languages.
+The implementation of these algorithms/data structures is not to be intended
+as a reference and most of these implementations are far from being generic
+and written well enough to consider their inclusion in any production system.
 
-What you'll find:
-.
-`-- dictionary/
-    `-- chaineddict (chained lists for collision resolution)
-    `-- oadict (open addressing for collision resolution)
-`-- cache/
-    `-- lru cache
-`-- lists/
-    `-- linked list
-    `-- skip lists (a probabilistic alternative to balanced trees)
-`-- math/
-    `-- sparse vector
-    `-- 90° degrees matrix rotation
-`-- optimization/ (combinatorial optimization algorithms)
-    `-- simulated annealing
-`-- sets/ (set related algorithms)
-    `-- union find
-`-- sorting/ (sorting algorithms & related)
-    `-- insertion sort
-    `-- selection sort
-    `-- merge sort
-    `-- quick sort
-    `-- heapsort
-    `-- binary search
-`-- trees/ (various trees implementations)
-    `-- heap
-    `-- trie
+Additionally, there are also some interview questions and solutions for each
+programming language. The description of the interview question is in the
+file itself.
 
-In 'interview questions' there are some implementations of solutions for
-some interview problems.
 
-TODO:
-- lay out a better organization
-- have running examples of every algorithm/data structure
+                          |   C   |  C++  | Java  |   Go  | Python |
+Cache                     +-------+-------+-------+-------+--------+
+  LRU Cache               |       |       |   x   |       |        |
+Dictionaries              +-------+-------+-------+-------+--------+
+  Open Addressing         |       |       |   x   |       |        |
+  Chained Lists           |       |       |   x   |       |        |
+  Binary Search Tree      |       |       |   P   |       |        |
+Lists                     +-------+-------+-------+-------+--------+
+  Singly Linked List      |       |       |   x   |   x   |        |
+  Doubly Linked List      |       |       |       |       |        |
+  Array List              |       |       |       |       |        |
+  Skip List               |   x   |       |       |       |        |
+Math                      +-------+-------+-------+-------+--------+
+  Sparse Vector           |       |       |   x   |       |        |
+  90° Matrix Rotation     |       |       |   x   |       |        |
+Optimization              +-------+-------+-------+-------+--------+
+  Simulated Annealing     |       |       |       |       |   x    |
+Sets                      +-------+-------+-------+-------+--------+
+  Union Find              |       |       |   x   |       |        |
+Sorting & Search          +-------+-------+-------+-------+--------+
+  Bubble Sort             |       |       |       |       |        |
+  Selection Sort          |   x   |       |   x   |       |        |
+  Insertion Sort          |   x   |       |   x   |       |        |
+  Merge Sort              |       |   x   |   x   |       |        |
+  Quick Sort              |       |   x   |   x   |       |        |
+  Heap Sort               |       |       |   x   |       |        |
+  Binary Search           |       |       |   x   |       |        |
+Trees                     +-------+-------+-------+-------+--------+
+  Heap                    |       |   x   |       |       |        |
+  Trie                    |       |   x   |       |       |        |
+  AVL Tree                |       |       |       |       |        |
+  Red/Black Tree          |       |       |       |       |        |
+  Quad Tree               |       |       |       |       |        |
+                          +-------+-------+-------+-------+--------+
+
+                          Legend:
+                            x    everything is working
+                            P    incomplete implementation
