@@ -1,16 +1,21 @@
 #!/bin/bash
 
 MODULES=(
+  sorting
   lists
 )
 
 export GOPATH=(pwd)
 
-pushd src/ads
-for module in $MODULES
+pushd src/ads > /dev/null
+for module in ${MODULES[@]}
 do
-  pushd $module
+  echo "--------------------------------------------------"
+  echo "Module: $module"
+  echo "--------------------------------------------------"
+
+  pushd $module > /dev/null
   go test -v
-  popd
+  popd > /dev/null
 done
-popd
+popd > /dev/null
