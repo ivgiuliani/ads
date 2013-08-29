@@ -31,7 +31,7 @@ Sets                      +-------+-------+-------+-------+--------+
 Sorting & Search          +-------+-------+-------+-------+--------+
   Bubble Sort             |       |       |       |       |        |
   Selection Sort          |   x   |       |   x   |   x   |        |
-  Insertion Sort          |   x   |       |   x   |       |        |
+  Insertion Sort          |   x   |       |   x   |   x   |        |
   Merge Sort              |       |   x   |   x   |       |        |
   Quick Sort              |       |   x   |   x   |       |        |
   Heap Sort               |       |       |   x   |       |        |
