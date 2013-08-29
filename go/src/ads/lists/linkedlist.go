@@ -104,6 +104,7 @@ func (lst *LinkedList) Remove(node *Element) {
 	}
 
 	head := lst.Front()
-	for ; head != nil && head.Next() != node; head = head.Next() {}
+	for ; head != nil && head.Next() != node; head = head.Next() {
+	}
 	head.next = node.next
 }
