@@ -2,7 +2,7 @@ package lists
 
 import "testing"
 
-func Test_Empty(t *testing.T) {
+func Test_LinkedList_Empty(t *testing.T) {
 	var lst LinkedList
 
 	if !lst.IsEmpty() {
@@ -18,7 +18,7 @@ func Test_Empty(t *testing.T) {
 	}
 }
 
-func Test_NewList(t *testing.T) {
+func Test_LinkedList_NewList(t *testing.T) {
 	var lst LinkedList
 
 	if lst.Size() != 0 {
@@ -48,7 +48,7 @@ func Test_NewList(t *testing.T) {
 	}
 }
 
-func Test_ClearList(t *testing.T) {
+func Test_LinkedList_ClearList(t *testing.T) {
 	var lst LinkedList
 
 	lst.Append(1)
@@ -66,7 +66,7 @@ func Test_ClearList(t *testing.T) {
 	}
 }
 
-func Test_Iteration(t *testing.T) {
+func Test_LinkedList_Iteration(t *testing.T) {
 	var lst LinkedList
 	var i int = 1
 
@@ -84,7 +84,7 @@ func Test_Iteration(t *testing.T) {
 	}
 }
 
-func Test_InsertBefore(t *testing.T) {
+func Test_LinkedList_InsertBefore(t *testing.T) {
 	var lst LinkedList
 
 	node := lst.Append(1)
@@ -107,7 +107,7 @@ func Test_InsertBefore(t *testing.T) {
 	}
 }
 
-func Test_InsertAfter(t *testing.T) {
+func Test_LinkedList_InsertAfter(t *testing.T) {
 	var lst LinkedList
 
 	node := lst.Append(1)
@@ -129,7 +129,7 @@ func Test_InsertAfter(t *testing.T) {
 	}
 }
 
-func Test_Remove(t *testing.T) {
+func Test_LinkedList_Remove(t *testing.T) {
 	var lst LinkedList
 
 	node1 := lst.Append(1)
