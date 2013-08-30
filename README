@@ -15,7 +15,7 @@ Cache                     +-------+-------+-------+-------+--------+
 Dictionaries              +-------+-------+-------+-------+--------+
   Open Addressing         |       |       |   x   |       |        |
   Chained Lists           |       |       |   x   |       |        |
-  Binary Search Tree      |       |       |   P   |       |        |
+  Binary Search Tree      |       |       |   P   |   x   |        |
 Lists                     +-------+-------+-------+-------+--------+
   Singly Linked List      |       |       |   x   |   x   |        |
   Doubly Linked List      |       |       |       |       |        |
@@ -46,4 +46,4 @@ Trees                     +-------+-------+-------+-------+--------+
 
                           Legend:
                             x    everything is working
-                            P    incomplete implementation
+                            P    incomplete/partial implementation

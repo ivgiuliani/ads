@@ -1,8 +1,9 @@
 #!/bin/bash
 
 MODULES=(
-  sorting
+  dictionary
   lists
+  sorting
 )
 
 export GOPATH=(pwd)
