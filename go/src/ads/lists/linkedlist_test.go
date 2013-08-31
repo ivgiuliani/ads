@@ -214,7 +214,4 @@ func Test_LinkedList_Generic(t *testing.T) {
 		}
 		i++
 	}
-	for v := range values {
-		lst.Append(values[v])
-	}
 }
