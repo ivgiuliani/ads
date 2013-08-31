@@ -9,7 +9,7 @@ import "errors"
 // TODO: make Element generic, so that it can hold any data type and
 //       not just integers
 type Element struct {
-	value int
+	value interface{}
 	next  *Element
 }
 
@@ -17,7 +17,11 @@ type LinkedList struct {
 	head *Element
 }
 
-func (e *Element) Value() int {
+func NewLinkedList() *LinkedList {
+	return &LinkedList{head: nil}
+}
+
+func (e *Element) Value() interface{} {
 	return e.value
 }
 
@@ -43,7 +47,7 @@ func (lst *LinkedList) IsEmpty() bool {
 	return lst.head == nil
 }
 
-func (lst *LinkedList) Append(value int) *Element {
+func (lst *LinkedList) Append(value interface{}) *Element {
 	var node *Element = lst.lastNode()
 	var newNode *Element = &Element{value: value, next: nil}
 
@@ -57,14 +61,14 @@ func (lst *LinkedList) Append(value int) *Element {
 	return newNode
 }
 
-func (lst *LinkedList) Get(index int) (int, error) {
+func (lst *LinkedList) Get(index int) (interface{}, error) {
 	var node *Element = lst.head
 	for i := 0; i < index && node != nil; i++ {
 		node = node.next
 	}
 
 	if node == nil {
-		return 0, errors.New("index out of bounds")
+		return nil, errors.New("index out of bounds")
 	}
 
 	return node.value, nil
@@ -78,7 +82,7 @@ func (lst *LinkedList) Clear() {
 	lst.head = nil
 }
 
-func (lst *LinkedList) InsertBefore(value int, node *Element) *Element {
+func (lst *LinkedList) InsertBefore(value interface{}, node *Element) *Element {
 	newNode := &Element{value, node}
 	head := lst.Front()
 	for ; head != nil && head.Next() != node; head = head.Next() {
@@ -91,7 +95,7 @@ func (lst *LinkedList) InsertBefore(value int, node *Element) *Element {
 	return newNode
 }
 
-func (lst *LinkedList) InsertAfter(value int, node *Element) *Element {
+func (lst *LinkedList) InsertAfter(value interface{}, node *Element) *Element {
 	newNode := &Element{value, node.next}
 	node.next = newNode
 	return newNode

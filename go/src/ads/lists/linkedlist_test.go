@@ -1,6 +1,9 @@
 package lists
 
-import "testing"
+import (
+	"strconv"
+	"testing"
+)
 
 func Test_LinkedList_Empty(t *testing.T) {
 	var lst LinkedList
@@ -159,5 +162,59 @@ func Test_LinkedList_Remove(t *testing.T) {
 
 	if val, _ := lst.Get(1); val != 4 {
 		t.Errorf("list[1] != 4")
+	}
+}
+
+func Test_LinkedList_Strings(t *testing.T) {
+	lst := NewLinkedList()
+
+	for i := 1; i <= 100; i++ {
+		lst.Append("item " + strconv.Itoa(i))
+	}
+
+	if lst.Size() != 100 {
+		t.Fatalf("lists contains %d items (expected: 100)", lst.Size())
+	}
+
+	i := 1
+	for head := lst.Front(); head != nil; head = head.Next() {
+		expected := "item " + strconv.Itoa(i)
+		if head.Value() != expected {
+			t.Fatalf("unexpected item in list: %s (expected: %s)", head.Value(), expected)
+		}
+		i++
+	}
+}
+
+func Test_LinkedList_Generic(t *testing.T) {
+	lst := NewLinkedList()
+
+	values := []interface{}{
+		uint8(1),
+		uint16(2),
+		int64(30000000),
+		"hello world",
+		complex(17, 4),
+		float64(12.2),
+		lst,
+	}
+
+	for v := range values {
+		lst.Append(values[v])
+	}
+
+	if lst.Size() != len(values) {
+		t.Fatal("expected %d items, found: %d", len(values), lst.Size())
+	}
+
+	i := 0
+	for head := lst.Front(); head != nil; head = head.Next() {
+		if head.Value() != values[i] {
+			t.Fatalf("expected %s but found %s", values[i], head.Value())
+		}
+		i++
+	}
+	for v := range values {
+		lst.Append(values[v])
 	}
 }
