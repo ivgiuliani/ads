@@ -15,14 +15,18 @@ type LinkedList struct {
 	head *Element
 }
 
+// NewLinkedList instantiates a new empty linked list.
 func NewLinkedList() *LinkedList {
 	return &LinkedList{head: nil}
 }
 
+// Value returns the value held in the current linked list item.
 func (e *Element) Value() interface{} {
 	return e.value
 }
 
+// Next returns the pointer to the next item in the linked list.
+// If the current item is the last item, a pointer to nil is returned.
 func (e *Element) Next() *Element {
 	return e.next
 }
@@ -34,6 +38,7 @@ func (lst *LinkedList) lastNode() *Element {
 	return head
 }
 
+// Size returns the number of items currently in the linked list.
 func (lst *LinkedList) Size() (i int) {
 	for head := lst.head; head != nil; head = head.next {
 		i++
@@ -41,10 +46,13 @@ func (lst *LinkedList) Size() (i int) {
 	return
 }
 
+// IsEmpty returns true if the list doesn't contain any element,
+// false otherwise.
 func (lst *LinkedList) IsEmpty() bool {
 	return lst.head == nil
 }
 
+// Append appends the given value to the end of the list.
 func (lst *LinkedList) Append(value interface{}) *Element {
 	var node *Element = lst.lastNode()
 	var newNode *Element = &Element{value: value, next: nil}
@@ -59,6 +67,9 @@ func (lst *LinkedList) Append(value interface{}) *Element {
 	return newNode
 }
 
+// Get returns the value in the `index` position of the list.
+// If the list holds less than `index` items, an error is returned.
+// Index in list are zero-based.
 func (lst *LinkedList) Get(index int) (interface{}, error) {
 	var node *Element = lst.head
 	for i := 0; i < index && node != nil; i++ {
@@ -72,14 +83,20 @@ func (lst *LinkedList) Get(index int) (interface{}, error) {
 	return node.value, nil
 }
 
+// Front returns a pointer to the first item in the list or
+// nil if the list is empty.
 func (lst *LinkedList) Front() *Element {
 	return lst.head
 }
 
+// Clear deletes every item contained into the linked list.
 func (lst *LinkedList) Clear() {
 	lst.head = nil
 }
 
+// InsertBefore inserts the given value right before the given item pointer.
+// If the item in input is not held inside the linked list, this operation
+// does nothing and thus the linked list is returned unchanged.
 func (lst *LinkedList) InsertBefore(value interface{}, node *Element) *Element {
 	newNode := &Element{value, node}
 	head := lst.Front()
@@ -93,12 +110,18 @@ func (lst *LinkedList) InsertBefore(value interface{}, node *Element) *Element {
 	return newNode
 }
 
+// InsertAfter inserts the given value right after the given item pointer.
+// If the item in input is not held inside the linked list, this operation
+// does nothing and thus the linked list is returned unchanged.
 func (lst *LinkedList) InsertAfter(value interface{}, node *Element) *Element {
 	newNode := &Element{value, node.next}
 	node.next = newNode
 	return newNode
 }
 
+// Remove removes the given item in the linked list.
+// If the item is not held inside the linked list, this operation
+// does nothing and thus the linked list is returned unchanged.
 func (lst *LinkedList) Remove(node *Element) {
 	if lst.Front() == node {
 		lst.head = node.next
