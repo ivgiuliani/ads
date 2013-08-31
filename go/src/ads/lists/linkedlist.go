@@ -6,8 +6,6 @@ import "errors"
  * Implementation of a singly linked list
  */
 
-// TODO: make Element generic, so that it can hold any data type and
-//       not just integers
 type Element struct {
 	value interface{}
 	next  *Element
