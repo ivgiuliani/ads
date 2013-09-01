@@ -19,7 +19,7 @@ Dictionaries              +-------+-------+-------+-------+--------+
 Lists                     +-------+-------+-------+-------+--------+
   Singly Linked List      |       |       |   x   |   x   |        |
   Doubly Linked List      |       |       |       |       |        |
-  Array List              |       |       |       |       |        |
+  Array List              |       |       |       |   x   |        |
   Skip List               |   x   |       |       |       |        |
 Math                      +-------+-------+-------+-------+--------+
   Sparse Vector           |       |       |   x   |       |        |
