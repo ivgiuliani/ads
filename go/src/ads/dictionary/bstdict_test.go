@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Test_BSTDictionary_Empty(t *testing.T) {
+func TestBSTDictionaryEmpty(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	if bst.Size() != 0 {
@@ -23,7 +23,7 @@ func Test_BSTDictionary_Empty(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_PutGet(t *testing.T) {
+func TestBSTDictionaryPutGet(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("key 1", "value 1")
@@ -56,7 +56,7 @@ func Test_BSTDictionary_PutGet(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_Size(t *testing.T) {
+func TestBSTDictionarySize(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("key 1", "value 1")
@@ -77,7 +77,7 @@ func Test_BSTDictionary_Size(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_Remove(t *testing.T) {
+func TestBSTDictionaryRemove(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("2", "value 2")
@@ -133,7 +133,7 @@ func Test_BSTDictionary_Remove(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_Keys(t *testing.T) {
+func TestBSTDictionaryKeys(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("key 1", "value 1")
@@ -155,7 +155,7 @@ func Test_BSTDictionary_Keys(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_Values(t *testing.T) {
+func TestBSTDictionaryValues(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("key 1", "value 1")
@@ -177,7 +177,7 @@ func Test_BSTDictionary_Values(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_ManyItemsPutRemove_Sequential(t *testing.T) {
+func TestBSTDictionaryManyItemsPutRemoveSequential(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	for i := 0; i < 1000; i++ {
@@ -197,7 +197,7 @@ func Test_BSTDictionary_ManyItemsPutRemove_Sequential(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_ManyItemsPutRemove_Sequential_ReverseRemoval(t *testing.T) {
+func TestBSTDictionaryManyItemsPutReverseRemoval(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	for i := 0; i < 1000; i++ {
@@ -217,7 +217,7 @@ func Test_BSTDictionary_ManyItemsPutRemove_Sequential_ReverseRemoval(t *testing.
 	}
 }
 
-func Test_BSTDictionary_ManyItemsPutRemove_Random(t *testing.T) {
+func TestBSTDictionaryManyItemsPutRemoveRandom(t *testing.T) {
 	bst := NewBSTDictionary()
 	rand.Seed(time.Now().UTC().UnixNano())
 
@@ -238,7 +238,7 @@ func Test_BSTDictionary_ManyItemsPutRemove_Random(t *testing.T) {
 	}
 }
 
-func Test_BSTDictionary_OneItem(t *testing.T) {
+func TestBSTDictionaryOneItem(t *testing.T) {
 	bst := NewBSTDictionary()
 
 	bst.Put("1", "100")

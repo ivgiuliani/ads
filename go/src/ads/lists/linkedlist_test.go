@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_LinkedList_Empty(t *testing.T) {
+func TestLinkedListEmpty(t *testing.T) {
 	var lst LinkedList
 
 	if !lst.IsEmpty() {
@@ -21,7 +21,7 @@ func Test_LinkedList_Empty(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_NewList(t *testing.T) {
+func TestLinkedListNewList(t *testing.T) {
 	var lst LinkedList
 
 	if lst.Size() != 0 {
@@ -51,7 +51,7 @@ func Test_LinkedList_NewList(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_ClearList(t *testing.T) {
+func TestLinkedListClearList(t *testing.T) {
 	var lst LinkedList
 
 	lst.Append(1)
@@ -69,7 +69,7 @@ func Test_LinkedList_ClearList(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_Iteration(t *testing.T) {
+func TestLinkedListIteration(t *testing.T) {
 	var lst LinkedList
 	var i int = 1
 
@@ -87,7 +87,7 @@ func Test_LinkedList_Iteration(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_InsertBefore(t *testing.T) {
+func TestLinkedListInsertBefore(t *testing.T) {
 	var lst LinkedList
 
 	node := lst.Append(1)
@@ -110,7 +110,7 @@ func Test_LinkedList_InsertBefore(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_InsertAfter(t *testing.T) {
+func TestLinkedListInsertAfter(t *testing.T) {
 	var lst LinkedList
 
 	node := lst.Append(1)
@@ -132,7 +132,7 @@ func Test_LinkedList_InsertAfter(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_Remove(t *testing.T) {
+func TestLinkedListRemove(t *testing.T) {
 	var lst LinkedList
 
 	node1 := lst.Append(1)
@@ -165,7 +165,7 @@ func Test_LinkedList_Remove(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_Strings(t *testing.T) {
+func TestLinkedListStrings(t *testing.T) {
 	lst := NewLinkedList()
 
 	for i := 1; i <= 100; i++ {
@@ -186,7 +186,7 @@ func Test_LinkedList_Strings(t *testing.T) {
 	}
 }
 
-func Test_LinkedList_Generic(t *testing.T) {
+func TestLinkedListGeneric(t *testing.T) {
 	lst := NewLinkedList()
 
 	values := []interface{}{
