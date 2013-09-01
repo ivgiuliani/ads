@@ -215,3 +215,30 @@ func TestLinkedListGeneric(t *testing.T) {
 		i++
 	}
 }
+
+func BenchmarkLinkedListAppend(b *testing.B) {
+	lst := NewLinkedList()
+
+	for i := 0; i < b.N; i++ {
+		lst.Append(i)
+	}
+}
+
+func BenchmarkLinkedListInsertAtBeginning(b *testing.B) {
+	lst := NewLinkedList()
+
+	for i := 0; i < b.N; i++ {
+		lst.InsertBefore(i, lst.Front())
+	}
+}
+
+func BenchmarkLinkedListAppendAndRemove(b *testing.B) {
+	lst := NewLinkedList()
+
+	for i := 0; i < b.N; i++ {
+		lst.Append(i)
+	}
+	for i := 0; i < b.N; i++ {
+		lst.Remove(lst.Front())
+	}
+}
