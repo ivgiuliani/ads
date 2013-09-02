@@ -3,6 +3,9 @@ common algorithms and data structures in different programming languages.
 The implementation of these algorithms/data structures is not to be intended
 as a reference and most of these implementations are far from being generic
 and written well enough to consider their inclusion in any production system.
+Also, the list of both algorithms and data structures here is not meant to
+be complete, this is mostly a list of things I already implemented and items
+I have on my todo list.
 
 Additionally, there are also some interview questions and solutions for each
 programming language. The description of the interview question is in the
