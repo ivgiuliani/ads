@@ -21,7 +21,7 @@ Dictionaries              +-------+-------+-------+-------+--------+
   Binary Search Tree      |       |       |   P   |   x   |        |
 Lists                     +-------+-------+-------+-------+--------+
   Singly Linked List      |       |       |   x   |   x   |        |
-  Doubly Linked List      |       |       |       |       |        |
+  Doubly Linked List      |       |       |   x   |       |        |
   Array List              |       |       |       |   x   |        |
   Skip List               |   x   |       |       |       |        |
 Math                      +-------+-------+-------+-------+--------+
