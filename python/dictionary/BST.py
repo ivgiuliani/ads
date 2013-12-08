@@ -74,14 +74,14 @@ class BSTDict(object):
             return left + [(self.key, self.value)] + right
 
         def p(self, indent_str=""):
-            string = "%s%s:%s" % (indent_str, self.key, self.value)
+            string = "%s%s:%s (parent:%s)" % (indent_str, self.key, self.value, self.parent)
             print(string)
             if self.left is None:
-                print "%sLEFT NULL" % (indent_str + "  ")
+                print("%sLEFT NULL" % (indent_str + "  "))
             else:
                 self.left.p(indent_str + "  ")
             if self.right is None:
-                print "%sRIGHT NULL" % (indent_str + "  ")
+                print("%sRIGHT NULL" % (indent_str + "  "))
             else:
                 self.right.p(indent_str + "  ")
 
