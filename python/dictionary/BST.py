@@ -21,6 +21,14 @@ class BSTDict(object):
         def __eq__(self, other):
             return self.key == other.key
 
+        def __contains__(self, key):
+            if self.key == key:
+                return True
+            if key < self.key:
+                return self.left is not None and key in self.left
+            else:
+                return self.right is not None and key in self.right
+
         # for some reason PyCharm warns about a possible type exception about
         # self.left/right being None, but we are actually checking that...
         # noinspection PyTypeChecker
@@ -91,8 +99,8 @@ class BSTDict(object):
         else:
             self.root.insert(BSTDict.BSTNode(key, value))
 
-    def __contains__(self, item):
-        return True
+    def __contains__(self, key):
+        return self.root is not None and key in self.root
 
     def __len__(self):
         if self.root is None:
@@ -208,6 +216,18 @@ class BSTTest(unittest.TestCase):
             with self.assertRaises(KeyError):
                 # noinspection PyStatementEffect
                 b[val]
+
+    def test_contains(self):
+        b = BSTDict()
+        b["key"] = "value"
+        b["another key"] = "another value"
+        b["hello"] = "world"
+        self.assertTrue("key" in b)
+        self.assertTrue("another key" in b)
+        self.assertTrue("hello" in b)
+        self.assertFalse("not a key" in b)
+        self.assertFalse("invalid" in b)
+        self.assertFalse("whatever" in b)
 
 if __name__ == "__main__":
     unittest.main()
