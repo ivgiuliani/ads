@@ -23,7 +23,7 @@ class BSTDict(object):
             return self.key < other.key
 
         def __eq__(self, other):
-            return self.key == other.key
+            return isinstance(other, BSTDict.BSTNode) and self.key == other.key
 
         def __contains__(self, key):
             if self.key == key:
