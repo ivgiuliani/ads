@@ -73,6 +73,62 @@ class BSTDict(object):
             right = self.right.items() if self.right is not None else []
             return left + [(self.key, self.value)] + right
 
+        def __successor(self):
+            succ = self.right
+            while succ.left is not None:
+                succ = succ.left
+            return succ
+
+        @staticmethod
+        def delete(root, key):
+            if root is None:
+                # nothing to delete
+                return None
+            if key < root.key:
+                BSTDict.BSTNode.delete(root.left, key)
+                return root
+            elif key > root.key:
+                BSTDict.BSTNode.delete(root.right, key)
+                return root
+
+            # at this point root == key
+            # we can have three cases:
+            #   1) the node is a leaf
+            #   2) the node has only one child
+            #   3) the node has two children
+            #
+            # the first two cases are straightforward, while in the last one we
+            # must relabel the node with the key of its successor, which
+            # happens to be the leftmost descendand in the right subtree
+            parent = root.parent
+            if root.left is not None and root.right is not None:
+                # node has two children
+                # rather than complicating things by changing pointers, just
+                # replace keys and values
+                succ = root.__successor()
+                root.key, succ.key = succ.key, root.key
+                root.value, succ.value = succ.value, root.value
+                BSTDict.BSTNode.delete(root.right, succ.key)
+            elif root.left is not None:
+                # 1 child (the left one)
+                root.key = root.left.key
+                root.value = root.left.value
+                root.left = None
+            elif root.right is not None:
+                # 1 child (the right one)
+                root.key = root.right.key
+                root.value = root.right.value
+                root.right = None
+            else:
+                # leaf
+                if parent is not None and parent.left == root:
+                    parent.left = None
+                elif parent is not None and parent.right == root:
+                    parent.right = None
+                return None
+
+            return root
+
         def p(self, indent_str=""):
             string = "%s%s:%s (parent:%s)" % (indent_str, self.key, self.value, self.parent)
             print(string)
@@ -104,6 +160,10 @@ class BSTDict(object):
             self.root = BSTDict.BSTNode(key, value)
         else:
             self.root.insert(BSTDict.BSTNode(key, value))
+
+    def __delitem__(self, key):
+        if self.root is not None:
+            self.root = BSTDict.BSTNode.delete(self.root, key)
 
     def __contains__(self, key):
         return self.root is not None and key in self.root
@@ -177,6 +237,45 @@ class BSTTest(unittest.TestCase):
             # noinspection PyStatementEffect
             b["invalid key"]
             self.fail("should have thrown KeyError")
+
+    def test_delete(self):
+        b = BSTDict()
+        b["2"] = "value 2"
+        b["1"] = "value 1"
+        b["7"] = "value 7"
+        b["4"] = "value 4"
+        b["8"] = "value 8"
+        b["3"] = "value 3"
+        b["6"] = "value 6"
+        b["5"] = "value 5"
+
+        # remove a leaf
+        del b["5"]
+        self.assertEqual(len(b), 7)
+        self.assertFalse("5" in b)
+
+        # another deletion on the same key should be ignored
+        del b["5"]
+        self.assertEqual(len(b), 7)
+        self.assertFalse("5" in b)
+
+        # remove a node with two children
+        del b["4"]
+        self.assertEqual(len(b), 6)
+        self.assertFalse("4" in b)
+
+        # remove a node with one child
+        del b["6"]
+        self.assertEqual(len(b), 5)
+        self.assertFalse("6" in b)
+
+        # remove the root
+        del b["2"]
+        self.assertEqual(len(b), 4)
+        self.assertFalse("2" in b)
+
+        # check that every other key is present
+        self.assertEqual(b.keys(), ["1", "3", "7", "8"])
 
     def test_keys(self):
         b = BSTDict()
