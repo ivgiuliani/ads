@@ -16,6 +16,9 @@ class BSTDict(object):
             self.parent = None
             self.left, self.right = None, None
 
+        def __str__(self):
+            return "<%s:%s>" % (self.key, self.value)
+
         def __lt__(self, other):
             return self.key < other.key
 
