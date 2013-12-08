@@ -13,6 +13,7 @@ class BSTDict(object):
         def __init__(self, key, value):
             self.key = key
             self.value = value
+            self.parent = None
             self.left, self.right = None, None
 
         def __lt__(self, other):
@@ -44,11 +45,13 @@ class BSTDict(object):
             elif node < self:
                 if self.left is None:
                     self.left = node
+                    self.left.parent = self
                 else:
                     self.left.insert(node)
             else:  # node > self
                 if self.right is None:
                     self.right = node
+                    self.right.parent = self
                 else:
                     self.right.insert(node)
 
