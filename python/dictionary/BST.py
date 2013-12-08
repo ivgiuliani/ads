@@ -277,6 +277,57 @@ class BSTTest(unittest.TestCase):
         # check that every other key is present
         self.assertEqual(b.keys(), ["1", "3", "7", "8"])
 
+    def test_delete_single_node(self):
+        b = BSTDict()
+        b["key"] = "value"
+        self.assertTrue("key" in b)
+        self.assertEqual(len(b), 1)
+
+        del b["key"]
+
+        self.assertFalse("key" in b)
+        self.assertEqual(len(b), 0)
+
+    def test_delete_random_nodes(self):
+        # this will probably cover any case I didn't think of
+        # (or at least most of them)
+        vals = range(1, 10000)
+        random.shuffle(vals)
+
+        b = BSTDict()
+        for val in vals:
+            b[val] = val
+
+        for val in vals:
+            del b[val]
+
+        for val in vals:
+            self.assertFalse(val in b)
+        self.assertEqual(len(b), 0)
+
+    def test_delete_twice(self):
+        b = BSTDict()
+        b["key"] = "value"
+        del b["key"]
+        try:
+            del b["key"]
+        except Exception as ex:
+            self.fail("exception raised: %s" % ex)
+
+    def test_delete_leaf(self):
+        b = BSTDict()
+        b[5] = 5
+        b[4] = 4
+        b[6] = 6
+
+        # each of these operations will delete a leaf
+        del b[4]
+        self.assertEqual(len(b), 2)
+        del b[6]
+        self.assertEqual(len(b), 1)
+        del b[5]
+        self.assertEqual(len(b), 0)
+
     def test_keys(self):
         b = BSTDict()
         self.assertEqual(b.keys(), [])
