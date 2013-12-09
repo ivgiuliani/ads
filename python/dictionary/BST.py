@@ -141,6 +141,15 @@ class BSTDict(object):
             else:
                 self.right.p(indent_str + "  ")
 
+        def walk(self):
+            if self.left is not None:
+                for item in self.left.walk():
+                    yield item
+            yield self
+            if self.right is not None:
+                for item in self.right.walk():
+                    yield item
+
     def __init__(self):
         self.root = None
 
@@ -190,6 +199,24 @@ class BSTDict(object):
             return []
         else:
             return self.root.items()
+
+    def iterkeys(self):
+        if self.root is None:
+            yield
+        for node in self.root.walk():
+            yield node.key
+
+    def itervalues(self):
+        if self.root is None:
+            yield
+        for node in self.root.walk():
+            yield node.value
+
+    def iteritems(self):
+        if self.root is None:
+            yield
+        for node in self.root.walk():
+            yield node.key, node.value
 
     def clear(self):
         self.root = None
@@ -360,6 +387,39 @@ class BSTTest(unittest.TestCase):
         self.assertEqual(b.items(), [
             ("a", 1), ("b", 2), ("c", 3), ("d", 4)
         ])
+
+    def test_iterkeys(self):
+        b = BSTDict()
+        b["a"], b["b"], b["c"], b["d"] = 1, 2, 3, 4
+        expected_list = ["a", "b", "c", "d"]
+        for expected, item in zip(expected_list, b.iterkeys()):
+            self.assertEqual(expected, item)
+
+        # the generator must reset itself
+        for expected, item in zip(expected_list, b.iterkeys()):
+            self.assertEqual(expected, item)
+
+    def test_itervalues(self):
+        b = BSTDict()
+        b["a"], b["b"], b["c"], b["d"] = 1, 2, 3, 4
+        expected_list = [1, 2, 3, 4]
+        for expected, item in zip(expected_list, b.itervalues()):
+            self.assertEqual(expected, item)
+
+        # the generator must reset itself
+        for expected, item in zip(expected_list, b.itervalues()):
+            self.assertEqual(expected, item)
+
+    def test_iteritems(self):
+        b = BSTDict()
+        b["a"], b["b"], b["c"], b["d"] = 1, 2, 3, 4
+        expected_list = [("a", 1), ("b", 2), ("c", 3), ("d", 4)]
+        for expected, item in zip(expected_list, b.iteritems()):
+            self.assertEqual(expected, item)
+
+        # the generator must reset itself
+        for expected, item in zip(expected_list, b.iteritems()):
+            self.assertEqual(expected, item)
 
     def test_clear(self):
         b = BSTDict()
