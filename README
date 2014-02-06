@@ -18,7 +18,7 @@ Cache                     +-----+-----+------+-----+--------+------+
 Dictionaries              +-----+-----+------+-----+--------+------+
   Open Addressing         |     |     |   x  |     |        |      |
   Chained Lists           |     |     |   x  |     |        |      |
-  Binary Search Tree      |     |     |   P  |  x  |   x    |  P   |
+  Binary Search Tree      |     |     |   P  |  x  |   x    |  *   |
 Lists                     +-----+-----+------+-----+--------+------+
   Singly Linked List      |     |     |   x  |  x  |        |      |
   Doubly Linked List      |     |     |   x  |     |        |      |
