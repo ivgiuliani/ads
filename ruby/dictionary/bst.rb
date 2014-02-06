@@ -141,6 +141,22 @@ class BST
 
       root
     end
+
+    def keys
+      left, right = [], []
+      left = @left.keys unless @left.nil?
+      right = @right.keys unless @right.nil?
+
+      left + [@key] + right
+    end
+
+    def values
+      left, right = [], []
+      left = @left.values unless @left.nil?
+      right = @right.values unless @right.nil?
+
+      left + [@value] + right
+    end
   end
 
   def initialize
@@ -199,6 +215,22 @@ class BST
     unless @root.nil?
       @root = BSTNode.delete!(@root, key)
     end
+  end
+
+  def keys
+    unless @root.nil?
+      return @root.keys
+    end
+
+    []
+  end
+
+  def values
+    unless @root.nil?
+      return @root.values
+    end
+
+    []
   end
 end
 
@@ -344,5 +376,17 @@ class BSTTest < Test::Unit::TestCase
 
     values.each { |x| @bst.delete(x) }
     assert(@bst.empty?)
+  end
+
+  def test_keys
+    assert_equal(@bst.keys, [])
+    @bst['a'], @bst['b'], @bst['c'], @bst['d'] = 1, 2, 3, 4
+    assert_equal(@bst.keys, %w(a b c d))
+  end
+
+  def test_values
+    assert_equal(@bst.values, [])
+    @bst['a'], @bst['b'], @bst['c'], @bst['d'] = 1, 2, 3, 4
+    assert_equal(@bst.values, [1, 2, 3, 4])
   end
 end
