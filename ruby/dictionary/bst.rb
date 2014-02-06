@@ -31,9 +31,9 @@ class BST
       end
 
       if key < @key
-        (not @left.nil? and @left.has_key?(key))
+        (!@left.nil? && @left.has_key?(key))
       else
-        (not @right.nil? and @right.has_key?(key))
+        (!@right.nil? && @right.has_key?(key))
       end
     end
 
