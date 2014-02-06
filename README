@@ -12,40 +12,40 @@ programming language. The description of the interview question is in the
 file itself.
 
 
-                          |   C   |  C++  | Java  |   Go  | Python | Ruby |
-Cache                     +-------+-------+-------+-------+--------+------+
-  LRU Cache               |       |       |   x   |       |        |      |
-Dictionaries              +-------+-------+-------+-------+--------+------+
-  Open Addressing         |       |       |   x   |       |        |      |
-  Chained Lists           |       |       |   x   |       |        |      |
-  Binary Search Tree      |       |       |   P   |   x   |   x    |  P   |
-Lists                     +-------+-------+-------+-------+--------+------+
-  Singly Linked List      |       |       |   x   |   x   |        |      | 
-  Doubly Linked List      |       |       |   x   |       |        |      |
-  Array List              |       |       |       |   x   |        |      |
-  Skip List               |   x   |       |       |       |        |      |
-Math                      +-------+-------+-------+-------+--------+------+
-  Sparse Vector           |       |       |   x   |       |        |      |
-  90° Matrix Rotation     |       |       |   x   |       |        |      |
-Optimization              +-------+-------+-------+-------+--------+------+
-  Simulated Annealing     |       |       |       |       |   x    |      |
-Sets                      +-------+-------+-------+-------+--------+------+
-  Union Find              |       |       |   x   |       |        |      |
-Sorting & Search          +-------+-------+-------+-------+--------+------+
-  Bubble Sort             |       |       |   x   |   x   |   x    |      |
-  Selection Sort          |   x   |       |   x   |   x   |   x    |      |
-  Insertion Sort          |   x   |       |   x   |   x   |   x    |      |
-  Merge Sort              |       |   x   |   x   |       |   x    |      |
-  Quick Sort              |       |   x   |   x   |       |   x    |      |
-  Heap Sort               |       |       |   x   |       |        |      |
-  Binary Search           |       |       |   x   |       |        |      |
-Trees                     +-------+-------+-------+-------+--------+------+
-  Heap                    |       |   P   |       |       |        |      |
-  Trie                    |       |   x   |       |       |        |      |
-  AVL Tree                |       |       |       |       |        |      |
-  Red/Black Tree          |       |       |       |       |        |      |
-  Quad Tree               |       |       |       |       |        |      |
-                          +-------+-------+-------+-------+--------+------+
+                          |  C  | C++ | Java |  Go | Python | Ruby |
+Cache                     +-----+-----+------+-----+--------+------+
+  LRU Cache               |     |     |   x  |     |        |      |
+Dictionaries              +-----+-----+------+-----+--------+------+
+  Open Addressing         |     |     |   x  |     |        |      |
+  Chained Lists           |     |     |   x  |     |        |      |
+  Binary Search Tree      |     |     |   P  |  x  |   x    |  P   |
+Lists                     +-----+-----+------+-----+--------+------+
+  Singly Linked List      |     |     |   x  |  x  |        |      |
+  Doubly Linked List      |     |     |   x  |     |        |      |
+  Array List              |     |     |      |  x  |        |      |
+  Skip List               |  x  |     |      |     |        |      |
+Math                      +-----+-----+------+-----+--------+------+
+  Sparse Vector           |     |     |   x  |     |        |      |
+  90° Matrix Rotation     |     |     |   x  |     |        |      |
+Optimization              +-----+-----+------+-----+--------+------+
+  Simulated Annealing     |     |     |      |     |   x    |      |
+Sets                      +-----+-----+------+-----+--------+------+
+  Union Find              |     |     |   x  |     |        |      |
+Sorting & Search          +-----+-----+------+-----+--------+------+
+  Bubble Sort             |     |     |   x  |  x  |   x    |      |
+  Selection Sort          |  x  |     |   x  |  x  |   x    |      |
+  Insertion Sort          |  x  |     |   x  |  x  |   x    |      |
+  Merge Sort              |     |  x  |   x  |     |   x    |      |
+  Quick Sort              |     |  x  |   x  |     |   x    |      |
+  Heap Sort               |     |     |   x  |     |        |      |
+  Binary Search           |     |     |   x  |     |        |      |
+Trees                     +-----+-----+------+-----+--------+------+
+  Heap                    |     |  P  |      |     |        |      |
+  Trie                    |     |  x  |      |     |        |      |
+  AVL Tree                |     |     |      |     |        |      |
+  Red/Black Tree          |     |     |      |     |        |      |
+  Quad Tree               |     |     |      |     |        |      |
+                          +-----+-----+------+-----+--------+------+
 
                           Legend:
                             x    everything is working
