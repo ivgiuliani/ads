@@ -389,4 +389,12 @@ class BSTTest < Test::Unit::TestCase
     @bst['a'], @bst['b'], @bst['c'], @bst['d'] = 1, 2, 3, 4
     assert_equal(@bst.values, [1, 2, 3, 4])
   end
+
+  def test_keys_ordered
+    # this being a BST, keys will always be returned ordered
+    'hello world'.split('').each { |ch| @bst[ch] = ch }
+
+    # (remember that duplicates are also deleted)
+    assert_equal(@bst.keys, ' dehlorw'.split(''))
+  end
 end
