@@ -48,6 +48,15 @@ class BST
       1 + left + right
     end
 
+    def __successor
+      succ = @right
+      until succ.left.nil?
+        succ = succ.left
+      end
+
+      succ
+    end
+
     def insert!(node)
       if node.key == @key
         # same key, update the value
@@ -69,6 +78,68 @@ class BST
           @right.insert!(node)
         end
       end
+    end
+
+    # Delete a key from the BST identified by the given root.
+    #
+    # This method is static because semantically it belongs here, but we
+    # need a reference to the actual BST root to delete any key in a given
+    # binary search tree.
+    #
+    # Params:
+    # +root+:: the root of the binary search tree
+    # +key+:: the key to delete
+    def self.delete!(root, key)
+      if root.nil?
+        return nil
+      end
+
+      if key < root.key
+        BSTNode.delete!(root.left, key)
+        return root
+      elsif key > root.key
+        BSTNode.delete!(root.right, key)
+        return root
+      end
+
+      # at this point root == key
+      # we can have three cases:
+      #   1) the node is a leaf
+      #   2) the node has only one child
+      #   3) the node has two children
+      #
+      # the first two cases are straightforward, while in the last one we
+      # must relabel the node with the key of its successor, which
+      # happens to be the leftmost descendand in the right subtree
+      parent = root.parent
+      if !root.left.nil? and !root.right.nil?
+        # node has two children
+        # rather than complicating things by changing pointers, just
+        # replace keys and values
+        succ = root.__successor
+        root.key, succ.key = succ.key, root.key
+        root.value, succ.value = succ.key, succ.value
+        BSTNode.delete!(root.right, succ.key)
+      elsif !root.left.nil?
+        # 1 child (the left one)
+        root.key, root.value = root.left.key, root.left.value
+        root.left = nil
+      elsif !root.right.nil?
+        # 1 child (the right one)
+        root.key, root.value = root.right.key, root.right.value
+        root.right = nil
+      else
+        # leaf
+        if !parent.nil? and parent.left == root
+          parent.left = nil
+        elsif !parent.nil? and parent.right == root
+          parent.right = nil
+        end
+
+        return nil
+      end
+
+      root
     end
   end
 
@@ -121,6 +192,12 @@ class BST
       false
     else
       @root.key?(key)
+    end
+  end
+
+  def delete(key)
+    unless @root.nil?
+      @root = BSTNode.delete!(@root, key)
     end
   end
 end
@@ -187,5 +264,85 @@ class BSTTest < Test::Unit::TestCase
     assert(!@bst.key?('not a key'))
     assert(!@bst.key?('whatever'))
     assert(@bst.key?('hello'))
+  end
+
+  def test_delete
+    @bst[2] = 2
+    @bst[1] = 1
+    @bst[7] = 7
+    @bst[4] = 4
+    @bst[8] = 8
+    @bst[3] = 3
+    @bst[6] = 6
+    @bst[5] = 5
+
+    # remove a leaf
+    @bst.delete(5)
+    assert_equal(@bst.length, 7)
+    assert(!@bst.key?(5))
+
+    # another deletion on the same key should be ignored
+    @bst.delete(5)
+    assert_equal(@bst.length, 7)
+    assert(!@bst.key?(5))
+
+    # remove a node with two children
+    @bst.delete(4)
+    assert_equal(@bst.length, 6)
+    assert(!@bst.key?(4))
+
+    # remove a node with one child
+    @bst.delete(6)
+    assert_equal(@bst.length, 5)
+    assert(!@bst.key?(6))
+
+    # remove the root
+    @bst.delete(2)
+    assert_equal(@bst.length, 4)
+    assert(!@bst.key?(2))
+  end
+
+  def test_delete_single_node
+    @bst['key'] = 'value'
+    assert(@bst.key?('key'))
+    assert(!@bst.empty?)
+
+    @bst.delete('key')
+    assert(!@bst.key?('key'))
+    assert(@bst.empty?)
+  end
+
+  def test_delete_twice
+    @bst['key'] = 'value'
+    @bst.delete('key')
+    @bst.delete('key')
+    assert(!@bst.key?('key'))
+    assert(@bst.empty?)
+  end
+
+  def test_delete_leaf
+    @bst[5] = 5
+    @bst[4] = 4
+    @bst[6] = 6
+
+    # the bst is built so that deleting 4, 6 and 5 in order
+    # will delete a leaf every time
+    @bst.delete(4)
+    assert_equal(@bst.length, 2)
+
+    @bst.delete(6)
+    assert_equal(@bst.length, 1)
+
+    @bst.delete(5)
+    assert_equal(@bst.length, 0)
+  end
+
+  def test_delete_random_nodes
+    values = (1..1000).to_a.shuffle!
+    values.each { |x| @bst[x] = x }
+    assert(!@bst.empty?)
+
+    values.each { |x| @bst.delete(x) }
+    assert(@bst.empty?)
   end
 end
