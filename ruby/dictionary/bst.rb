@@ -28,16 +28,14 @@ class BST
 
     def has_key?(key)
       if key == @key
-        true
+        return true
       end
 
       if key < @key
-        not @left.nil? and @left.has_key?(key)
+        (not @left.nil? and @left.has_key?(key))
       else
-        not @right.nil? and @right.has_key?(key)
+        (not @right.nil? and @right.has_key?(key))
       end
-
-      false
     end
 
     alias include? has_key?
@@ -118,6 +116,14 @@ class BST
 
     nil
   end
+
+  def key?(key)
+    if @root.nil?
+      false
+    else
+      @root.key?(key)
+    end
+  end
 end
 
 class BSTTest < Test::Unit::TestCase
@@ -171,5 +177,16 @@ class BSTTest < Test::Unit::TestCase
     values.each { |x|
       assert_not_nil(@bst[x])
     }
+  end
+
+  def test_contains
+    @bst['key'] = 'value'
+    @bst['another key'] = 'another value'
+    @bst['hello'] = 'world'
+
+    assert(@bst.key?('key'))
+    assert(!@bst.key?('not a key'))
+    assert(!@bst.key?('whatever'))
+    assert(@bst.key?('hello'))
   end
 end
