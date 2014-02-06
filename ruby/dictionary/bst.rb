@@ -4,8 +4,7 @@ require 'test/unit'
 
 class BST
   class BSTNode
-    attr_accessor :parent, :left, :right
-    attr_reader :key, :value
+    attr_accessor :key, :value, :parent, :left, :right
 
     def initialize(key, value)
       @key, @value = key, value
