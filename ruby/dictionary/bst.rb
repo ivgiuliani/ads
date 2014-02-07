@@ -271,6 +271,15 @@ class BST
     return [] if @root.nil?
     each { |_, value| yield value }
   end
+
+  def flatten
+    arr = []
+    each do |key, value|
+      arr << key
+      arr << value
+    end
+    arr
+  end
 end
 
 class BSTTest < Test::Unit::TestCase
@@ -471,6 +480,19 @@ class BSTTest < Test::Unit::TestCase
 
     @bst.each_value do |value|
       assert(values.include?(value))
+    end
+  end
+
+  def test_flatten
+    (1..100).to_a.each do |x|
+      @bst[x] = x
+    end
+
+    flattened = @bst.flatten
+    (1..100).to_a.each do |x|
+      key, value = flattened.shift 2
+      assert_equal(x, key)
+      assert_equal(key, value)
     end
   end
 end
