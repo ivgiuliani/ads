@@ -23,8 +23,6 @@ class BST
       @key == other.key
     end
 
-    alias eql? ==
-
     def has_key?(key)
       if key == @key
         return true
@@ -36,10 +34,6 @@ class BST
         (!@right.nil? && @right.has_key?(key))
       end
     end
-
-    alias include? has_key?
-    alias key? has_key?
-    alias member? has_key?
 
     def length
       left, right = 0, 0
@@ -177,6 +171,11 @@ class BST
 
       left + [@value] + right
     end
+
+    alias eql? ==
+    alias include? has_key?
+    alias key? has_key?
+    alias member? has_key?
   end
 
   def initialize
@@ -248,8 +247,6 @@ class BST
     end
   end
 
-  alias each_pair each
-
   def each_key
     return [] if @root.nil?
     each { |key| yield key }
@@ -268,6 +265,9 @@ class BST
     end
     arr
   end
+
+  alias each_pair each
+  alias include? key?
 end
 
 class BSTTest < Test::Unit::TestCase
