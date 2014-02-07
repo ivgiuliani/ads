@@ -224,6 +224,17 @@ class BST
     @root.key? key
   end
 
+  def value?(value)
+    ret = false
+    each do |_, val|
+      if val == value
+        ret = true
+        break
+      end
+    end
+    ret
+  end
+
   def delete(key)
     unless @root.nil?
       @root = BSTNode.delete!(@root, key)
@@ -269,6 +280,7 @@ class BST
   alias each_pair each
   alias include? key?
   alias member? key?
+  alias has_value? value?
   alias size length
 end
 
@@ -334,6 +346,11 @@ class BSTTest < Test::Unit::TestCase
     assert(!@bst.key?('not a key'))
     assert(!@bst.key?('whatever'))
     assert(@bst.key?('hello'))
+
+    assert(@bst.value?('value'))
+    assert(!@bst.value?('invalid value'))
+    assert(!@bst.value?('gibberish'))
+    assert(@bst.value?('world'))
   end
 
   def test_delete
