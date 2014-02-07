@@ -146,15 +146,15 @@ class BST
       root
     end
 
-    def walk
+    def each
       unless @left.nil?
-        @left.walk.each { |x| yield(x) }
+        @left.each { |x| yield(x) }
       end
 
       yield self
 
       unless @right.nil?
-        @right.walk.each { |x| yield(x) }
+        @right.each { |x| yield(x) }
       end
     end
 
@@ -248,6 +248,14 @@ class BST
 
     []
   end
+
+  def each
+    return [] if @root.nil?
+    @root.each do |node|
+      yield node.key, node.value
+    end
+  end
+
 end
 
 class BSTTest < Test::Unit::TestCase
@@ -412,5 +420,25 @@ class BSTTest < Test::Unit::TestCase
 
     # (remember that duplicates are also deleted)
     assert_equal(@bst.keys, ' dehlorw'.split(''))
+  end
+
+  def test_each
+    values = (1..1000).to_a.shuffle!
+    values.each { |x| @bst[x] = x }
+    values.sort!
+    expected_length = values.length
+
+    # check that we iterate on every item too
+    i = 0
+
+    @bst.each do |k, v|
+      head, *values = values
+      assert_equal(k, head)
+      assert_equal(k, v)
+
+      i += 1
+    end
+
+    assert_equal(expected_length, i)
   end
 end
