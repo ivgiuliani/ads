@@ -86,6 +86,8 @@ class BST
     # need a reference to the actual BST root to delete any key in a given
     # binary search tree.
     #
+    # Returns the new tree root or nil if there are no more leafs in the tree.
+    #
     # Params:
     # +root+:: the root of the binary search tree
     # +key+:: the key to delete
@@ -112,34 +114,48 @@ class BST
       # must relabel the node with the key of its successor, which
       # happens to be the leftmost descendand in the right subtree
       parent = root.parent
-      if !root.left.nil? and !root.right.nil?
-        # node has two children
-        # rather than complicating things by changing pointers, just
-        # replace keys and values
-        succ = root.__successor
-        root.key, succ.key = succ.key, root.key
-        root.value, succ.value = succ.key, succ.value
-        BSTNode.delete!(root.right, succ.key)
-      elsif !root.left.nil?
-        # 1 child (the left one)
-        root.key, root.value = root.left.key, root.left.value
-        root.left = nil
-      elsif !root.right.nil?
-        # 1 child (the right one)
-        root.key, root.value = root.right.key, root.right.value
-        root.right = nil
-      else
-        # leaf
-        if !parent.nil? and parent.left == root
-          parent.left = nil
-        elsif !parent.nil? and parent.right == root
-          parent.right = nil
-        end
 
-        return nil
+      case
+        when !root.left.nil? && !root.right.nil?
+          # node has two children
+          # rather than complicating things by changing pointers, just
+          # replace keys and values
+          succ = root.__successor
+          root.key, succ.key = succ.key, root.key
+          root.value, succ.value = succ.key, succ.value
+          BSTNode.delete!(root.right, succ.key)
+        when !root.left.nil?
+          # 1 child (the left one)
+          root.key, root.value = root.left.key, root.left.value
+          root.left = nil
+        when !root.right.nil?
+          # 1 child (the right one)
+          root.key, root.value = root.right.key, root.right.value
+          root.right = nil
+        else
+          # leaf
+          if !parent.nil? && parent.left == root
+            parent.left = nil
+          elsif !parent.nil? && parent.right == root
+            parent.right = nil
+          end
+
+          return nil
       end
 
       root
+    end
+
+    def walk
+      unless @left.nil?
+        @left.walk.each { |x| yield(x) }
+      end
+
+      yield self
+
+      unless @right.nil?
+        @right.walk.each { |x| yield(x) }
+      end
     end
 
     def keys
