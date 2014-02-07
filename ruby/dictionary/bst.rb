@@ -49,6 +49,10 @@ class BST
     end
 
     def __successor
+      # can't be private because we need to access it from the static
+      # delete method, but not exactly public since this wouldn't have
+      # any use as a public api
+
       succ = @right
       until succ.left.nil?
         succ = succ.left
