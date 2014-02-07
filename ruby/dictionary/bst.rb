@@ -290,6 +290,14 @@ class BST
     arr
   end
 
+  def invert
+    inverted = BST.new
+    each do |key, value|
+      inverted[value] = key
+    end
+    inverted
+  end
+
   alias inspect to_s
   alias each_pair each
   alias include? key?
@@ -525,5 +533,22 @@ class BSTTest < Test::Unit::TestCase
       assert_equal(x, key)
       assert_equal(key, value)
     end
+  end
+
+  def test_invert
+    @bst['hello'] = 'world'
+    @bst['key'] = 'value'
+    @bst['another key'] = 'another value'
+    @bst['overridden'] = 'key'
+
+    inverted = @bst.invert
+    # on ties it's up to the implementation to decide which key
+    # to use as value, in this case since we always iterate on keys
+    # in sorted order, ties are broke on the ordering of keys
+    # (last key wins)
+    assert_equal(inverted['key'], 'overridden')
+
+    assert_equal(inverted['world'], 'hello')
+    assert_equal(inverted['another value'], 'another key')
   end
 end
