@@ -182,6 +182,19 @@ class BST
     @root = nil
   end
 
+  def to_s
+    vals = []
+    each do |key, value|
+      # we should add quotes if key/value is a string to be fully
+      # compliant with the way Hash works, but this is enough for now
+      vals << "#{key}=>#{value}"
+    end
+
+    content = vals.join(', ')
+
+    "{#{content}}"
+  end
+
   def length
     return 0 if @root.nil?
     @root.length
@@ -277,6 +290,7 @@ class BST
     arr
   end
 
+  alias inspect to_s
   alias each_pair each
   alias include? key?
   alias member? key?
@@ -292,6 +306,16 @@ class BSTTest < Test::Unit::TestCase
   def test_empty_dict
     assert_equal(@bst.length, 0)
     assert(@bst.empty?)
+  end
+
+  def test_to_s
+    assert_equal('{}', @bst.to_s)
+
+    @bst['key'] = 'value'
+    assert_equal('{key=>value}', @bst.to_s)
+
+    @bst['key2'] = 'value2'
+    assert_equal('{key=>value, key2=>value2}', @bst.to_s)
   end
 
   def test_add_items
