@@ -260,6 +260,17 @@ class BST
     end
   end
 
+  alias each_pair each
+
+  def each_key
+    return [] if @root.nil?
+    each { |key| yield key }
+  end
+
+  def each_value
+    return [] if @root.nil?
+    each { |_, value| yield value }
+  end
 end
 
 class BSTTest < Test::Unit::TestCase
@@ -427,9 +438,8 @@ class BSTTest < Test::Unit::TestCase
   end
 
   def test_each
-    values = (1..1000).to_a.shuffle!
-    values.each { |x| @bst[x] = x }
-    values.sort!
+    values = (1..1000).to_a
+    values.shuffle.each { |x| @bst[x] = x }
     expected_length = values.length
 
     # check that we iterate on every item too
@@ -444,5 +454,23 @@ class BSTTest < Test::Unit::TestCase
     end
 
     assert_equal(expected_length, i)
+  end
+
+  def test_each_key
+    values = (1..1000).to_a
+    values.shuffle.each { |x| @bst[x] = x }
+
+    @bst.each_key do |key|
+      assert(values.include?(key))
+    end
+  end
+
+  def test_each_value
+    values = (1..1000).to_a
+    values.shuffle.each { |x| @bst[x] = x }
+
+    @bst.each_value do |value|
+      assert(values.include?(value))
+    end
   end
 end
