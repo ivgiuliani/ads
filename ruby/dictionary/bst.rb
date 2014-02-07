@@ -268,6 +268,8 @@ class BST
 
   alias each_pair each
   alias include? key?
+  alias member? key?
+  alias size length
 end
 
 class BSTTest < Test::Unit::TestCase
