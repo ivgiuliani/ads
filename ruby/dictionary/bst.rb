@@ -184,11 +184,8 @@ class BST
   end
 
   def length
-    if @root.nil?
-      0
-    else
-      @root.length
-    end
+    return 0 if @root.nil?
+    @root.length
   end
 
   def empty?
@@ -224,11 +221,8 @@ class BST
   end
 
   def key?(key)
-    if @root.nil?
-      false
-    else
-      @root.key?(key)
-    end
+    return false if @root.nil?
+    @root.key? key
   end
 
   def delete(key)
@@ -238,19 +232,13 @@ class BST
   end
 
   def keys
-    unless @root.nil?
-      return @root.keys
-    end
-
-    []
+    return [] if @root.nil?
+    @root.keys
   end
 
   def values
-    unless @root.nil?
-      return @root.values
-    end
-
-    []
+    return [] if @root.nil?
+    @root.values
   end
 
   def each
