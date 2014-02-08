@@ -12,7 +12,7 @@ class BST
     end
 
     def to_s
-      '<%s:%s>' % [self.key, self.value]
+      "<#{@key}:#{@value}>"
     end
 
     def <(other)
@@ -24,9 +24,7 @@ class BST
     end
 
     def has_key?(key)
-      if key == @key
-        return true
-      end
+      return true if key == @key
 
       if key < @key
         (!@left.nil? && @left.has_key?(key))
