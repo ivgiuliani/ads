@@ -32,6 +32,8 @@ class BubbleSortTest < Test::Unit::TestCase
 
     assert_equal((1..100).to_a, bubblesort((1..100).to_a))
     assert_equal((1..100).to_a, bubblesort(100.downto(1).to_a))
+    assert_equal([1], bubblesort([1]))
+    assert_equal([], bubblesort([]))
   end
 
   def test_bubble_sort_in_place
@@ -42,5 +44,7 @@ class BubbleSortTest < Test::Unit::TestCase
     assert_equal((1..100).to_a, bubblesort!(v))
     assert_not_equal(100.downto(1).to_a, v,
                      'Method hasn\'t modified the array in place')
+    assert_equal([1], bubblesort!([1]))
+    assert_equal([], bubblesort!([]))
   end
 end
