@@ -298,6 +298,16 @@ class BST
     inverted
   end
 
+  def select(&block)
+    d = BST.new
+    each do |key, value|
+      if block.call(key, value)
+        d[key] = value
+      end
+    end
+    d
+  end
+
   alias inspect to_s
   alias each_pair each
   alias include? key?
@@ -550,5 +560,19 @@ class BSTTest < Test::Unit::TestCase
 
     assert_equal(inverted['world'], 'hello')
     assert_equal(inverted['another value'], 'another key')
+  end
+
+  def test_select
+    @bst['hello'] = 1
+    @bst['key'] = 2
+    @bst['another key'] = 3
+    @bst['ops'] = 4
+
+    selected = @bst.select { |_, v| v % 2 == 0 }
+
+    assert(selected.key?('key'))
+    assert(selected.key?('ops'))
+    assert(!selected.key?('hello'))
+    assert(!selected.key?('another key'))
   end
 end
