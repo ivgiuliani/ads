@@ -4,6 +4,7 @@ require 'test/unit'
 
 class BST
   class BSTNode
+    include Comparable
     attr_accessor :key, :value, :parent, :left, :right
 
     def initialize(key, value)
@@ -15,12 +16,8 @@ class BST
       "<#{@key}:#{@value}>"
     end
 
-    def <(other)
-      @key < other.key
-    end
-
-    def ==(other)
-      @key == other.key
+    def <=>(other)
+      @key <=> other.key
     end
 
     def has_key?(key)
@@ -170,7 +167,6 @@ class BST
       left + [@value] + right
     end
 
-    alias eql? ==
     alias include? has_key?
     alias key? has_key?
     alias member? has_key?
