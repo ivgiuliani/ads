@@ -51,7 +51,7 @@ class BST
     end
 
     def insert!(node)
-      if node.key == @key
+      if node == self
         # same key, update the value
         @value = node.value
       elsif node < self
@@ -85,9 +85,7 @@ class BST
     # +root+:: the root of the binary search tree
     # +key+:: the key to delete
     def self.delete!(root, key)
-      if root.nil?
-        return nil
-      end
+      return nil if root.nil?
 
       if key < root.key
         BSTNode.delete!(root.left, key)
