@@ -41,7 +41,6 @@ class UnionFind
   private
   def resize(m)
     @parents[m] = nil
-    @sizes[m] = 0
     @size = m
   end
 
@@ -150,7 +149,6 @@ class UnionFindProbabilistic
 
   def resize(m)
     @parents[m] = nil
-    @sizes[m] = 0
     @size = m
   end
 
@@ -203,7 +201,6 @@ class TestUnionFind < Test::Unit::TestCase
     assert(@uf.same?(10, 10))
   end
 end
-
 
 
 class TestDictBackedUnionFind < Test::Unit::TestCase
