@@ -99,24 +99,28 @@ end
 # necessarily true in a real-world application, so a proper tuning of the max
 # buffer size is required.
 class UnionFindProbabilistic
-  # Initializes a new union-find data structure. The max size parameter
+
+  # Initializes a new union-find data structure. The max buffer size
   # refers to the internal buffer, and not to the max number of items this
   # collection can hold. Hence proper tuning is required to avoid collisions.
-  def initialize(max_size=2048)
+  #
+  # The buffer will start from a small size and will grow automatically to
+  # receive new items.
+  def initialize(max_buffer_size=2048)
     # TODO: I'm fairly sure we can steal some ideas from bloom filters and
     # calculate max_size automatically as a measure of the expected error rate
-    @max_size = max_size
+    @max_buffer_size = max_buffer_size
     @size = 0
     @parents = []
     @sizes = []
   end
 
   def find(k)
-    _find(k.hash % @max_size)
+    _find(k.hash % @max_buffer_size)
   end
 
   def union(x, y)
-    _union(x.hash % @max_size, y.hash % @max_size)
+    _union(x.hash % @max_buffer_size, y.hash % @max_buffer_size)
   end
 
   def same?(x, y)
