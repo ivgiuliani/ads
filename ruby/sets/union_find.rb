@@ -18,7 +18,7 @@ class UnionFind
   end
 
   def union(x, y)
-    resize([x, y].max) if [x, y].max > @size
+    resize!([x, y].max) if [x, y].max > @size
     set1, set2 = find(x), find(y)
     return if set1 == set2 # same set already
 
@@ -39,7 +39,7 @@ class UnionFind
   end
 
   private
-  def resize(m)
+  def resize!(m)
     return if m < @size
     @size = m
   end
@@ -131,7 +131,7 @@ class UnionFindProbabilistic
   end
 
   def _union(x, y)
-    resize([x, y].max) if [x, y].max > @size
+    resize!([x, y].max) if [x, y].max > @size
     set1, set2 = _find(x), _find(y)
     return if set1 == set2 # same set already
 
@@ -147,7 +147,7 @@ class UnionFindProbabilistic
     end
   end
 
-  def resize(m)
+  def resize!(m)
     return if m < @size
     @size = m
   end
