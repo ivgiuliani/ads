@@ -22,8 +22,8 @@ class UnionFind
     set1, set2 = find(x), find(y)
     return if set1 == set2 # same set already
 
-    @sizes[set1] = 0 if @sizes[set1].nil?
-    @sizes[set2] = 0 if @sizes[set2].nil?
+    @sizes[set1] = 1 if @sizes[set1].nil?
+    @sizes[set2] = 1 if @sizes[set2].nil?
 
     if @sizes[set1] > @sizes[set2]
       @sizes[set1] += @sizes[set2]
@@ -55,7 +55,7 @@ class UnionFindDict
   def initialize
     @parents = {}
     @sizes = {}
-    @sizes.default = 0
+    @sizes.default = 1
   end
 
   # In this case find() will always return the object with the larger
@@ -136,8 +136,8 @@ class UnionFindProbabilistic
     set1, set2 = _find(x), _find(y)
     return if set1 == set2 # same set already
 
-    @sizes[set1] = 0 if @sizes[set1].nil?
-    @sizes[set2] = 0 if @sizes[set2].nil?
+    @sizes[set1] = 1 if @sizes[set1].nil?
+    @sizes[set2] = 1 if @sizes[set2].nil?
 
     if @sizes[set1] > @sizes[set2]
       @sizes[set1] += @sizes[set2]
