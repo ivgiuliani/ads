@@ -1,5 +1,6 @@
 require 'test/unit'
 require 'set'
+require 'benchmark'
 
 # A classic implementation of the union-find collection. This will only
 # work for integer values. See below for an interesting "variation" of
@@ -367,5 +368,39 @@ class TestProbabilisticUnionFind < Test::Unit::TestCase
 
     assert(!uf.same?(dict1, 'string2'))
     assert(!uf.same?(dict2, 1000000))
+  end
+end
+
+iterations = 1000
+Benchmark.bmbm(20) do |bm|
+  # generate 100 random unions out of 1000 unique items
+  items = (1..1000).to_a
+  unions = 100.times.map { [ items.sample, items.sample] }
+
+  bm.report('classic') do
+    iterations.times do
+      ufclassic = UnionFind.new
+      unions.each { |v1, v2| ufclassic.union(v1, v2) }
+      res = unions.map { |v1, v2| ufclassic.find(v1) == ufclassic.find(v2) }
+      puts 'ERROR(classic)' unless res.all?
+    end
+  end
+
+  bm.report('dict-backed') do
+    iterations.times do
+      ufdict = UnionFindDict.new
+      unions.each { |v1, v2| ufdict.union(v1, v2) }
+      res = unions.map { |v1, v2| ufdict.find(v1) == ufdict.find(v2) }
+      puts 'ERROR(dict-backed)' unless res.all?
+    end
+  end
+
+  bm.report('probabilistic') do
+    iterations.times do
+      ufprobabilistic = UnionFindProbabilistic.new(2048)
+      unions.each { |v1, v2| ufprobabilistic.union(v1, v2) }
+      res = unions.map { |v1, v2| ufprobabilistic.find(v1) == ufprobabilistic.find(v2) }
+      puts 'ERROR(probabilistic)' unless res.all?
+    end
   end
 end
