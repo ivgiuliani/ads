@@ -30,7 +30,7 @@ Math                      +-----+-----+------+-----+--------+------+
 Optimization              +-----+-----+------+-----+--------+------+
   Simulated Annealing     |     |     |      |     |   x    |      |
 Sets                      +-----+-----+------+-----+--------+------+
-  Union Find              |     |     |   x  |     |        |      |
+  Union Find              |     |     |   x  |     |        |  x   |
 Sorting & Search          +-----+-----+------+-----+--------+------+
   Bubble Sort             |  x  |     |   x  |  x  |   x    |  x   |
   Selection Sort          |  x  |     |   x  |  x  |   x    |  x   |
