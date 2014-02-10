@@ -41,7 +41,6 @@ class UnionFind
   private
   def resize(m)
     return if m < @size
-    @parents[m] = nil
     @size = m
   end
 
@@ -150,7 +149,6 @@ class UnionFindProbabilistic
 
   def resize(m)
     return if m < @size
-    @parents[m] = nil
     @size = m
   end
 
