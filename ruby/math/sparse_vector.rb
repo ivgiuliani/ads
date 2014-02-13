@@ -16,10 +16,7 @@ class SparseVector
   end
 
   def to_s
-    vals = @vector.sort.map do |key, value|
-      format('%d:%.3f', key, value)
-    end
-    '(' + vals.join(' ') + ')'
+    '(' + @vector.sort.map { |k, v| format('%d:%.3f', k, v) }.join(' ') + ')'
   end
 
   def <=>(other)
