@@ -65,6 +65,12 @@ class SparseVector
     sum
   end
 
+  # Returns a list of indexes containing non-zero items in the vector.
+  # The returned list is sorted in ascending order.
+  def indexes
+    @vector.keys.sort!
+  end
+
   def each
     @vector.each { |index, value| yield(index, value) }
   end
@@ -241,5 +247,18 @@ class TestSparseVector < Test::Unit::TestCase
     v = SparseVector.new(0, 0, 0, 0, 0, 0, 0)
     assert_equal(SparseVector.new, v.map { 1 },
                  '.map() must iterate only over non-zero items')
+  end
+
+  def test_indexes
+    v = SparseVector.new(10, 100, 1000, 500, 50, 5, 0)
+    v[99] = 123
+    assert_equal([0, 1, 2, 3, 4, 5, 99], v.indexes)
+
+    v = SparseVector.new
+    assert_equal([], v.indexes)
+
+    v = SparseVector.new
+    v[91238921] = 98328932
+    assert_equal([91238921], v.indexes)
   end
 end
