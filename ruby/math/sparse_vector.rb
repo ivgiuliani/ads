@@ -205,4 +205,16 @@ class TestSparseVector < Test::Unit::TestCase
     assert_equal(v, copy)
     assert_not_same(v, copy)
   end
+
+  def test_each
+    v = SparseVector.new(10, 100, 1000, 500, 50, 5, 0)
+    count, sum = 0, 0
+    v.each do |_, value|
+      count += 1
+      sum += value
+    end
+
+    assert_equal(6, count)  # '0' must be skipped
+    assert_equal(1665, sum)
+  end
 end
