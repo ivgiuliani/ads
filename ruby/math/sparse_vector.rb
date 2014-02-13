@@ -60,6 +60,7 @@ class SparseVector
     @vector.each { |index, value| yield(index, value) }
   end
 
+  # Calculates the 2-norm of this vector.
   def norm2
     Math.sqrt(self * self)
   end
