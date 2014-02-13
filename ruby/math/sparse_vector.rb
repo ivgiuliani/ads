@@ -60,8 +60,16 @@ class SparseVector
     end
   end
 
+  # Subtracts either a number or another sparse vector to the current sparse
+  # vector. If a number is provided, only non-zero items will be included
+  # in the addition.
   def -(other)
-    self + other.invert
+    v = case
+          when other.is_a?(Numeric) then -other
+          when other.is_a?(SparseVector) then other.invert
+          else raise TypeError, 'Can only subtract either a numeric value or another sparse vector'
+        end
+    self + v
   end
 
   def *(other)
@@ -263,6 +271,17 @@ class TestSparseVector < Test::Unit::TestCase
   end
 
   def test_subtract
+    v = SparseVector.new(20, 30, 40, 50, 0, 60)
+    assert_equal(SparseVector.new(10, 20, 30, 40, 0, 50), v - 10)
+    assert_equal(SparseVector.new(0, 10, 20, 30, 0, 40), v - 20)
+    assert_equal(v, v - 0)
+
+    assert_raises(TypeError) { v - {} }
+    assert_raises(TypeError) { v - 'string' }
+    assert_raises(TypeError) { v - Object.new }
+  end
+
+  def test_subtract_sparse_vector
     v1 = SparseVector.new(0, 0, 0, 1, 2, 0, 3)
     v2 = SparseVector.new(0, 0, 0, 0, 0, 0, 1)
     assert_equal(SparseVector.new(0, 0, 0, 1, 2, 0, 2), v1 - v2)
