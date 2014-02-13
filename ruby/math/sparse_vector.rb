@@ -117,9 +117,7 @@ class SparseVector
 
   # Inverts the sign of very item in the original sparse vector.
   def invert
-    inverted = SparseVector.new
-    @vector.each { |key, value| inverted[key] = -value }
-    inverted
+    copy.invert!
   end
 
   # Inverts the sign of very item in the original sparse vector in place.
