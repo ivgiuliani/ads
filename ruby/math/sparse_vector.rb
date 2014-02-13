@@ -261,4 +261,11 @@ class TestSparseVector < Test::Unit::TestCase
     v[91238921] = 98328932
     assert_equal([91238921], v.indexes)
   end
+
+  def test_length
+    assert_equal(0, SparseVector.new.length)
+    assert_equal(5, SparseVector.new(1, 2, 3, 4, 5).length)
+    assert_equal(1, SparseVector.new(0, 0, 0, 0, 5).length)
+    assert_equal(1, SparseVector.new(5, 0, 0, 0, 0).length)
+  end
 end
