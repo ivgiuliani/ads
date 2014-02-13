@@ -115,12 +115,12 @@ class SparseVector
     @vector.size
   end
 
-  # Inverts the sign of very item in the original sparse vector.
+  # Returns a copy of this vector whose items have their signs inverted.
   def invert
     copy.invert!
   end
 
-  # Inverts the sign of very item in the original sparse vector in place.
+  # Inverts the sign of every item in the vector.
   def invert!
     @vector.each { |key, value| @vector[key] = -value }
     self
