@@ -55,20 +55,14 @@ class SparseVector
   end
 
   def *(other)
-    sum = 0
-
-    # iterate over the smaller item (the one with the largest number
-    # of zeros)
-    v1, v2 = self, other
-    if length > other.length
-      v1, v2 = v2, v1
+    case
+      when other.is_a?(Numeric)
+        map { |_, v| v * other }
+      when other.is_a?(SparseVector)
+        SparseVector.dot_product(self, other)
+      else
+        raise TypeError, 'Can only multiply with either a numeric value or another sparse vector'
     end
-
-    v1.each do |index, value|
-      sum += value * v2[index]
-    end
-
-    sum
   end
 
   # Returns a list of indexes containing non-zero items in the vector.
@@ -114,6 +108,25 @@ class SparseVector
   def invert!
     @vector.each { |key, value| @vector[key] = -value }
     self
+  end
+
+  private
+
+  # Dot product among two vectors.
+  def self.dot_product(v1, v2)
+    sum = 0
+
+    # iterate over the smaller item (the one with the largest number
+    # of zeros)
+    if v1.length > v2.length
+      v1, v2 = v2, v1
+    end
+
+    v1.each do |index, value|
+      sum += value * v2[index]
+    end
+
+    sum
   end
 end
 
@@ -173,6 +186,16 @@ class TestSparseVector < Test::Unit::TestCase
     v = SparseVector.new
     v[2048], v[1816], v[83] = 312231, 213, 9999
     assert_equal('(83:9999.000 1816:213.000 2048:312231.000)', v.to_s)
+  end
+
+  def test_product
+    v = SparseVector.new(1, 2, 3, 4, 5)
+    assert_equal(SparseVector.new(2, 4, 6, 8, 10), v * 2)
+    assert_equal(SparseVector.new(10, 20, 30, 40, 50), v * 10)
+
+    assert_raise(TypeError) { v * {} }
+    assert_raise(TypeError) { v * Object.new }
+    assert_raise(TypeError) { v * 'string' }
   end
 
   def test_dot_product
