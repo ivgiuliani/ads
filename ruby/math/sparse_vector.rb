@@ -3,6 +3,12 @@ require 'test/unit'
 class SparseVector
   include Comparable
 
+  # Create a new sparse vector.
+  #
+  # ==== Attributes
+  # * +values+ a list of values to use for this sparse vector starting from
+  #            the index 0. The list can be empty, in which case an empty
+  #            vector will be created.
   def initialize(*values)
     @vector = {}
     @vector.default = 0
