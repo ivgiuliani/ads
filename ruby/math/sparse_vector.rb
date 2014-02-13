@@ -69,6 +69,18 @@ class SparseVector
     @vector.each { |index, value| yield(index, value) }
   end
 
+  # Iterates over every non-zero item and creates a new sparse vector
+  # as the result of the application of the given block function
+  # on each item
+  def map
+    new = SparseVector.new
+    @vector.each do |index, value|
+      new[index] = yield(index, value)
+    end
+
+    new
+  end
+
   # Calculates the 2-norm of this vector.
   def norm2
     Math.sqrt(self * self)
@@ -216,5 +228,18 @@ class TestSparseVector < Test::Unit::TestCase
 
     assert_equal(6, count)  # '0' must be skipped
     assert_equal(1665, sum)
+  end
+
+  def test_map
+    v = SparseVector.new(10, 100, 1000, 500, 50, 5, 0)
+    assert_equal(SparseVector.new(20, 200, 2000, 1000, 100, 10),
+                 v.map { |_, x| x * 2 })
+
+    v = SparseVector.new(10, 100, 1000, 500, 50, 5, 0)
+    assert_equal(SparseVector.new, v.map { 0 })
+
+    v = SparseVector.new(0, 0, 0, 0, 0, 0, 0)
+    assert_equal(SparseVector.new, v.map { 1 },
+                 '.map() must iterate only over non-zero items')
   end
 end
