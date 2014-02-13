@@ -75,6 +75,12 @@ class SparseVector
     @vector.each { |key, value| inverted[key] = -value }
     inverted
   end
+
+  # Inverts the sign of very item in the original sparse vector in place.
+  def invert!
+    @vector.each { |key, value| @vector[key] = -value }
+    self
+  end
 end
 
 
@@ -174,5 +180,12 @@ class TestSparseVector < Test::Unit::TestCase
     v = SparseVector.new(0, 0, 0, 1, 2, 0, 3)
     inverted = SparseVector.new(0, 0, 0, -1, -2, 0, 3)
     assert_equal(inverted, v.invert)
+  end
+
+  def test_invert!
+    v = SparseVector.new(0, 0, 0, 1, 2, 0, 3)
+    inverted = SparseVector.new(0, 0, 0, -1, -2, 0, 3)
+    assert_equal(inverted, v.invert!)
+    assert_same(v, v.invert!)
   end
 end
