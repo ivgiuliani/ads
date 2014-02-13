@@ -25,7 +25,7 @@ Lists                     +-----+-----+------+-----+--------+------+
   Array List              |     |     |      |  x  |        |      |
   Skip List               |  x  |     |      |     |        |      |
 Math                      +-----+-----+------+-----+--------+------+
-  Sparse Vector           |     |     |   x  |     |        |      |
+  Sparse Vector           |     |     |   x  |     |        |  x   |
   90° Matrix Rotation     |     |     |   x  |     |        |      |
 Optimization              +-----+-----+------+-----+--------+------+
   Simulated Annealing     |     |     |      |     |   x    |      |
