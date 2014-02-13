@@ -31,9 +31,15 @@ class SparseVector
     @vector[index] = value
   end
 
+  # Creates a copy of the current instance.
+  def copy
+    copy = SparseVector.new
+    each { |index, value| copy[index] = value }
+    copy
+  end
+
   def +(other)
-    sum = SparseVector.new
-    each { |index, value| sum[index] = value }
+    sum = copy
     other.each { |index, value| sum[index] += value }
     sum
   end
@@ -191,5 +197,12 @@ class TestSparseVector < Test::Unit::TestCase
     inverted = SparseVector.new(0, 0, 0, -1, -2, 0, 3)
     assert_equal(inverted, v.invert!)
     assert_same(v, v.invert!)
+  end
+
+  def test_copy
+    v = SparseVector.new(10, 100, 1000, 500, 50, 5, 0)
+    copy = v.copy
+    assert_equal(v, copy)
+    assert_not_same(v, copy)
   end
 end
