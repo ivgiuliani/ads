@@ -44,10 +44,20 @@ class SparseVector
     copy
   end
 
+  # Adds either a number or another sparse vector to the current sparse
+  # vector. If a number is provided, only non-zero items will be included
+  # in the addition.
   def +(other)
-    sum = copy
-    other.each { |index, value| sum[index] += value }
-    sum
+    case
+      when other.is_a?(Numeric)
+        map { |_, v| v + other }
+      when other.is_a?(SparseVector)
+        sum = copy
+        other.each { |index, value| sum[index] += value }
+        sum
+      else
+        raise TypeError, 'Can only add either a numeric value or another sparse vector'
+    end
   end
 
   def -(other)
@@ -225,6 +235,17 @@ class TestSparseVector < Test::Unit::TestCase
   end
 
   def test_add
+    v = SparseVector.new(2, 4, 6, 8, 0, 10)
+    assert_equal(SparseVector.new(12, 14, 16, 18, 0, 20), v + 10)
+    assert_equal(SparseVector.new(102, 104, 106, 108, 0, 110), v + 100)
+    assert_equal(v, v + 0)
+
+    assert_raises(TypeError) { v + {} }
+    assert_raises(TypeError) { v + 'string' }
+    assert_raises(TypeError) { v + Object.new }
+  end
+
+  def test_add_sparse_vector
     v1 = SparseVector.new(0, 0, 0, 1, 2, 0, 3)
     v2 = SparseVector.new(0, 0, 0, 0, 0, 0, 1)
     assert_equal(SparseVector.new(0, 0, 0, 1, 2, 0, 4), v1 + v2)
