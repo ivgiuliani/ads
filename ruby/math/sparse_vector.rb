@@ -12,7 +12,10 @@ class SparseVector
   def initialize(*values)
     @vector = {}
     @vector.default = 0
-    values.each_with_index { |val, index| @vector[index] = val if val != 0 }
+    values.each_with_index do |val, index|
+      raise ArgumentError, 'Only numeric types are accepted' unless val.is_a? Numeric
+      @vector[index] = val if val != 0
+    end
   end
 
   def to_s
@@ -24,10 +27,13 @@ class SparseVector
   end
 
   def[](index)
+    raise ArgumentError, 'Only numeric types are accepted' unless index.is_a? Numeric
     @vector[index]
   end
 
   def[]=(index, value)
+    raise ArgumentError, 'Only numeric types are accepted' unless index.is_a? Numeric
+    raise ArgumentError, 'Only numeric types are accepted' unless value.is_a? Numeric
     @vector[index] = value
   end
 
@@ -130,6 +136,21 @@ class TestSparseVector < Test::Unit::TestCase
     assert_equal(4, v[4])
     v[4] = 400
     assert_equal(400, v[4])
+  end
+
+  def test_only_numbers_are_accepted
+    v = SparseVector.new(0, 1, 2, 3, 4)
+    assert_raise(ArgumentError) { v[15] = 'String' }
+    assert_raise(ArgumentError) { v['String'] = 123 }
+    assert_raise(ArgumentError) { v['String'] = 'Another string' }
+    assert_raise(ArgumentError) { v['String'] = 'Another string' }
+    assert_raise(ArgumentError) { v[123] = {} }
+
+    assert_raise(ArgumentError) { SparseVector.new(1, 2, 3, '')}
+    assert_raise(ArgumentError) { SparseVector.new('string')}
+    assert_raise(ArgumentError) { SparseVector.new('string', {}, Object.new)}
+    assert_raise(ArgumentError) { SparseVector.new(Object.new)}
+    assert_raise(ArgumentError) { SparseVector.new(1, 2, {}, 3)}
   end
 
   def test_comparison
