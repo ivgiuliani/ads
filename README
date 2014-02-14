@@ -36,7 +36,7 @@ Sorting & Search          +-----+-----+------+-----+--------+------+
   Selection Sort          |  x  |     |   x  |  x  |   x    |  x   |
   Insertion Sort          |  x  |     |   x  |  x  |   x    |  x   |
   Merge Sort              |     |  x  |   x  |     |   x    |  x   |
-  Quick Sort              |     |  x  |   x  |     |   x    |      |
+  Quick Sort              |     |  x  |   x  |     |   x    |  x   |
   Heap Sort               |     |     |   x  |     |        |  x   |
   Binary Search           |     |     |   x  |     |        |      |
 Trees                     +-----+-----+------+-----+--------+------+
