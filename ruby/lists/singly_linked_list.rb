@@ -53,6 +53,20 @@ class SinglyLinkedList
     @size +=1
   end
 
+  def remove(index)
+    return if index < 0 || index >= @size
+
+    prev = get_node(index - 1)
+    if prev.nil?
+      # delete the head
+      @head = @head.next unless @head.nil?
+    else
+      prev.next = prev.next.next
+    end
+
+    @size -= 1
+  end
+
   def length
     @size
   end
@@ -154,7 +168,22 @@ class SinglyLinkedListTest < Test::Unit::TestCase
   end
 
   def test_remove
+    @list.append(1000)
+    @list.append(2000)
+    @list.append(3000)
+    @list.remove(1)
 
+    assert_equal(1000, @list.get(0))
+    assert_equal(3000, @list.get(1))
+
+    @list.append(4000)
+    assert_equal(4000, @list.get(2))
+    @list.remove(2)
+    assert_equal(3000, @list.get(1))
+    assert_nil(@list.get(2))
+
+    @list.remove(0)
+    assert_equal(3000, @list.get(0))
   end
 
   def test_length
@@ -169,17 +198,26 @@ class SinglyLinkedListTest < Test::Unit::TestCase
     @list.append(1234)
     assert_equal(3, @list.length)
 
+    @list.remove(0)
+    assert_equal(2, @list.length)
+
+    @list.remove(1)
+    assert_equal(1, @list.length)
+
+    @list.append(1234)
+    assert_equal(2, @list.length)
+
+    @list.append(1234)
+    assert_equal(3, @list.length)
+
     @list.append(1234)
     assert_equal(4, @list.length)
 
     @list.append(1234)
     assert_equal(5, @list.length)
 
-    @list.append(1234)
-    assert_equal(6, @list.length)
-
-    @list.append(1234)
-    assert_equal(7, @list.length)
+    @list.remove(123198239)
+    assert_equal(5, @list.length)
   end
 
   def test_get
