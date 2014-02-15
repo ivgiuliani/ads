@@ -20,7 +20,7 @@ Dictionaries              +-----+-----+------+-----+--------+------+
   Chained Lists           |     |     |   x  |     |        |      |
   Binary Search Tree      |     |     |   P  |  x  |   x    |  x   |
 Lists                     +-----+-----+------+-----+--------+------+
-  Singly Linked List      |     |     |   x  |  x  |        |      |
+  Singly Linked List      |     |     |   x  |  x  |        |  x   |
   Doubly Linked List      |     |     |   x  |     |        |      |
   Array List              |     |     |      |  x  |        |      |
   Skip List               |  x  |     |      |     |        |      |
