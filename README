@@ -1,3 +1,6 @@
+ADS: Algorithms and Data Structures
+===========================================================================
+
 This repository contains a set of self-contained implementations of several
 common algorithms and data structures in different programming languages.
 The implementation of these algorithms/data structures is not to be intended
@@ -10,7 +13,6 @@ I have on my todo list.
 Additionally, there are also some interview questions and solutions for each
 programming language. The description of the interview question is in the
 file itself.
-
 
                           |  C  | C++ | Java |  Go | Python | Ruby |
 Cache                     +-----+-----+------+-----+--------+------+
