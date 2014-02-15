@@ -21,6 +21,7 @@ class SinglyLinkedList
 
   def get(index)
     raise ArgumentError, 'Only positive indexing is allowed' if index < 0
+    return nil if index >= @size
 
     node = get_node(index)
     return nil if node.nil?
@@ -179,5 +180,20 @@ class SinglyLinkedListTest < Test::Unit::TestCase
 
     @list.append(1234)
     assert_equal(7, @list.length)
+  end
+
+  def test_get
+    assert_nil(@list.get(1024))
+
+    @list.append(1)
+    @list.append(2)
+    @list.append(3)
+
+    assert_equal(1, @list.get(0))
+    assert_equal(2, @list.get(1))
+    assert_equal(3, @list.get(2))
+
+    assert_nil(@list.get(3))
+    assert_nil(@list.get(888))
   end
 end
