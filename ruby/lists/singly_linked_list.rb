@@ -17,6 +17,12 @@ class SinglyLinkedList
     '<' + arr.join(' ') + '>'
   end
 
+  def to_a
+    arr = []
+    each { |val| arr << val }
+    arr
+  end
+
   def each(&block)
     return [] if @head.nil?
     curr = @head
@@ -144,6 +150,11 @@ class SinglyLinkedListTest < Test::Unit::TestCase
   def test_to_string
     (0..5).each { |x| @list.append(x) }
     assert_equal('<0 1 2 3 4 5>', @list.to_s)
+  end
+
+  def test_to_array
+    (0..50).each { |x| @list.append(x) }
+    assert_equal((0..50).to_a, @list.to_a)
   end
 
   def test_insert
