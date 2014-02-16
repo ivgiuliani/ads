@@ -9,11 +9,8 @@ class SinglyLinkedList
   end
 
   def to_s
-    arr, curr = [], @head
-    until curr.nil?
-      arr << curr.value
-      curr = curr.next
-    end
+    arr = []
+    each { |val| arr << val }
     '<' + arr.join(' ') + '>'
   end
 
