@@ -1,6 +1,8 @@
 require 'test/unit'
 
 class SinglyLinkedList
+  include Enumerable
+
   def initialize
     @head = nil
     @size = 0
@@ -13,6 +15,20 @@ class SinglyLinkedList
       curr = curr.next
     end
     '<' + arr.join(' ') + '>'
+  end
+
+  def each(&block)
+    return [] if @head.nil?
+    curr = @head
+    until curr.nil?
+      if block_given?
+        block.call(curr.value)
+      else
+        yield curr.value
+      end
+
+      curr = curr.next
+    end
   end
 
   def append(value)
@@ -233,5 +249,19 @@ class SinglyLinkedListTest < Test::Unit::TestCase
 
     assert_nil(@list.get(3))
     assert_nil(@list.get(888))
+  end
+
+  def test_each
+    @list.each { |x| assert(false, 'Iterated over an empty list with value ' + x) }
+
+    @list.append(2)
+    @list.append(4)
+    @list.append(6)
+    @list.append(8)
+    @list.append(10)
+
+    sum = 0
+    @list.each { |x| sum += x }
+    assert_equal(30, sum)
   end
 end
