@@ -141,6 +141,11 @@ class SinglyLinkedListTest < Test::Unit::TestCase
     0.upto(100).each { |x| assert_equal(x, @list.get(x)) }
   end
 
+  def test_to_string
+    (0..5).each { |x| @list.append(x) }
+    assert_equal('<0 1 2 3 4 5>', @list.to_s)
+  end
+
   def test_insert
     @list.insert(0, 1000)
     assert_equal(1000, @list.get(0))
