@@ -280,4 +280,17 @@ class SinglyLinkedListTest < Test::Unit::TestCase
     @list.each { |x| sum += x }
     assert_equal(30, sum)
   end
+
+  def test_enumerable
+    # implementing .each and including Enumerable should make it possible
+    # to use Enumerable methods
+    (1..10).each { |x| @list.append(x) }
+
+    expected = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+    double = @list.map { |val| val * 2}
+
+    # .map however will create a new ruby native list, not a
+    # SinglyLinkedList instance
+    assert_equal(expected, double)
+  end
 end
