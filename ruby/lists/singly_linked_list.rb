@@ -137,8 +137,8 @@ class SinglyLinkedListTest < Test::Unit::TestCase
   end
 
   def test_append
-    0.upto(100) { |x| @list.append(x) }
-    0.upto(100) { |x| assert_equal(x, @list.get(x)) }
+    0.upto(100).each { |x| @list.append(x) }
+    0.upto(100).each { |x| assert_equal(x, @list.get(x)) }
   end
 
   def test_insert
