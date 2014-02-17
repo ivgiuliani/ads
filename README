@@ -42,7 +42,7 @@ Sorting & Search          +-----+-----+------+-----+--------+------+
   Heap Sort               |     |     |   x  |     |        |  x   |
   Binary Search           |     |     |   x  |     |        |      |
 Trees                     +-----+-----+------+-----+--------+------+
-  Heap                    |     |  P  |      |     |        |  x   |
+  Heap                    |     |  P  |      |     |   x    |  x   |
   Trie                    |     |  x  |      |     |        |      |
   AVL Tree                |     |     |      |     |        |      |
   Red/Black Tree          |     |     |      |     |        |      |
