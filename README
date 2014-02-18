@@ -39,7 +39,7 @@ Sorting & Search          +-----+-----+------+-----+--------+------+
   Insertion Sort          |  x  |     |   x  |  x  |   x    |  x   |
   Merge Sort              |     |  x  |   x  |     |   x    |  x   |
   Quick Sort              |     |  x  |   x  |     |   x    |  x   |
-  Heap Sort               |     |     |   x  |     |        |  x   |
+  Heap Sort               |     |     |   x  |     |   x    |  x   |
   Binary Search           |     |     |   x  |     |        |      |
 Trees                     +-----+-----+------+-----+--------+------+
   Heap                    |     |  P  |      |     |   x    |  x   |
