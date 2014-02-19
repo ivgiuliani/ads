@@ -3,9 +3,21 @@ import random
 
 
 class Heap(object):
-    def __init__(self):
+    def __init__(self, heapify=None):
+        """
+        Instantiates a new heap. If `heapify` is passed as input, it
+        must be an array of values that will be "heapified" (a valid
+        heap structure will be create out of it and used to initialize
+        this whole instance).
+        """
         self.heap = []
         self.count = 0
+        if heapify:
+            self.heap = heapify
+            self.count = len(heapify)
+
+            for i in range(len(heapify) / 2, -1, -1):
+                self.__bubble_down(i)
 
     def min(self):
         return self.heap[0] if self.count > 0 else None
@@ -107,6 +119,15 @@ class HeapTest(unittest.TestCase):
         for i in vals:
             self.assertEqual(i, self.heap.pop())
 
+    def test_heapify(self):
+        vals = range(99, -1, -1)
+        heap = Heap(vals)
+        self.assertEqual(range(0, 100), [heap.pop() for i in range(len(vals))])
+
+        vals = range(1, 1000)
+        random.shuffle(vals)
+        heap = Heap(vals)
+        self.assertEqual(range(1, 1000), [heap.pop() for i in range(len(vals))])
 
 if __name__ == "__main__":
     random.seed()
