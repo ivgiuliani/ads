@@ -35,8 +35,11 @@ public class BSTDict {
     int comparison = key.compareTo(root.key);
     if (comparison == 0) {
       root.value = val;
-    } else if (comparison < 0) root.left = add(root.left, key, val);
-      else if (comparison > 0) root.right = add(root.right, key, val);
+    } else if (comparison < 0) {
+      root.left = add(root.left, key, val);
+    } else if (comparison > 0) {
+      root.right = add(root.right, key, val);
+    }
 
     return root;
   }
