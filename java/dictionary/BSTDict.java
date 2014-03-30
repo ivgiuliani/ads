@@ -29,7 +29,7 @@ public class BSTDict {
 
   private BSTNode add(BSTNode root, String key, String val) {
     if (root == null) {
-      return new BSTNode(root, key, val);
+      return new BSTNode(null, key, val);
     }
 
     int comparison = key.compareTo(root.key);
