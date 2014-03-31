@@ -99,7 +99,7 @@ class BSTDict(object):
             #
             # the first two cases are straightforward, while in the last one we
             # must relabel the node with the key of its successor, which
-            # happens to be the leftmost descendand in the right subtree
+            # happens to be the leftmost descendant in the right subtree
             parent = root.parent
             if root.left is not None and root.right is not None:
                 # node has two children
