@@ -40,7 +40,7 @@ Sorting & Search          +-----+-----+------+-----+--------+------+
   Merge Sort              |     |  x  |   x  |     |   x    |  x   |
   Quick Sort              |     |  x  |   x  |     |   x    |  x   |
   Heap Sort               |     |     |   x  |     |   x    |  x   |
-  Binary Search           |     |     |   x  |     |        |      |
+  Binary Search           |     |     |   x  |     |   x    |      |
 Trees                     +-----+-----+------+-----+--------+------+
   Heap                    |     |  P  |      |     |   x    |  x   |
   Trie                    |     |  x  |      |     |        |      |
