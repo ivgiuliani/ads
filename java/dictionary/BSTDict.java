@@ -66,9 +66,17 @@ public class BSTDict {
     if (comparison == 0) {
       root.value = val;
     } else if (comparison < 0) {
-      root.left = add(root.left, key, val);
+      if (root.left == null) {
+        root.left = new BSTNode(root, key, val);
+      } else {
+        add(root.left, key, val);
+      }
     } else if (comparison > 0) {
-      root.right = add(root.right, key, val);
+      if (root.right == null) {
+        root.right = new BSTNode(root, key, val);
+      } else {
+        add(root.right, key, val);
+      }
     }
 
     return root;
