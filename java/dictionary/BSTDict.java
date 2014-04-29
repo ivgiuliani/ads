@@ -20,6 +20,14 @@ public class BSTDict {
       this.value = value;
     }
 
+    protected BSTNode successor() {
+      BSTNode succ = right;
+      while (succ.left != null) {
+        succ = succ.left;
+      }
+      return succ;
+    }
+
     String stringify(int indent) {
       StringBuilder builder = new StringBuilder();
       for (int i = 0; i < indent; i++) {
@@ -82,8 +90,71 @@ public class BSTDict {
     return root;
   }
 
+  private static BSTNode delete(BSTNode root, String key) {
+    if (root == null) {
+      return null;
+    }
+
+    int comparison = key.compareTo(root.key);
+    if (comparison < 0) {
+      delete(root.left, key);
+      return root;
+    } else if (comparison > 0) {
+      delete(root.right, key);
+      return root;
+    }
+
+    /* now root == key, hence three cases are possible:
+     *   1) the node is a leaf
+     *   2) the node has only one child
+     *   3) the node has two children
+     * while the first two cases are straightforward, the last one requires
+     * more effort since we must relabel the node with the key of its successor,
+     * which happens to be the leftmost descendant in the right sub-tree
+     */
+
+    String tmp;
+    BSTNode parent = root.parent;
+
+    if (root.left != null && root.right != null) {
+      // node has two children
+      // rather than complicating things by changing pointers, just replace keys and values
+      BSTNode succ = root.successor();
+
+      // swap root.[key/value] with succ.[key/value]
+      tmp = root.key;
+      root.key = succ.key;
+      succ.key = tmp;
+
+      tmp = root.value;
+      root.value = succ.value;
+      succ.value = tmp;
+      delete(root.right, succ.key);
+    } else if (root.left != null) {
+      // 1 child (the left one)
+      root.key = root.left.key;
+      root.value = root.left.value;
+      root.left = null;
+    } else if (root.right != null) {
+      // 1 child (the right one)
+      root.key = root.right.key;
+      root.value = root.right.value;
+      root.right = null;
+    } else {
+      // node is a leaf
+      if (parent != null && parent.left != null && parent.left.key.equals(root.key)) {
+        parent.left = null;
+      } else if (parent != null && parent.right != null && parent.right.key.equals(root.key)) {
+        parent.right = null;
+      }
+      return null;
+    }
+
+    return root;
+  }
+
   public void del(String key) {
-    // TODO
+    root = delete(root, key);
   }
 
   private static BSTNode min(BSTNode node) {
@@ -143,7 +214,6 @@ public class BSTDict {
     dict.add("key2", "value2");
     dict.add("key3", "value3");
     dict.add("key4", "value4");
-    System.out.println(dict);
 
     test(dict.get("key1").equals("value1"));
     test(dict.get("key2").equals("value2"));
@@ -166,14 +236,42 @@ public class BSTDict {
     dict.add("key4", "value444");
     test(dict.get("key4").equals("value444"));
 
-    // TODO: implement deletion
+    test(dict.contains("key4"));
+    dict.del("key4");
+    test(dict.contains("key1"));
+    test(dict.contains("key2"));
+    test(dict.contains("key3"));
+    test(!dict.contains("key4"));
 
-//    test(dict.contains("key4"));
-//    dict.del("key4");
-//    test(dict.contains("key1"));
-//    test(dict.contains("key2"));
-//    test(dict.contains("key3"));
-//    test(!dict.contains("key4"));
+    test(dict.contains("key2"));
+    dict.del("key2");
+    test(dict.contains("key1"));
+    test(!dict.contains("key2"));
+    test(dict.contains("key3"));
+    test(!dict.contains("key4"));
+
+    test(dict.contains("key1"));
+    dict.del("key1");
+    test(!dict.contains("key1"));
+    test(!dict.contains("key2"));
+    test(dict.contains("key3"));
+    test(!dict.contains("key4"));
+
+    test(dict.contains("key3"));
+    dict.del("key3");
+    test(!dict.contains("key1"));
+    test(!dict.contains("key2"));
+    test(!dict.contains("key3"));
+    test(!dict.contains("key4"));
+
+    // test delete root
+    dict.add("key3", "val3");
+    dict.add("key5", "val3");
+    dict.add("key1", "val3");
+    dict.del("key3");
+    test(!dict.contains("key3"));
+    test(dict.contains("key5"));
+    test(dict.contains("key1"));
   }
 
   public static void test(boolean condition) {
