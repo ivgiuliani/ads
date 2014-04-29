@@ -341,6 +341,37 @@ class BSTTest(unittest.TestCase):
         except Exception as ex:
             self.fail("exception raised: %s" % ex)
 
+    def test_delete_leaf_from_ordered_tree(self):
+        b = BSTDict()
+        b["1"] = "1"
+        b["2"] = "2"
+        b["3"] = "3"
+        b["4"] = "4"
+        b["5"] = "5"
+
+        self.assertEquals(5, len(b))
+        self.assertIn("5", b)
+
+        del b["5"]
+        self.assertEquals(4, len(b))
+        self.assertNotIn(5, b)
+
+        del b["4"]
+        self.assertEquals(3, len(b))
+        self.assertNotIn(4, b)
+
+        del b["3"]
+        self.assertEquals(2, len(b))
+        self.assertNotIn(3, b)
+
+        del b["2"]
+        self.assertEquals(1, len(b))
+        self.assertNotIn(2, b)
+
+        del b["1"]
+        self.assertEquals(0, len(b))
+        self.assertNotIn(1, b)
+
     def test_delete_leaf(self):
         b = BSTDict()
         b[5] = 5
