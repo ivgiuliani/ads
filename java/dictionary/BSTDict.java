@@ -19,9 +19,39 @@ public class BSTDict {
       this.key = key;
       this.value = value;
     }
+
+    String stringify(int indent) {
+      StringBuilder builder = new StringBuilder();
+      for (int i = 0; i < indent; i++) {
+        builder.append(' ');
+      }
+      builder.append('<');
+      builder.append(key);
+      builder.append('=');
+      builder.append(value);
+      builder.append(">\n");
+
+      if (left != null) {
+        builder.append(left.stringify(indent + 2));
+      }
+
+      if (right!= null) {
+        builder.append(right.stringify(indent + 2));
+      }
+
+      return builder.toString();
+    }
   }
 
   private BSTNode root = null;
+
+  @Override
+  public String toString() {
+    if (root == null) {
+      return "<>";
+    }
+    return root.stringify(0);
+  }
 
   public void add(String key, String val) {
     root = add(root, key, val);
@@ -105,6 +135,8 @@ public class BSTDict {
     dict.add("key2", "value2");
     dict.add("key3", "value3");
     dict.add("key4", "value4");
+    System.out.println(dict);
+
     test(dict.get("key1").equals("value1"));
     test(dict.get("key2").equals("value2"));
     test(dict.get("key3").equals("value3"));
