@@ -1,27 +1,28 @@
 package dictionary;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Implementation of dictionary using a binary search tree
  */
-public class BSTDict {
-  private class BSTNode {
-    public String key;
-    public String value;
-    public BSTNode parent;
-    public BSTNode left;
-    public BSTNode right;
+public class BSTDict<K extends Comparable<K>, V> {
+  private class BSTNode<_K extends Comparable<_K>, _V> {
+    public _K key;
+    public _V value;
+    public BSTNode<_K, _V> parent;
+    public BSTNode<_K, _V> left;
+    public BSTNode<_K, _V> right;
 
-    public BSTNode(BSTNode parent, String key, String value) {
+    public BSTNode(BSTNode<_K, _V> parent, _K key, _V value) {
       this.parent = parent;
       this.key = key;
       this.value = value;
     }
 
-    protected BSTNode successor() {
-      BSTNode succ = right;
+    protected BSTNode<_K, _V> successor() {
+      BSTNode<_K, _V> succ = right;
       while (succ.left != null) {
         succ = succ.left;
       }
@@ -51,7 +52,7 @@ public class BSTDict {
     }
   }
 
-  private BSTNode root = null;
+  private BSTNode<K, V> root = null;
 
   @Override
   public String toString() {
@@ -61,13 +62,13 @@ public class BSTDict {
     return root.stringify(0);
   }
 
-  public void add(String key, String val) {
+  public void add(K key, V val) {
     root = add(root, key, val);
   }
 
-  private BSTNode add(BSTNode root, String key, String val) {
+  private BSTNode<K, V> add(BSTNode<K, V> root, K key, V val) {
     if (root == null) {
-      return new BSTNode(null, key, val);
+      return new BSTNode<K, V>(null, key, val);
     }
 
     int comparison = key.compareTo(root.key);
@@ -75,13 +76,13 @@ public class BSTDict {
       root.value = val;
     } else if (comparison < 0) {
       if (root.left == null) {
-        root.left = new BSTNode(root, key, val);
+        root.left = new BSTNode<K, V>(root, key, val);
       } else {
         add(root.left, key, val);
       }
     } else if (comparison > 0) {
       if (root.right == null) {
-        root.right = new BSTNode(root, key, val);
+        root.right = new BSTNode<K, V>(root, key, val);
       } else {
         add(root.right, key, val);
       }
@@ -90,7 +91,7 @@ public class BSTDict {
     return root;
   }
 
-  private static BSTNode delete(BSTNode root, String key) {
+  private BSTNode<K, V> delete(BSTNode<K, V> root, K key) {
     if (root == null) {
       return null;
     }
@@ -113,22 +114,23 @@ public class BSTDict {
      * which happens to be the leftmost descendant in the right sub-tree
      */
 
-    String tmp;
-    BSTNode parent = root.parent;
+    K tmpKey;
+    V tmpVal;
+    BSTNode<K, V> parent = root.parent;
 
     if (root.left != null && root.right != null) {
       // node has two children
       // rather than complicating things by changing pointers, just replace keys and values
-      BSTNode succ = root.successor();
+      BSTNode<K, V> succ = root.successor();
 
       // swap root.[key/value] with succ.[key/value]
-      tmp = root.key;
+      tmpKey = root.key;
       root.key = succ.key;
-      succ.key = tmp;
+      succ.key = tmpKey;
 
-      tmp = root.value;
+      tmpVal = root.value;
       root.value = succ.value;
-      succ.value = tmp;
+      succ.value = tmpVal;
       delete(root.right, succ.key);
     } else if (root.left != null) {
       // 1 child (the left one)
@@ -153,25 +155,18 @@ public class BSTDict {
     return root;
   }
 
-  public void del(String key) {
+  public void del(K key) {
     root = delete(root, key);
   }
 
-  private static BSTNode min(BSTNode node) {
-    while (node.left != null) {
-      node = node.left;
-    }
-    return node;
-  }
-
-  public String get(String key) {
-    BSTNode node = find(key);
+  public V get(K key) {
+    BSTNode<K, V> node = find(key);
     if (node != null) return node.value;
     return null; // should throw an exception
   }
 
-  private BSTNode find(String key) {
-    BSTNode node = root;
+  private BSTNode<K, V> find(K key) {
+    BSTNode<K, V> node = root;
 
     while (node != null) {
       int comparison = key.compareTo(node.key);
@@ -184,16 +179,16 @@ public class BSTDict {
     return null; // should throw an exception
   }
 
-  public boolean contains(String key) {
+  public boolean contains(K key) {
     return find(key) != null;
   }
 
-  public List<String> keys() {
+  public List<K> keys() {
     return keys(root);
   }
 
-  private List<String> keys(BSTNode root) {
-    List<String> keys = new LinkedList<String>();
+  private List<K> keys(BSTNode<K, V> root) {
+    List<K> keys = new LinkedList<K>();
 
     if (root.left != null) {
       keys.addAll(keys(root.left));
@@ -207,7 +202,7 @@ public class BSTDict {
   }
 
   public static void main(String[] args) {
-    BSTDict dict = new BSTDict();
+    BSTDict<String, String> dict = new BSTDict<String, String>();
     test(dict.get("key") == null);
 
     dict.add("key1", "value1");
@@ -272,6 +267,15 @@ public class BSTDict {
     test(!dict.contains("key3"));
     test(dict.contains("key5"));
     test(dict.contains("key1"));
+
+    BSTDict<Integer, List<String>> dict2 = new BSTDict<Integer, List<String>>();
+    dict2.add(5, Arrays.asList("hello5", "world5"));
+    dict2.add(2, Arrays.asList("hello2", "world2"));
+    dict2.add(8, Arrays.asList("hello8", "world8"));
+    test(dict2.keys().equals(Arrays.asList(2, 5, 8)));
+
+    dict2.del(5);
+    test(dict2.keys().equals(Arrays.asList(2, 8)));
   }
 
   public static void test(boolean condition) {
