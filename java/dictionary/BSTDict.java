@@ -50,6 +50,12 @@ public class BSTDict<K extends Comparable<K>, V> {
 
       return builder.toString();
     }
+
+    int size() {
+      int leftSize = left != null ? left.size() : 0;
+      int rightSize = right != null ? right.size() : 0;
+      return 1 + leftSize + rightSize;
+    }
   }
 
   private BSTNode<K, V> root = null;
@@ -201,6 +207,21 @@ public class BSTDict<K extends Comparable<K>, V> {
     return keys;
   }
 
+  public int size() {
+    if (root == null) {
+      return 0;
+    }
+    return root.size();
+  }
+
+  public boolean isEmpty() {
+    return root == null;
+  }
+
+  public void clear() {
+    root = null;
+  }
+
   public static void main(String[] args) {
     BSTDict<String, String> dict = new BSTDict<String, String>();
     test(dict.get("key") == null);
@@ -273,9 +294,11 @@ public class BSTDict<K extends Comparable<K>, V> {
     dict2.add(2, Arrays.asList("hello2", "world2"));
     dict2.add(8, Arrays.asList("hello8", "world8"));
     test(dict2.keys().equals(Arrays.asList(2, 5, 8)));
+    test(dict2.size() == 3);
 
     dict2.del(5);
     test(dict2.keys().equals(Arrays.asList(2, 8)));
+    test(dict2.size() == 2);
   }
 
   public static void test(boolean condition) {
