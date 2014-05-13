@@ -19,7 +19,7 @@ package interviewquestions;
  * commonAncestor(31, 67) = 50
  * commonAncestor(45, 51) = 51
  */
-public class BTCommonAncestor {
+public class BTCommonAncestor extends TestCase {
   public static class Node {
     public int value;
     public Node left;
@@ -80,16 +80,9 @@ public class BTCommonAncestor {
     node45.left = node33;
     node45.right = node67;
 
-    test(commonAncestor(node50, node31, node25) == node30);
-    test(commonAncestor(node50, node29, node25) == node30);
-    test(commonAncestor(node50, node31, node67) == node50);
-    test(commonAncestor(node50, node45, node51) == node51);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(node30, commonAncestor(node50, node31, node25));
+    assertEquals(node30, commonAncestor(node50, node29, node25));
+    assertEquals(node50, commonAncestor(node50, node31, node67));
+    assertEquals(node51, commonAncestor(node50, node45, node51));
   }
 }

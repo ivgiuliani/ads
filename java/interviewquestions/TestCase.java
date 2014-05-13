@@ -7,9 +7,26 @@ import java.util.Iterator;
  */
 public abstract class TestCase {
   public static void assertTrue(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
     if (!condition) {
       throw new AssertionError("invalid test");
+    }
+  }
+
+  public static void assertFalse(boolean condition) {
+    if (condition) {
+      throw new AssertionError("invalid test");
+    }
+  }
+
+  public static void assertNull(Object o) {
+    if (o != null) {
+      throw new AssertionError(String.format("%s is not null", o));
+    }
+  }
+
+  public static void assertNotNull(Object o) {
+    if (o == null) {
+      throw new AssertionError("object is null");
     }
   }
 
@@ -50,5 +67,11 @@ public abstract class TestCase {
 
     assertTrue(!it1.hasNext());
     assertTrue(!it2.hasNext());
+  }
+
+  public static void assertEquals(Object o1, Object o2) {
+    if (o1 != o2) {
+      throw new AssertionError("different objects");
+    }
   }
 }

@@ -12,7 +12,7 @@ import java.util.BitSet;
  *
  * SRM488/DIV2
  */
-public class BoredFriends {
+public class BoredFriends extends TestCase {
   public int find(int n, int m, int j, int b) {
     int bored = n;
     BitSet bs = new BitSet(n + m);
@@ -30,16 +30,9 @@ public class BoredFriends {
   public static void main(String[] args) {
     BoredFriends f = new BoredFriends();
 
-    test(f.find(1, 1, 1, 2) == 2);
-    test(f.find(2, 1, 1, 2) == 2);
-    test(f.find(1, 2, 3, 2) == 3);
-    test(f.find(4, 7, 7, 4) == 5);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(2, f.find(1, 1, 1, 2));
+    assertEquals(2, f.find(2, 1, 1, 2));
+    assertEquals(3, f.find(1, 2, 3, 2));
+    assertEquals(5, f.find(4, 7, 7, 4));
   }
 }

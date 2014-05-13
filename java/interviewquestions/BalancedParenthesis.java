@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 
-public class BalancedParenthesis {
+public class BalancedParenthesis extends TestCase {
   public static boolean isBalanced(String str) {
     // assume that the string consists only of valid characters
     // i.e. only (, [, {, }, ] and ) chars are present
@@ -32,21 +32,14 @@ public class BalancedParenthesis {
   }
 
   public static void main(String[] args) {
-    test(isBalanced("((()))"));
-    test(isBalanced("{[()]}"));
-    test(isBalanced("{{{}}}"));
-    test(isBalanced("()"));
-    test(isBalanced("()()()"));
-    test(isBalanced("()[]{}"));
-    test(!isBalanced("([(])"));
-    test(!isBalanced("{}{(){"));
-    test(!isBalanced(")()()"));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(isBalanced("((()))"));
+    assertTrue(isBalanced("{[()]}"));
+    assertTrue(isBalanced("{{{}}}"));
+    assertTrue(isBalanced("()"));
+    assertTrue(isBalanced("()()()"));
+    assertTrue(isBalanced("()[]{}"));
+    assertFalse(!isBalanced("([(])"));
+    assertFalse(!isBalanced("{}{(){"));
+    assertFalse(!isBalanced(")()()"));
   }
 }

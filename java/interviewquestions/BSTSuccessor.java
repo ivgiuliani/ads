@@ -15,7 +15,7 @@ package interviewquestions;
  * succ(66) = 71
  *
  */
-public class BSTSuccessor {
+public class BSTSuccessor extends TestCase {
   public static class Node {
     public int value;
     public Node parent;
@@ -77,15 +77,8 @@ public class BSTSuccessor {
     node65.right = node66;
     node66.parent = node65;
 
-    test(succ(node50) == node60);
-    test(succ(node10) == node30);
-    test(succ(node66) == node71);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(node60, succ(node50));
+    assertEquals(node30, succ(node10));
+    assertEquals(node71, succ(node66));
   }
 }

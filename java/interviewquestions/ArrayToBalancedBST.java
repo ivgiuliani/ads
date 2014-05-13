@@ -4,7 +4,7 @@ package interviewquestions;
  * Given a sorted (increasing order) array, write an algorithm to create a binary tree
  * with minimal height.
  */
-public class ArrayToBalancedBST {
+public class ArrayToBalancedBST extends TestCase {
   public static class BSTNode {
     public int value;
     public BSTNode left;
@@ -37,29 +37,22 @@ public class ArrayToBalancedBST {
 
     array = new int[] { 1, 3, 5, 7, 9, 11, 12 };
     node = arrayToBST(array);
-    test(node.value == 7);
-    test(node.left.value == 3);
-    test(node.right.value == 11);
-    test(node.left.left.value == 1);
-    test(node.left.right.value == 5);
-    test(node.right.left.value == 9);
-    test(node.right.right.value == 12);
+    assertEquals(node.value, 7);
+    assertEquals(node.left.value, 3);
+    assertEquals(node.right.value, 11);
+    assertEquals(node.left.left.value, 1);
+    assertEquals(node.left.right.value, 5);
+    assertEquals(node.right.left.value, 9);
+    assertEquals(node.right.right.value, 12);
 
     array = new int[] { 1, 3, 5, 7, 9, 11 };
     node = arrayToBST(array);
-    test(node.value == 7);
-    test(node.left.value == 3);
-    test(node.right.value == 11);
-    test(node.left.left.value == 1);
-    test(node.left.right.value == 5);
-    test(node.right.left.value == 9);
-    test(node.right.right == null);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(node.value, 7);
+    assertEquals(node.left.value, 3);
+    assertEquals(node.right.value, 11);
+    assertEquals(node.left.left.value, 1);
+    assertEquals(node.left.right.value, 5);
+    assertEquals(node.right.left.value, 9);
+    assertNull(node.right.right);
   }
 }

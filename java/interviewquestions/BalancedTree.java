@@ -5,7 +5,7 @@ package interviewquestions;
  * tree such that no two leaf nodes differ in distance from the root by
  * more than one
  */
-public class BalancedTree {
+public class BalancedTree extends TestCase {
   public static class Node {
     public Node left = null;
     public Node right = null;
@@ -55,15 +55,8 @@ public class BalancedTree {
                 new Node(11))))
     );
 
-    test(isBalanced(balanced));
-    test(!isBalanced(unbalanced));
-    test(isBalanced(new Node(0)));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(isBalanced(balanced));
+    assertFalse(!isBalanced(unbalanced));
+    assertTrue(isBalanced(new Node(0)));
   }
 }
