@@ -4,7 +4,7 @@ package interviewquestions;
  * Given an array of characters, convert it to a linked list and find the
  * mth-to-last of the list.
  */
-public class ListMth {
+public class ListMth extends TestCase {
   public static class LinkedList {
     public static class Node {
       public Node next;
@@ -66,32 +66,25 @@ public class ListMth {
   }
 
   public static void main(String[] args) {
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 4).value == 'a');
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 3).value == 'b');
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 2).value == 'c');
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 1).value == 'd');
-    test(mthToLast(new char[] { 'e', 'f', 'g', 'h' }, 2).value == 'g');
-    test(mthToLast(new char[] { 'e', 'f', 'g', 'h' }, 5) == null);
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd',
-                                'e', 'f', 'g', 'h',
-                                'i', 'j', 'k', 'l',
-                                'm', 'n', 'o', 'p',
-                                'q', 'r', 's', 't',
-                                'u', 'v', 'w', 'x',
-                                'y', 'z' }, 26).value == 'a');
-    test(mthToLast(new char[] { 'a', 'b', 'c', 'd',
-                                'e', 'f', 'g', 'h',
-                                'i', 'j', 'k', 'l',
-                                'm', 'n', 'o', 'p',
-                                'q', 'r', 's', 't',
-                                'u', 'v', 'w', 'x',
-                                'y', 'z' }, 1).value == 'z');
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 4).value, 'a');
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 3).value, 'b');
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 2).value, 'c');
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd' }, 1).value, 'd');
+    assertEquals(mthToLast(new char[] { 'e', 'f', 'g', 'h' }, 2).value, 'g');
+    assertNull(mthToLast(new char[] { 'e', 'f', 'g', 'h' }, 5));
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd',
+                                        'e', 'f', 'g', 'h',
+                                        'i', 'j', 'k', 'l',
+                                        'm', 'n', 'o', 'p',
+                                        'q', 'r', 's', 't',
+                                        'u', 'v', 'w', 'x',
+                                        'y', 'z' }, 26).value, 'a');
+    assertEquals(mthToLast(new char[] { 'a', 'b', 'c', 'd',
+                                        'e', 'f', 'g', 'h',
+                                        'i', 'j', 'k', 'l',
+                                        'm', 'n', 'o', 'p',
+                                        'q', 'r', 's', 't',
+                                        'u', 'v', 'w', 'x',
+                                        'y', 'z' }, 1).value, 'z');
   }
 }

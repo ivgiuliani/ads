@@ -69,6 +69,12 @@ public abstract class TestCase {
     assertTrue(!it2.hasNext());
   }
 
+  public static void assertEquals(String s1, String s2) {
+    if (!s1.equals(s2)) {
+      throw new AssertionError(String.format("%s != %s", s1, s2));
+    }
+  }
+
   public static void assertEquals(Object o1, Object o2) {
     if (o1 != o2) {
       throw new AssertionError("different objects");

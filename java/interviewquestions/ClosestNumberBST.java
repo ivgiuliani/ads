@@ -11,7 +11,7 @@ package interviewquestions;
  *
  * Return: 7
  */
-public class ClosestNumberBST {
+public class ClosestNumberBST extends TestCase {
   public static class Node {
     public final int value;
     public final Node left;
@@ -53,11 +53,11 @@ public class ClosestNumberBST {
         new Node(15,
             new Node(12), new Node(100)));
 
-    test(find(null, 1) == null);
-    test(find(root, 8) == 7);
-    test(find(root, 1) == 1);
-    test(find(root, 14) == 15);
-    test(find(root, Integer.MAX_VALUE) == 100);
+    assertNull(find(null, 1));
+    assertEquals(7, (int)find(root, 8));
+    assertEquals(1, (int)find(root, 1));
+    assertEquals(15, (int)find(root, 14));
+    assertEquals(100, (int)find(root, Integer.MAX_VALUE));
 
     Node unbalanced = new Node(1, null,
         new Node(2, null,
@@ -66,14 +66,7 @@ public class ClosestNumberBST {
                     new Node(5, null,
                       new Node(6))))));
 
-    test(find(unbalanced, 7) == 6);
-    test(find(unbalanced, 3) == 3);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(6, (int)find(unbalanced, 7));
+    assertEquals(3, (int)find(unbalanced, 3));
   }
 }

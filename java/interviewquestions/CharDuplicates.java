@@ -7,7 +7,7 @@ import java.util.Set;
  * Remove duplicate characters in a given string keeping only the first occurrence.
  * For example, if the input is "tree traversal" the output will be "tre avsl".
  */
-public class CharDuplicates {
+public class CharDuplicates extends TestCase {
   public static String remdup(String input) {
     Set<Character> characterSet = new HashSet<Character>();
     StringBuilder builder = new StringBuilder();
@@ -48,23 +48,16 @@ public class CharDuplicates {
   }
 
   public static void main(String[] args) {
-    test(remdup("stringstring").equals("string"));
-    test(remdup("tree traversal").equals("tre avsl"));
-    test(remdup("no duplicates").equals("no duplicates"));
-    test(remdup("123456123451234").equals("123456"));
-    test(remdup("").equals(""));
+    assertEquals("string", remdup("stringstring"));
+    assertEquals("tre avsl", remdup("tree traversal"));
+    assertEquals("no duplicates", remdup("no duplicates"));
+    assertEquals("123456", remdup("123456123451234"));
+    assertEquals("", remdup(""));
 
-    test(remdupNoDS("stringstring").equals("string"));
-    test(remdupNoDS("tree traversal").equals("tre avsl"));
-    test(remdupNoDS("no duplicates").equals("no duplicates"));
-    test(remdupNoDS("123456123451234").equals("123456"));
-    test(remdupNoDS("").equals(""));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("string", remdupNoDS("stringstring"));
+    assertEquals("tre avsl", remdupNoDS("tree traversal"));
+    assertEquals("no duplicates", remdupNoDS("no duplicates"));
+    assertEquals("123456", remdupNoDS("123456123451234"));
+    assertEquals("", remdupNoDS(""));
   }
 }

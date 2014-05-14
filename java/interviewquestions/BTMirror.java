@@ -9,7 +9,7 @@ package interviewquestions;
  *  7    15          15   7
  *     19  2       2   19
  */
-public class BTMirror {
+public class BTMirror extends TestCase {
   public static class Node {
     public int value;
     public Node left;
@@ -44,18 +44,11 @@ public class BTMirror {
 
     mirror(node4);
 
-    test(node4.left == node15);
-    test(node4.right == node7);
-    test(node7.left == null);
-    test(node7.right == null);
-    test(node15.left == node2);
-    test(node15.right == node19);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(node15, node4.left);
+    assertEquals(node7, node4.right);
+    assertNull(node7.left);
+    assertNull(node7.right);
+    assertEquals(node2, node15.left);
+    assertEquals(node19, node15.right);
   }
 }
