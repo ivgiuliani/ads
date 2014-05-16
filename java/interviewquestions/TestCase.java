@@ -75,6 +75,54 @@ public abstract class TestCase {
     }
   }
 
+  public static void assertEquals(int[] o1, int[] o2) {
+    if (o1.length == o2.length) {
+      for (int i = 0; i < o1.length; i++) {
+        if (o1[i] != o2[i]) {
+          throw new AssertionError("different objects at item " + i);
+        }
+      }
+    } else {
+      throw new AssertionError("different objects");
+    }
+  }
+
+  public static void assertEquals(long[] o1, long[] o2) {
+    if (o1.length == o2.length) {
+      for (int i = 0; i < o1.length; i++) {
+        if (o1[i] != o2[i]) {
+          throw new AssertionError("different objects at item " + i);
+        }
+      }
+    } else {
+      throw new AssertionError("different objects");
+    }
+  }
+
+  public static void assertEquals(double[] o1, double[] o2) {
+    if (o1.length == o2.length) {
+      for (int i = 0; i < o1.length; i++) {
+        if (o1[i] != o2[i]) {
+          throw new AssertionError("different objects at item " + i);
+        }
+      }
+    } else {
+      throw new AssertionError("different objects");
+    }
+  }
+
+  public static <E> void assertEquals(E[] o1, E[] o2) {
+    if (o1.length == o2.length) {
+      for (int i = 0; i < o1.length; i++) {
+        if (!o1[i].equals(o2[i])) {
+          throw new AssertionError("different objects at item " + i);
+        }
+      }
+    } else {
+      throw new AssertionError("different objects");
+    }
+  }
+
   public static void assertEquals(Object o1, Object o2) {
     if (o1 != o2) {
       throw new AssertionError("different objects");
