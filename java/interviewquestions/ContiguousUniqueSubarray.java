@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * Find a solution with time complexity O(n) and extra Space O(1)
  */
-public class ContiguousUniqueSubarray {
+public class ContiguousUniqueSubarray extends TestCase {
   public static int[] find(int[] array) {
     int start = 0;
     int[] res = new int[0];
@@ -42,34 +42,27 @@ public class ContiguousUniqueSubarray {
   }
 
   public static void main(String[] args) {
-    test(find(new int[]{1, 2, 3, 1, 4, 3, 4, 1, 2}).length == 6);
-    test(Arrays.equals(find(new int[] { 1, 2, 3, 1, 4, 3, 4, 1, 2}),
-                       new int[] { 3, 1, 4, 3, 4, 1 }));
+    assertEquals(6, find(new int[]{1, 2, 3, 1, 4, 3, 4, 1, 2}).length);
+    assertEquals(find(new int[] { 1, 2, 3, 1, 4, 3, 4, 1, 2}),
+                 new int[] { 3, 1, 4, 3, 4, 1 });
 
-    test(find(new int[] { }).length == 0);
-    test(Arrays.equals(find(new int[] { }), new int[] { }));
+    assertEquals(0, find(new int[] { }).length);
+    assertEquals(find(new int[] { }), new int[] { });
 
-    test(find(new int[] { 4, 8, 2, 1, 3, 4, 3, 4, 1, 3, 2, 5 }).length == 7);
-    test(Arrays.equals(find(new int[] { 4, 8, 2, 1, 3, 4, 3, 4, 1, 3, 2, 5 }),
-                       new int[] { 1, 3, 4, 3, 4, 1, 3 }));
+    assertEquals(7, find(new int[] { 4, 8, 2, 1, 3, 4, 3, 4, 1, 3, 2, 5 }).length);
+    assertEquals(find(new int[] { 4, 8, 2, 1, 3, 4, 3, 4, 1, 3, 2, 5 }),
+                 new int[] { 1, 3, 4, 3, 4, 1, 3 });
 
-    test(find(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9}).length == 3);
-    test(Arrays.equals(find(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9}),
-                       new int[] { 1, 2, 3 }));
+    assertEquals(3, find(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9}).length);
+    assertEquals(find(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9}),
+                 new int[] { 1, 2, 3 });
 
-    test(find(new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1}).length == 10);
-    test(Arrays.equals(find(new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1 }),
-                       new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1 }));
+    assertEquals(10, find(new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1}).length);
+    assertEquals(find(new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1 }),
+                 new int[] { 1, 1, 1, 1, 2, 3, 1, 1, 1, 1 });
 
-    test(find(new int[] { 1, 1, 1, 1, 1, 1, 1, 1}).length == 8);
-    test(Arrays.equals(find(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }),
-                       new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(8, find(new int[] { 1, 1, 1, 1, 1, 1, 1, 1}).length);
+    assertEquals(find(new int[] { 1, 1, 1, 1, 1, 1, 1, 1 }),
+                 new int[] { 1, 1, 1, 1, 1, 1, 1, 1 });
   }
 }
