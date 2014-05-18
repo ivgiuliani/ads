@@ -21,5 +21,7 @@ public class ContinuousSum extends TestCase {
     assertEquals(15, largestSum(new int[] { 1, 2, -3, 4, 5, 6 }));
     assertEquals(102, largestSum(new int[] { 100, 2, -300, 4, 5, 6 }));
     assertEquals(1, largestSum(new int[] { -1, -2, -3, 1, -5, -6 }));
+    assertEquals(0, largestSum(new int[] { 0, 0, 0, 0 }));
+    assertEquals(-10, largestSum(new int[] { -15, -10, -20, -30 }));
   }
 }
