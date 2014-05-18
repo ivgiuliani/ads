@@ -1,8 +1,6 @@
 package interviewquestions;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Determine if a string has all unique characters without
