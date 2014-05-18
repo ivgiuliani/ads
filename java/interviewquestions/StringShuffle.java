@@ -8,7 +8,7 @@ package interviewquestions;
  * of the two strings. So, given these 3 strings write a function that detects whether str3
  * is a valid shuffle of str1 and str2.
  */
-public class StringShuffle {
+public class StringShuffle extends TestCase {
   public static boolean validShuffling(String str1, String str2, String str3) {
     int s1 = 0, s2 = 0, s3 = 0;
 
@@ -30,22 +30,15 @@ public class StringShuffle {
   }
 
   public static void main(String[] args) {
-    test(validShuffling("abc", "def", "abcdef"));
-    test(validShuffling("abc", "def", "abdefc"));
-    test(validShuffling("abc", "def", "defabc"));
-    test(validShuffling("abc", "def", "adbecf"));
-    test(!validShuffling("abc", "def", "adcdfe"));
-    test(!validShuffling("abc", "def", "fedcba"));
-    test(!validShuffling("abc", "def", "acbdef"));
-    test(validShuffling("aaa", "aaa", "aaaaaa"));
-    test(validShuffling("aaa", "bbb", "abaabb"));
-    test(validShuffling("abc", "abc", "aabbcc"));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(validShuffling("abc", "def", "abcdef"));
+    assertTrue(validShuffling("abc", "def", "abdefc"));
+    assertTrue(validShuffling("abc", "def", "defabc"));
+    assertTrue(validShuffling("abc", "def", "adbecf"));
+    assertFalse(validShuffling("abc", "def", "adcdfe"));
+    assertFalse(validShuffling("abc", "def", "fedcba"));
+    assertFalse(validShuffling("abc", "def", "acbdef"));
+    assertTrue(validShuffling("aaa", "aaa", "aaaaaa"));
+    assertTrue(validShuffling("aaa", "bbb", "abaabb"));
+    assertTrue(validShuffling("abc", "abc", "aabbcc"));
   }
 }

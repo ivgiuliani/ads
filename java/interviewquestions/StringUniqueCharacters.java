@@ -1,12 +1,14 @@
 package interviewquestions;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Determine if a string has all unique characters without
  * using additional data structures
  */
-public class StringUniqueCharacters {
+public class StringUniqueCharacters extends TestCase {
   public static boolean unique(String string) {
     // we could use a set to store each single character and fail if the
     // character we're about to add is already in the set, leading to
@@ -30,21 +32,14 @@ public class StringUniqueCharacters {
   }
 
   public static void main(String args[]) {
-    test(!unique("aaaaa"));
-    test(unique("abcdef"));
-    test(unique("AaBbCcDd"));
-    test(!unique("           "));
-    test(unique("123456"));
-    test(unique("abcdefABCDEF"));
-    test(!unique("ABCDEFGHIJKLMNOPQRSTUVWXYZA"));
-    test(unique("a"));
-    test(unique(""));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertFalse(unique("aaaaa"));
+    assertTrue(unique("abcdef"));
+    assertTrue(unique("AaBbCcDd"));
+    assertFalse(unique("           "));
+    assertTrue(unique("123456"));
+    assertTrue(unique("abcdefABCDEF"));
+    assertFalse(unique("ABCDEFGHIJKLMNOPQRSTUVWXYZA"));
+    assertTrue(unique("a"));
+    assertTrue(unique(""));
   }
 }
