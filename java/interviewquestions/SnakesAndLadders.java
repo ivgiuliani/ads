@@ -54,15 +54,21 @@ public class SnakesAndLadders extends TestCase {
   }
 
   public static void main(String[] args) {
-    /* a board is an array of integers where each cell holds the index we should
-     * move to if move on:
-     * - a cell which holds its own index number is a "normal" cell
+    /*
+     * A board is an array of integers where each cell holds the index we should
+     * move to if we happen to be on that cell:
+     *
+     * - a cell which holds its own index number is a "normal" cell and no further
+     *   movements happen
      * - a cell which holds a number greater than its own index is a ladder
      *   (the number is the index of the end of the ladder)
      * - a cell which holds a number smaller than its own index is a snake
      *   (the number is the index of the tail of the snake)
      *
-     * For simplicity: our board index starts from 0
+     * For example, if the cell 25 contains the index 30 then if we throw
+     * a die and end up on that cell, we'll fast-forward to the cell 30.
+     *
+     * For simplicity, our board index starts from 0
      */
 
     int[] board;
