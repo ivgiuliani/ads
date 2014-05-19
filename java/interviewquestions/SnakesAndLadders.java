@@ -74,26 +74,25 @@ public class SnakesAndLadders extends TestCase {
     int[] board;
 
     // edge case, a board with only three items (one dice roll and we win)
-    board = new int[] { 0, 1, 2 };
-    assertEquals(1, min(board));
+    assertEquals(1, min(new int[] { 0, 1, 2 }));
 
     // no snakes and no ladders with a 6 cells board: only one die roll required (5)
-    board = new int[] { 0, 1, 2, 3, 4, 5 };
-    assertEquals(1, min(board));
+    assertEquals(1, min(new int[] { 0, 1, 2, 3, 4, 5 }));
 
     // no snakes and no ladders with a 8 cells board: two dice rolls required (6+1, 5+2, 4+3, 2+4)
     // (the first cell doesn't count as a roll)
-    board = new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
-    assertEquals(2, min(board));
+    assertEquals(2, min(new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }));
 
     // one ladder, which makes the optimal number of dice rolls 3 (6+1+1)
-    board = new int[] { 0, 1, 2, 3, 4, 5, 19, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                        29, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+    board = new int[] {  0,  1,  2,  3,  4,  5, 19,  7,  8,  9,
+                        10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                        20, 29, 22, 23, 24, 25, 26, 27, 28, 29, 30};
     assertEquals(3, min(board));
 
     // one ladder and one snake, which makes the optimal number of dice rolls 3 (6+1+1)
-    board = new int[] { 0, 1, 2, 3, 4, 5, 19, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 5,
-                        29, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+    board = new int[] {  0,  1,  2,  3,  4,  5,  19,  7,  8,  9,
+                         10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+                         5,  29, 22, 23, 24, 25, 26, 27, 28, 29, 30};
     assertEquals(3, min(board));
 
     // a real board with 7 ladders and 6 snakes
