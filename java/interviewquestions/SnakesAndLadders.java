@@ -98,6 +98,9 @@ public class SnakesAndLadders extends TestCase {
                          5,  29, 22, 23, 24, 25, 26, 27, 28, 29, 30};
     assertEquals(3, min(board));
 
+    // snakes everywhere but in the last cell (which we can reach with only a dice roll)
+    assertEquals(1, min(new int[] {  0,  0,  0,  0,  0,  0,  6 }));
+
     // a real board with 7 ladders and 6 snakes
     // For reference:
     // http://4.bp.blogspot.com/-cMt9obwH94E/UP8TB4WWbbI/AAAAAAAAA1g/qdLjDUIbE9k/s1600/Snakes_and_Ladders.jpg
