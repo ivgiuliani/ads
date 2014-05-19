@@ -49,7 +49,7 @@ public class SnakesAndLadders extends TestCase {
       }
     }
 
-    // this should never happen
+    // this should never happen, unless we have an empty board
     return -1;
   }
 
@@ -72,6 +72,9 @@ public class SnakesAndLadders extends TestCase {
      */
 
     int[] board;
+
+    // edge case, an empty board
+    assertEquals(-1, min(new int[] {}));
 
     // edge case, a board with only three items (one dice roll and we win)
     assertEquals(1, min(new int[] { 0, 1, 2 }));
