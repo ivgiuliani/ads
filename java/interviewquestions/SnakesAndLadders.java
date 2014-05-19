@@ -1,9 +1,9 @@
 package interviewquestions;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Calculates the least number of dice rolls required to go from the first to
@@ -20,7 +20,7 @@ public class SnakesAndLadders extends TestCase {
   }
 
   public static int min(final int[] board) {
-    Set<Integer> visited = new TreeSet<Integer>();
+    Set<Integer> visited = new HashSet<Integer>();
     Queue<Pair> q = new LinkedList<Pair>();
     final int lastCell = board.length - 1;
     int next;
