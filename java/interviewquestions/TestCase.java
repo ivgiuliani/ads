@@ -79,7 +79,8 @@ public abstract class TestCase {
     if (o1.length == o2.length) {
       for (int i = 0; i < o1.length; i++) {
         if (o1[i] != o2[i]) {
-          throw new AssertionError("different objects at item " + i);
+          throw new AssertionError(String.format(
+              "different objects at item %d (%d != %d)", i, o1[i], o2[i]));
         }
       }
     } else {
