@@ -16,9 +16,9 @@ public class GenParenthesis {
     Set<String> set = new HashSet<String>();
     if (level == 0) return set;
 
-    tmp.add("()%".replaceAll("%", current));
-    tmp.add("%()".replaceAll("%", current));
-    tmp.add("(%)".replaceAll("%", current));
+    tmp.add("()" + current);
+    tmp.add(current + "()");
+    tmp.add("(" + current + ")");
 
     for (String item : tmp) {
       set.addAll(gen(item, level - 1));
