@@ -10,7 +10,7 @@ import java.util.Set;
  *   input: 3 (e.g., 3 pairs of parentheses)
  *   output: ()()(), ()(()), (())(), ((()))
  */
-public class GenParenthesis {
+public class GenParenthesis extends TestCase {
   private static Set<String> gen(String current, int level) {
     Set<String> tmp = new HashSet<String>();
     Set<String> set = new HashSet<String>();
@@ -38,25 +38,18 @@ public class GenParenthesis {
 
   public static void main(String[] args) {
     Set<String> s3 = gen(3);
-    test(s3.size() == 5);
-    test(s3.contains("()()()"));
-    test(s3.contains("()(())"));
-    test(s3.contains("(())()"));
-    test(s3.contains("(()())"));
-    test(s3.contains("((()))"));
+    assertEquals(5, s3.size());
+    assertTrue(s3.contains("()()()"));
+    assertTrue(s3.contains("()(())"));
+    assertTrue(s3.contains("(())()"));
+    assertTrue(s3.contains("(()())"));
+    assertTrue(s3.contains("((()))"));
 
     Set<String> s1 = gen(1);
-    test(s1.size() == 1);
-    test(s1.contains("()"));
+    assertEquals(1, s1.size());
+    assertTrue(s1.contains("()"));
 
     Set<String> s0 = gen(0);
-    test(s0.isEmpty());
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(s0.isEmpty());
   }
 }
