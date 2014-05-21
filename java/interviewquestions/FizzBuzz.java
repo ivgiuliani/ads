@@ -14,7 +14,7 @@ package interviewquestions;
  * The program should then print out the final series of numbers using 'F'
  * for fizz, 'B' for 'buzz' and 'FB' for fizz buzz.
  */
-public class FizzBuzz {
+public class FizzBuzz extends TestCase {
   public static String fizzbuzz(int count, int A, int B) {
     StringBuilder res = new StringBuilder();
     for (int i = 1; i <= count; i++) {
@@ -31,21 +31,14 @@ public class FizzBuzz {
   }
 
   public static void main (String[] args) {
-    test(fizzbuzz(10, 3, 5).equals("1 2 F 4 B F 7 8 F B"));
-    test(fizzbuzz(15, 2, 7).equals("1 F 3 F 5 F B F 9 F 11 F 13 FB 15"));
-    test(fizzbuzz(15, 2, 7).equals("1 F 3 F 5 F B F 9 F 11 F 13 FB 15"));
-    test(fizzbuzz(26, 3, 5).equals("1 2 F 4 B F 7 8 F B 11 F 13 14 FB 16 17 F 19 B F 22 23 F B 26"));
-    test(fizzbuzz(20, 2, 5).equals("1 F 3 F B F 7 F 9 FB 11 F 13 F B F 17 F 19 FB"));
-    test(fizzbuzz(10, 1, 1).equals("FB FB FB FB FB FB FB FB FB FB"));
-    test(fizzbuzz(10, 1, 2).equals("F FB F FB F FB F FB F FB"));
-    test(fizzbuzz(1, 1, 1).equals("FB"));
-    test(fizzbuzz(0, 1, 1).equals(""));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("1 2 F 4 B F 7 8 F B", fizzbuzz(10, 3, 5));
+    assertEquals("1 F 3 F 5 F B F 9 F 11 F 13 FB 15", fizzbuzz(15, 2, 7));
+    assertEquals("1 F 3 F 5 F B F 9 F 11 F 13 FB 15", fizzbuzz(15, 2, 7));
+    assertEquals("1 2 F 4 B F 7 8 F B 11 F 13 14 FB 16 17 F 19 B F 22 23 F B 26", fizzbuzz(26, 3, 5));
+    assertEquals("1 F 3 F B F 7 F 9 FB 11 F 13 F B F 17 F 19 FB", fizzbuzz(20, 2, 5));
+    assertEquals("FB FB FB FB FB FB FB FB FB FB", fizzbuzz(10, 1, 1));
+    assertEquals("F FB F FB F FB F FB F FB", fizzbuzz(10, 1, 2));
+    assertEquals("FB", fizzbuzz(1, 1, 1));
+    assertEquals("", fizzbuzz(0, 1, 1));
   }
 }
