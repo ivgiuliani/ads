@@ -16,7 +16,7 @@ package interviewquestions;
  *
  * SRM587/DIV2 -- 250
  */
-public class InsertZ {
+public class InsertZ extends TestCase {
   public static final String YES = "Yes";
   public static final String NO = "No";
 
@@ -74,22 +74,14 @@ public class InsertZ {
   public static void main(String[] args) {
     InsertZ z = new InsertZ();
 
-    test(z.canTransform("fox", "fozx").equals(InsertZ.YES));
-    test(z.canTransform("fox", "zfzoxzz").equals(InsertZ.YES));
-    test(z.canTransform("foon", "foon").equals(InsertZ.YES));
-    test(z.canTransform("topcoder", "zopzoder").equals(InsertZ.NO));
-    test(z.canTransform("aaaaaaaaaa", "a").equals(InsertZ.NO));
-    test(z.canTransform("mvixrdnrpxowkasufnvxaq", "mvizzxzzzrdzznzrpxozzwzzkazzzszzuzzfnvxzzzazzq").equals(InsertZ.YES));
-    test(z.canTransform("opdlfmvuicjsierjowdvnx", "zzopzdlfmvzuicjzzsizzeijzowvznxzz").equals(InsertZ.NO));
-    test(z.canTransform("", "").equals(InsertZ.YES));
-    test(z.canTransform("", "zzzzzz").equals(InsertZ.YES));
-
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(InsertZ.YES, z.canTransform("fox", "fozx"));
+    assertEquals(InsertZ.YES, z.canTransform("fox", "zfzoxzz"));
+    assertEquals(InsertZ.YES, z.canTransform("foon", "foon"));
+    assertEquals(InsertZ.NO, z.canTransform("topcoder", "zopzoder"));
+    assertEquals(InsertZ.NO, z.canTransform("aaaaaaaaaa", "a"));
+    assertEquals(InsertZ.YES, z.canTransform("mvixrdnrpxowkasufnvxaq", "mvizzxzzzrdzznzrpxozzwzzkazzzszzuzzfnvxzzzazzq"));
+    assertEquals(InsertZ.NO, z.canTransform("opdlfmvuicjsierjowdvnx", "zzopzdlfmvzuicjzzsizzeijzowvznxzz"));
+    assertEquals(InsertZ.YES, z.canTransform("", ""));
+    assertEquals(InsertZ.YES, z.canTransform("", "zzzzzz"));
   }
 }
