@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Given a number, insert into the correct position in an already
  * sorted array
  */
-public class IntoSortedArray {
+public class IntoSortedArray extends TestCase {
   public static void add(int[] items, int usedCount, int item) {
     int start = 0, end = usedCount;
     int middle = 0;
@@ -51,29 +51,22 @@ public class IntoSortedArray {
     add(items, 8, 1);
 
     System.out.println(Arrays.toString(Arrays.copyOf(items, 9)));
-    test(items[0] == 1);
-    test(items[1] == 1);
-    test(items[2] == 2);
-    test(items[3] == 2);
-    test(items[4] == 50);
-    test(items[5] == 98);
-    test(items[6] == 99);
-    test(items[7] == 100);
-    test(items[8] == 150);
+    assertEquals(1, items[0]);
+    assertEquals(1, items[1]);
+    assertEquals(2, items[2]);
+    assertEquals(2, items[3]);
+    assertEquals(50, items[4]);
+    assertEquals(98, items[5]);
+    assertEquals(99, items[6]);
+    assertEquals(100, items[7]);
+    assertEquals(150, items[8]);
 
     items = new int[1024];
     for (int i = 0; i < 100; i++) {
       add(items, i, 100 - i);
     }
     for (int i = 0; i < 100; i++) {
-      test(items[i] == i + 1);
-    }
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
+      assertEquals(i + 1, items[i]);
     }
   }
 }
