@@ -19,6 +19,7 @@ public class ContiguousUniqueSubarray extends TestCase {
     int[] res = new int[0];
 
     // a dictionary of fixed size k (equals to 4 in this case) is still O(1)
+    // (it would be O(4), hence O(1))
     Map<Integer, Integer> count = new HashMap<Integer, Integer>(4);
     Integer tmp;
     for (int i = 0; i < array.length; i++) {
