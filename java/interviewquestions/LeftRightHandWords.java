@@ -14,7 +14,7 @@ package interviewquestions;
  *   - set of left-hand chars: a,s,d,f, ...
  *   - set of right-hand chars: j,k,l, ...
  */
-public class LeftRightHandWords {
+public class LeftRightHandWords extends TestCase {
   public static class Result {
     public String largestLeft;
     public String largestRight;
@@ -78,16 +78,9 @@ public class LeftRightHandWords {
         "p",
     });
 
-    test(res.smallestLeft.equals("asd"));
-    test(res.smallestRight.equals("p"));
-    test(res.largestLeft.equals("qqqqqqqqqqqqqqqqqqqq"));
-    test(res.largestRight.equals("llllllllllllllllllll"));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("asd", res.smallestLeft);
+    assertEquals("p", res.smallestRight);
+    assertEquals("qqqqqqqqqqqqqqqqqqqq", res.largestLeft);
+    assertEquals("llllllllllllllllllll", res.largestRight);
   }
 }
