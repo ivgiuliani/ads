@@ -119,8 +119,8 @@ public class PeopleQueueShuffling extends TestCase {
   }
 
   public static void main(String[] args) {
-    // our queue is not really a "queue" (in the computer science meaning)
-    // but rather an ordered array
+    // our queue is not really a "queue" (in the computer science sense)
+    // but rather a sorted array
     Person[] queue;
 
     queue = makeQueueFromHeights(160);
