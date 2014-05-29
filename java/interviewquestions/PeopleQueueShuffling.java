@@ -81,8 +81,7 @@ public class PeopleQueueShuffling extends TestCase {
       int tallerPersons = 0;
 
       for (int j = i + 1; j < heights.length; j++) {
-        // persons with the same height are still considered as "taller"
-        // if in the front of us
+        // persons with the same height are still considered "taller"
         if (heights[j] >= h) {
           tallerPersons++;
         }
