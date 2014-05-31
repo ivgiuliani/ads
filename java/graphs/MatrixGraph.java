@@ -11,7 +11,7 @@ import interviewquestions.TestCase;
 /**
  * Implementation of directed and weighted graph based on a "matrix" (array of array)
  */
-public class MatrixGraph<T> extends TestCase {
+public class MatrixGraph<T> extends TestCase implements Graph<T> {
   private Map<T, Integer> nodesToId = new HashMap<T, Integer>();
   private Map<Integer, T> idToNodes = new HashMap<Integer, T>();
   private int[][] graph;
@@ -20,6 +20,7 @@ public class MatrixGraph<T> extends TestCase {
     graph = new int[nodesCount][nodesCount];
   }
 
+  @Override
   public void link(T n1, T n2, int weight) {
     int i1 = getId(n1);
     int i2 = getId(n2);
@@ -27,6 +28,7 @@ public class MatrixGraph<T> extends TestCase {
     graph[i1][i2] = weight;
   }
 
+  @Override
   public void unlink(T n1, T n2) {
     int i1 = getId(n1);
     int i2 = getId(n2);
@@ -34,6 +36,7 @@ public class MatrixGraph<T> extends TestCase {
     graph[i1][i2] = 0;
   }
 
+  @Override
   public int weight(T n1, T n2) {
     int i1 = getId(n1);
     int i2 = getId(n2);
@@ -41,10 +44,12 @@ public class MatrixGraph<T> extends TestCase {
     return graph[i1][i2];
   }
 
+  @Override
   public boolean isLinked(T n1, T n2) {
     return weight(n1, n2) > 0;
   }
 
+  @Override
   public Set<T> neighbours(T node) {
     int id = getId(node);
     int[] neighbours = graph[id];
