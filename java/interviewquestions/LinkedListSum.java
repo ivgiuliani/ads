@@ -8,13 +8,17 @@ package interviewquestions;
  * Write a function that adds the two numbers and returns the sum as a linked
  * list.
  * EXAMPLE
- *   Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
+ *   Input: (3 -> 1 -> 5) + (5 -> 9 -> 2) (these are equivalent to 513+295)
  *   Output: 8 -> 0 -> 8
  */
-public class LinkedListSum {
+public class LinkedListSum extends TestCase {
   private static class LinkedNode {
     public int value;
     public LinkedNode next = null;
+
+    public LinkedNode(int value) {
+      this.value = value;
+    }
 
     public LinkedNode(int value, LinkedNode next) {
       this.value = value;
@@ -40,34 +44,47 @@ public class LinkedListSum {
     }
 
     if (val >= 10) {
-      carry = val - 10;
+      carry = 1;
       val = val - 10;
     }
 
-    if (result == null) {
-      result = new LinkedNode(val, null);
-    }
-
-    if (l1next != null || l2next != null)
+    result = new LinkedNode(val);
+    if (l1next != null || l2next != null) {
       result.next = sum(l1next, l2next, carry, result);
+    }
 
     return result;
   }
 
   public static void main(String[] args) {
-    LinkedNode l1 = new LinkedNode(3, new LinkedNode(1, new LinkedNode(5, null)));
-    LinkedNode l2 = new LinkedNode(5, new LinkedNode(9, new LinkedNode(2, null)));
+    LinkedNode l1 = new LinkedNode(3, new LinkedNode(1, new LinkedNode(5)));
+    LinkedNode l2 = new LinkedNode(5, new LinkedNode(9, new LinkedNode(2)));
 
     LinkedNode sum = sum(l1, l2);
-    assert(sum.value == 8);
-    assert(sum.next.value == 0);
-    assert(sum.next.next.value == 8);
-  }
+    assertEquals(8, sum.value);
+    assertEquals(0, sum.next.value);
+    assertEquals(8, sum.next.next.value);
 
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    l1 = new LinkedNode(1, new LinkedNode(1, new LinkedNode(1)));
+    l2 = new LinkedNode(2, new LinkedNode(2, new LinkedNode(2)));
+    sum = sum(l1, l2);
+    assertEquals(3, sum.value);
+    assertEquals(3, sum.next.value);
+    assertEquals(3, sum.next.next.value);
+
+    l1 = new LinkedNode(5, new LinkedNode(6, new LinkedNode(3)));
+    l2 = new LinkedNode(8, new LinkedNode(4, new LinkedNode(2)));
+    sum = sum(l1, l2);
+    assertEquals(3, sum.value);
+    assertEquals(1, sum.next.value);
+    assertEquals(6, sum.next.next.value);
+
+    l1 = new LinkedNode(1, new LinkedNode(1, new LinkedNode(1)));
+    l2 = new LinkedNode(9, new LinkedNode(9, new LinkedNode(9)));
+    sum = sum(l1, l2);
+    assertEquals(0, sum.value);
+    assertEquals(1, sum.next.value);
+    assertEquals(1, sum.next.next.value);
+    assertEquals(1, sum.next.next.value);
   }
 }
