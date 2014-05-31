@@ -14,6 +14,7 @@ Additionally, there are also some interview questions and solutions for each
 programming language. The description of the interview question is in the
 file itself.
 
+Note: some of the Java implementations require Java 8
 
 +----------------+---------------------+-----+-----+------+-----+--------+------+
 |                |                     |  C  | C++ | Java |  Go | Python | Ruby |
@@ -66,7 +67,9 @@ file itself.
 |                +---------------------+-----+-----+------+-----+--------+------+
 |                | Quad Tree           |     |     |      |     |        |      |
 +----------------+---------------------+-----+-----+------+-----+--------+------+
-| *Graphs*       | Matrix-based graph  |     |     |   ✓  |     |        |      |
+|                | Matrix-based graph  |     |     |   ✓  |     |        |      |
+| *Graphs*       +---------------------+-----+-----+------+-----+--------+------+
+|                | BFS                 |     |     |   ✓  |     |        |      |
 +----------------+---------------------+-----+-----+------+-----+--------+------+
 
 
