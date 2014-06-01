@@ -62,7 +62,7 @@ public abstract class TestCase {
       E e1 = it1.next();
       E e2 = it2.next();
 
-      assertTrue(e1.equals(e2));
+      assertEquals(e1, e2);
     }
 
     assertTrue(!it1.hasNext());
@@ -128,8 +128,8 @@ public abstract class TestCase {
   }
 
   public static void assertEquals(Object o1, Object o2) {
-    if (o1 != o2) {
-      throw new AssertionError("different objects");
+    if (!o1.equals(o2)) {
+      throw new AssertionError("different objects: " + o1.toString() + " != " + o2.toString());
     }
   }
 }
