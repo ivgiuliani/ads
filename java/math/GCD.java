@@ -17,10 +17,11 @@ public class GCD extends TestCase {
       a = tmp;
     }
     return a;
+  }
 
-    // equivalent recursive implementation:
-    // if (b == 0) return a;
-    // return gcd_euclid(b, a % b);
+  // 1-line implementation of GCD
+  public static int gcd_euclid_recursive(int a, int b) {
+    return b == 0 ? a : gcd_euclid_recursive(b, a % b);
   }
 
   public static int gcd_knuth(int a, int b) {
@@ -55,6 +56,18 @@ public class GCD extends TestCase {
     assertEquals(200, gcd_euclid(0, 200));
     assertEquals(0,   gcd_euclid(0, 0));
     assertEquals(34,  gcd_euclid(40902, 24140));
+
+    assertEquals(4,   gcd_euclid_recursive(8, 12));
+    assertEquals(2,   gcd_euclid_recursive(2, 4));
+    assertEquals(1,   gcd_euclid_recursive(2, 3));
+    assertEquals(1,   gcd_euclid_recursive(9, 28));
+    assertEquals(6,   gcd_euclid_recursive(54, 24));
+    assertEquals(6,   gcd_euclid_recursive(48, 18));
+    assertEquals(100, gcd_euclid_recursive(100, 200));
+    assertEquals(100, gcd_euclid_recursive(100, 0));
+    assertEquals(200, gcd_euclid_recursive(0, 200));
+    assertEquals(0,   gcd_euclid_recursive(0, 0));
+    assertEquals(34,  gcd_euclid_recursive(40902, 24140));
 
     assertEquals(4,   gcd_knuth(8, 12));
     assertEquals(2,   gcd_knuth(2, 4));
