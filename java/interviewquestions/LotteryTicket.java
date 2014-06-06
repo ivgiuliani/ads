@@ -12,7 +12,7 @@ import java.util.Arrays;
  * subset of his banknotes.
  * Return true if it is possible or false if it is not.
  */
-public class LotteryTicket {
+public class LotteryTicket extends TestCase {
   public boolean buy(int price, int b1, int b2, int b3, int b4) {
     assert(price >= 1 && price <= 4000);
     assert(b1 >= 1 && b1 <= 1000);
@@ -46,19 +46,12 @@ public class LotteryTicket {
   public static void main(String[] args) {
     LotteryTicket lt = new LotteryTicket();
 
-    test(lt.buy(10, 1, 5, 10, 50));
-    test(lt.buy(15, 1, 5, 10, 50));
-    test(lt.buy(65, 1, 5, 10, 50));
-    test(lt.buy(66, 1, 5, 10, 50));
-    test(!lt.buy(1000, 999, 998, 997, 996));
-    test(lt.buy(20, 5, 5, 5, 5));
-    test(!lt.buy(2, 1, 5, 10, 50));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(lt.buy(10, 1, 5, 10, 50));
+    assertTrue(lt.buy(15, 1, 5, 10, 50));
+    assertTrue(lt.buy(65, 1, 5, 10, 50));
+    assertTrue(lt.buy(66, 1, 5, 10, 50));
+    assertFalse(lt.buy(1000, 999, 998, 997, 996));
+    assertTrue(lt.buy(20, 5, 5, 5, 5));
+    assertFalse(lt.buy(2, 1, 5, 10, 50));
   }
 }
