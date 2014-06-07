@@ -25,7 +25,7 @@ import java.util.Collections;
  * Assume all the names are uppercase and that at least one name (for the
  * boys array) will be given.
  */
-public class LoveFormula {
+public class LoveFormula extends TestCase {
   public String findBoy(String girl, String[] boys) {
     int[] girlchars = extract(girl);
 
@@ -68,24 +68,13 @@ public class LoveFormula {
 
   public static void main(String[] args) {
     LoveFormula love = new LoveFormula();
-    test(love.findBoy("LOVE",
-        new String[] {"JACOB","FRANK","DANO"}).equals("FRANK"));
-    test(love.findBoy("JANE",
-        new String[] {"THOMAS","MICHAEL","INDY","LIU"}).equals("INDY"));
-    test(love.findBoy("LILLY",
-        new String[] {"PIERRE"}).equals("PIERRE"));
-    test(love.findBoy("MERYLOV",
-        new String[] {"JOHN","DAVE","STEVE","JOHN","DAVE"}).equals("DAVE"));
-    test(love.findBoy("LLOL",
-        new String[] {"BVERON","CVERON","AVERON","DVERON"}).equals("AVERON"));
-    test(love.findBoy("VELYLEOCEVE",
-        new String[] {"YVXHOVE","LCOKO","OGWSJVEVEDLE","WGFVSJEL","VLOLUVCBLLQVESWHEEKC"}).equals("VLOLUVCBLLQVESWHEEKC"));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("FRANK", love.findBoy("LOVE", new String[] {"JACOB", "FRANK", "DANO"}));
+    assertEquals("INDY", love.findBoy("JANE", new String[] {"THOMAS", "MICHAEL", "INDY", "LIU"}));
+    assertEquals("PIERRE", love.findBoy("LILLY", new String[] {"PIERRE"}));
+    assertEquals("DAVE", love.findBoy("MERYLOV", new String[] {"JOHN", "DAVE", "STEVE", "JOHN", "DAVE"}));
+    assertEquals("AVERON", love.findBoy("LLOL", new String[] {"BVERON", "CVERON", "AVERON", "DVERON"}));
+    assertEquals("VLOLUVCBLLQVESWHEEKC", love.findBoy("VELYLEOCEVE", new String[] {
+        "YVXHOVE", "LCOKO", "OGWSJVEVEDLE", "WGFVSJEL", "VLOLUVCBLLQVESWHEEKC"
+    }));
   }
 }
