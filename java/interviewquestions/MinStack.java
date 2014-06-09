@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
  * min which returns the minimum element.
  * Push, pop and min should all operate in O(1) time.
  */
-public class MinStack {
+public class MinStack extends TestCase {
   private ArrayDeque<Integer> stack = new ArrayDeque<Integer>();
   private ArrayDeque<Integer> mins = new ArrayDeque<Integer>();
 
@@ -53,25 +53,18 @@ public class MinStack {
     stack.push(2);
     stack.push(1);
 
-    test(stack.min() == 1);
+    assertEquals(1, stack.min());
     stack.pop();  // 1
-    test(stack.min() == 2);
+    assertEquals(2, stack.min());
     stack.pop();  // 2
-    test(stack.min() == 3);
+    assertEquals(3, stack.min());
     stack.pop();  // 3
-    test(stack.min() == 5);
+    assertEquals(5, stack.min());
     stack.pop();  // 7
-    test(stack.min() == 5);
+    assertEquals(5, stack.min());
     stack.pop();  // 5
-    test(stack.min() == 10);
+    assertEquals(10, stack.min());
     stack.push(1);
-    test(stack.min() == 1);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(1, stack.min());
   }
 }
