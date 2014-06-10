@@ -5,8 +5,10 @@ package interviewquestions;
  * shuffling the elements of the first array and deleting a random element.
  * Given these two arrays, find which element is missing in the second array.
  */
-public class MissingItem {
+public class MissingItem extends TestCase {
   public static int missingitem(int[] array1, int[] array2) {
+    assert array2.length == (array1.length - 1);
+
     // either a sum() or a xor() of all the items will lead to the
     // same solution given that all the items are > 0, however
     // the sum can potentially lead to an integer overflow
@@ -21,20 +23,17 @@ public class MissingItem {
   }
 
   public static void main(String[] args) {
-    test(missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
-                     new int[] { 6, 5, 4, 3, 2    }) == 1);
-    test(missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
-                     new int[] { 1, 4, 3,    5, 2 }) == 6);
-    test(missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
-                     new int[] { 3, 2, 1,    6, 5 }) == 4);
-    test(missingitem(new int[] { 1, 1, 2, 2, 3, 3 },
-                     new int[] { 3, 3, 2,    1, 1 }) == 2);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(1, missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
+                                new int[] { 6, 5, 4, 3, 2    }));
+    assertEquals(6, missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
+                                new int[] { 1, 4, 3,    5, 2 }));
+    assertEquals(4, missingitem(new int[] { 1, 2, 3, 4, 5, 6 },
+                                new int[] { 3, 2, 1,    6, 5 }));
+    assertEquals(2, missingitem(new int[] { 1, 1, 2, 2, 3, 3 },
+                                new int[] { 3, 3, 2,    1, 1 }));
+    assertEquals(2, missingitem(new int[] { 1, 1, 1, 2, 2, 2 },
+                                new int[] { 1, 1, 1,    2, 2 }));
+    assertEquals(1, missingitem(new int[] { 1, 1, 1, 2, 2, 2 },
+                                new int[] { 1, 1,    2, 2, 2 }));
   }
 }
