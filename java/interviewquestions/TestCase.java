@@ -88,6 +88,19 @@ public abstract class TestCase {
     }
   }
 
+  public static void assertEquals(char[] o1, char[] o2) {
+    if (o1.length == o2.length) {
+      for (int i = 0; i < o1.length; i++) {
+        if (o1[i] != o2[i]) {
+          throw new AssertionError(String.format(
+              "different objects at item %d (%c != %c)", i, o1[i], o2[i]));
+        }
+      }
+    } else {
+      throw new AssertionError("different objects");
+    }
+  }
+
   public static void assertEquals(long[] o1, long[] o2) {
     if (o1.length == o2.length) {
       for (int i = 0; i < o1.length; i++) {
