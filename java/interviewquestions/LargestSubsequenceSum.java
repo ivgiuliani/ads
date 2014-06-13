@@ -39,7 +39,7 @@ public class LargestSubsequenceSum extends TestCase {
   }
 
   // this version returns only the sum, without the boundaries
-  public static int largestSubsequenceSum2(int[] array) {
+  public static int largestSubsequenceSum_simple(int[] array) {
     int sum = 0;
     int max = Integer.MIN_VALUE;
 
@@ -69,8 +69,8 @@ public class LargestSubsequenceSum extends TestCase {
     assertEquals(0, largestSubsequenceSum(new int[] {1, -2, -3, -4, -5, -6}).start);
     assertEquals(0, largestSubsequenceSum(new int[] {1, -2, -3, -4, -5, -6}).stop);
 
-    assertEquals(5, largestSubsequenceSum2(new int[] {2, -8, 3, -2, 4, -10}));
-    assertEquals(-1, largestSubsequenceSum2(new int[] {-1, -2, -3, -4, -5, -6}));
-    assertEquals(1, largestSubsequenceSum2(new int[] {1, -2, -3, -4, -5, -6}));
+    assertEquals(5, largestSubsequenceSum_simple(new int[] {2, -8, 3, -2, 4, -10}));
+    assertEquals(-1, largestSubsequenceSum_simple(new int[] {-1, -2, -3, -4, -5, -6}));
+    assertEquals(1, largestSubsequenceSum_simple(new int[] {1, -2, -3, -4, -5, -6}));
   }
 }
