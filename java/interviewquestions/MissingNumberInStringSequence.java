@@ -6,10 +6,11 @@ package interviewquestions;
  *   1) range is not given
  *   2) only one number is missing
  *   3) the sequence is contiguous if not for the missing number
- *   4) a number can only be missing in the middle of the sequence and you’re guaranteed to have at least two numbers
+ *   4) a number can only be missing in the middle of the sequence and you're
+ *      guaranteed to have at least two numbers
  *   5) the sequence is guaranteed to be valid
  */
-public class MissingNumberInStringSequence {
+public class MissingNumberInStringSequence extends TestCase {
   public static int findMissing(String str) {
     for (int length = 1; length <= str.length(); length++) {
       String startString = str.substring(0, length);
@@ -56,16 +57,9 @@ public class MissingNumberInStringSequence {
   }
 
   public static void main(String[] args) {
-    test(findMissing("123567") == 4);
-    test(findMissing("101112131416") == 15);
-    test(findMissing("9899101102") == 100);
-    test(findMissing("911") == 10);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(4, findMissing("123567"));
+    assertEquals(15, findMissing("101112131416"));
+    assertEquals(100, findMissing("9899101102"));
+    assertEquals(10, findMissing("911"));
   }
 }
