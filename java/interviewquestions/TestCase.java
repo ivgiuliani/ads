@@ -36,6 +36,12 @@ public abstract class TestCase {
     }
   }
 
+  public static void assertEquals(char i1, char i2) {
+    if (i1 != i2) {
+      throw new AssertionError(String.format("%c != %c", i1, i2));
+    }
+  }
+
   public static void assertEquals(long i1, long i2) {
     if (i1 != i2) {
       throw new AssertionError(String.format("%d != %d", i1, i2));
