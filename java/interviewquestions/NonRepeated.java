@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Find the first non-repeated (unique) character in a given string.
  */
-public class NonRepeated {
+public class NonRepeated extends TestCase {
   public static Character nonRepeated(String string) {
     Map<Character, Integer> repetitions = new HashMap<Character, Integer>();
     for (char ch : string.toCharArray()) {
@@ -21,16 +21,9 @@ public class NonRepeated {
   }
 
   public static void main(String[] args) {
-    test(nonRepeated("abcdefghijklmnopqrstuvwxyz") == 'a');
-    test(nonRepeated("aabbccddeeffggh") == 'h');
-    test(nonRepeated("abcdefgabcdefgzabcdefgabcdefg") == 'z');
-    test(nonRepeated("aabbccddee") == null);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals('a', (char) nonRepeated("abcdefghijklmnopqrstuvwxyz"));
+    assertEquals('h', (char) nonRepeated("aabbccddeeffggh"));
+    assertEquals('z', (char) nonRepeated("abcdefgabcdefgzabcdefgabcdefg"));
+    assertNull(nonRepeated("aabbccddee"));
   }
 }
