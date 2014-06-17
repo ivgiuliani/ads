@@ -7,7 +7,7 @@ import java.util.Map;
  * Given an integer array, one element occurs odd number of times and all
  * others have even occurrences. Find the element with odd occurrences.
  */
-public class OddOccurring {
+public class OddOccurring extends TestCase {
   public static Character occurring(String string) {
     Map<Character, Integer> occurrences = new HashMap<Character, Integer>();
     for (char ch : string.toCharArray()) {
@@ -22,15 +22,8 @@ public class OddOccurring {
   }
 
   public static void main(String[] args) {
-    test(occurring("aabbccddeeffggh") == 'h');
-    test(occurring("aaabbbcccdddeeeabde") == 'c');
-    test(occurring("aabbcc") == null);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals('h', (char) occurring("aabbccddeeffggh"));
+    assertEquals('c', (char) occurring("aaabbbcccdddeeeabde"));
+    assertNull(occurring("aabbcc"));
   }
 }
