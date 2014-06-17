@@ -13,7 +13,7 @@ public class OddOccurring extends TestCase {
     for (char ch : string.toCharArray()) {
       occurrences.put(ch, occurrences.get(ch) == null ? 1 : occurrences.get(ch) + 1);
     }
-    for (char ch : string.toCharArray()) {
+    for (char ch : occurrences.keySet()) {
       if ((occurrences.get(ch) % 2) != 0) {
         return ch;
       }
