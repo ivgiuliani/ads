@@ -25,7 +25,7 @@ package interviewquestions;
  *
  * SRM566/DIV2
  */
-public class PenguinTiles {
+public class PenguinTiles extends TestCase {
   public int minMoves(String[] tiles) {
     /* this is kind of easy to solve once you notice that every game
      * can be solved with at most two moves: push the dot to the rightmost
@@ -58,29 +58,22 @@ public class PenguinTiles {
   public static void main(String[] args) {
     PenguinTiles t = new PenguinTiles();
 
-    test(t.minMoves(new String[] {
+    assertEquals(1, t.minMoves(new String[] {
         "PPPPPPPP",
-        ".PPPPPPP"}) == 1);
-    test(t.minMoves(new String[] {
+        ".PPPPPPP"}));
+    assertEquals(2, t.minMoves(new String[] {
         "PPP",
         "P.P",
-        "PPP"}) == 2);
-    test(t.minMoves(new String[] {
+        "PPP"}));
+    assertEquals(1, t.minMoves(new String[] {
         "P.",
         "PP",
         "PP",
-        "PP"}) == 1);
-    test(t.minMoves(new String[] {
+        "PP"}));
+    assertEquals(2, t.minMoves(new String[] {
         ".PPP",
         "PPPP",
         "PPPP",
-        "PPPP"}) == 2);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+        "PPPP"}));
   }
 }
