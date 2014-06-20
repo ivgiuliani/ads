@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Return all subsets of a set.
  */
-public class Powersets {
+public class Powersets extends TestCase {
   public static <T> Set<Set<T>> powerset(Set<T> set) {
     Set<Set<T>> pset = new HashSet<Set<T>>();
     Set<T> tmp;
@@ -26,26 +26,19 @@ public class Powersets {
     Set<Integer> initial = new HashSet<Integer>(Arrays.asList(1, 2, 3));
     Set<Set<Integer>> powerset = powerset(initial);
 
-    test(powerset.size() == 8);
-    test(powerset.contains(new HashSet<Integer>()));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(1))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(2))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(3))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 2))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 3))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(2, 3))));
-    test(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 2, 3))));
+    assertEquals(8, powerset.size());
+    assertTrue(powerset.contains(new HashSet<Integer>()));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(1))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(2))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(3))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 2))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 3))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(2, 3))));
+    assertTrue(powerset.contains(new HashSet<Integer>(Arrays.asList(1, 2, 3))));
 
     // the powerset is never empty, it always contains at least the empty set
     initial = new HashSet<Integer>();
-    test(powerset(initial).size() == 1);
-    test(powerset(initial).contains(initial));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(1, powerset(initial).size());
+    assertTrue(powerset(initial).contains(initial));
   }
 }
