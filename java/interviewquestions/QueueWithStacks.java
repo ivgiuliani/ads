@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 /**
  * Implement a Queue class which implements a queue using two stacks
  */
-public class QueueWithStacks {
+public class QueueWithStacks extends TestCase {
   private ArrayDeque<Integer> s1 = new ArrayDeque<Integer>();
   private ArrayDeque<Integer> s2 = new ArrayDeque<Integer>();
 
@@ -28,18 +28,11 @@ public class QueueWithStacks {
     q.enqueue(5);
     q.enqueue(6);
 
-    test(q.dequeue() == 1);
-    test(q.dequeue() == 2);
-    test(q.dequeue() == 3);
-    test(q.dequeue() == 4);
-    test(q.dequeue() == 5);
-    test(q.dequeue() == 6);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(1, q.dequeue());
+    assertEquals(2, q.dequeue());
+    assertEquals(3, q.dequeue());
+    assertEquals(4, q.dequeue());
+    assertEquals(5, q.dequeue());
+    assertEquals(6, q.dequeue());
   }
 }
