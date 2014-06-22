@@ -4,7 +4,7 @@ package interviewquestions;
  * Given the pre-order and in-order traversing result of a binary tree, write a function
  * to rebuild the tree.
  */
-public class RebuildBT {
+public class RebuildBT extends TestCase {
   public static class Node {
     public int value;
     public Node left;
@@ -53,13 +53,13 @@ public class RebuildBT {
 
     root = rebuild(preOrder, inOrder);
 
-    test(root.value == 7);
-    test(root.left.value == 6);
-    test(root.right.value == 2);
-    test(root.left.left.value == 5);
-    test(root.left.right.value == 4);
-    test(root.right.left.value == 11);
-    test(root.right.right.value == 9);
+    assertEquals(7, root.value);
+    assertEquals(6, root.left.value);
+    assertEquals(2, root.right.value);
+    assertEquals(5, root.left.left.value);
+    assertEquals(4, root.left.right.value);
+    assertEquals(11, root.right.left.value);
+    assertEquals(9, root.right.right.value);
 
     /*
                7
@@ -73,11 +73,11 @@ public class RebuildBT {
 
     root = rebuild(preOrder, inOrder);
 
-    test(root.value == 7);
-    test(root.left.value == 6);
-    test(root.right.value == 2);
-    test(root.right.left.value == 11);
-    test(root.right.right.value == 9);
+    assertEquals(7, root.value);
+    assertEquals(6, root.left.value);
+    assertEquals(2, root.right.value);
+    assertEquals(11, root.right.left.value);
+    assertEquals(9, root.right.right.value);
 
 
         /*
@@ -92,10 +92,10 @@ public class RebuildBT {
 
     root = rebuild(preOrder, inOrder);
 
-    test(root.value == 7);
-    test(root.right.value == 2);
-    test(root.right.right.value == 9);
-    test(root.left == null);
+    assertEquals(7, root.value);
+    assertEquals(2, root.right.value);
+    assertEquals(9, root.right.right.value);
+    assertNull(root.left);
 
         /*
                7
@@ -109,16 +109,9 @@ public class RebuildBT {
 
     root = rebuild(preOrder, inOrder);
 
-    test(root.value == 7);
-    test(root.right.value == 2);
-    test(root.right.left.value == 9);
-    test(root.right.right == null);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(7, root.value);
+    assertEquals(2, root.right.value);
+    assertEquals(9, root.right.left.value);
+    assertNull(root.right.right);
   }
 }
