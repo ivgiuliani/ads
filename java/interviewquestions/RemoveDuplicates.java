@@ -4,8 +4,7 @@ package interviewquestions;
  * Design an algorithm to remove the duplicate characters in a string without
  * using any additional buffer.
  */
-public class RemoveDuplicates {
-
+public class RemoveDuplicates extends TestCase {
   public static String removeDuplicates(String string) {
     char[] ch = string.toCharArray();
     if (ch.length <= 1) {
@@ -34,18 +33,11 @@ public class RemoveDuplicates {
   }
 
   public static void main(String[] args) {
-    test(removeDuplicates("aaaa").equals("a"));
-    test(removeDuplicates("").equals(""));
-    test(removeDuplicates("abcd").equals("abcd"));
-    test(removeDuplicates("abaa").equals("ab"));
-    test(removeDuplicates("abcdabcd").equals("abcd"));
-    test(removeDuplicates("ababab").equals("ab"));
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("a", removeDuplicates("aaaa"));
+    assertEquals("", removeDuplicates(""));
+    assertEquals("abcd", removeDuplicates("abcd"));
+    assertEquals("ab", removeDuplicates("abaa"));
+    assertEquals("abcd", removeDuplicates("abcdabcd"));
+    assertEquals("ab", removeDuplicates("ababab"));
   }
 }
