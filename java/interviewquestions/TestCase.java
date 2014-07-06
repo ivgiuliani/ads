@@ -75,7 +75,7 @@ public abstract class TestCase {
     assertTrue(!it2.hasNext());
   }
 
-  public static void assertEquals(String s1, String s2) {
+  public static void assertEquals(CharSequence s1, CharSequence s2) {
     if (!s1.equals(s2)) {
       throw new AssertionError(String.format("%s != %s", s1, s2));
     }
