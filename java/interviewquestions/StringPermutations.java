@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Compute all permutations of a string.
  */
-public class StringPermutations {
+public class StringPermutations extends TestCase {
   public static Set<String> permutations(String str) {
     Set<String> perms = new HashSet<String>();
     Set<String> tmp;
@@ -32,56 +32,49 @@ public class StringPermutations {
 
   public static void main(String[] args) {
     Set<String> perm3 = permutations("abc");
-    test(perm3.size() == 3 * 2); // 3!
-    test(perm3.contains("abc"));
-    test(perm3.contains("acb"));
-    test(perm3.contains("bac"));
-    test(perm3.contains("bca"));
-    test(perm3.contains("cab"));
-    test(perm3.contains("cba"));
+    assertEquals(3 * 2, perm3.size()); // 3!
+    assertTrue(perm3.contains("abc"));
+    assertTrue(perm3.contains("acb"));
+    assertTrue(perm3.contains("bac"));
+    assertTrue(perm3.contains("bca"));
+    assertTrue(perm3.contains("cab"));
+    assertTrue(perm3.contains("cba"));
 
     Set<String> perm4 = permutations("abcd");
-    test(perm4.size() == 4 * 3 * 2); // 4!
-    test(perm4.contains("abcd"));
-    test(perm4.contains("abdc"));
-    test(perm4.contains("acbd"));
-    test(perm4.contains("acdb"));
-    test(perm4.contains("adcb"));
-    test(perm4.contains("adbc"));
-    test(perm4.contains("bacd"));
-    test(perm4.contains("badc"));
-    test(perm4.contains("bcad"));
-    test(perm4.contains("bcda"));
-    test(perm4.contains("bdac"));
-    test(perm4.contains("bdca"));
-    test(perm4.contains("cabd"));
-    test(perm4.contains("cadb"));
-    test(perm4.contains("cbad"));
-    test(perm4.contains("cbda"));
-    test(perm4.contains("cdab"));
-    test(perm4.contains("cdba"));
-    test(perm4.contains("dabc"));
-    test(perm4.contains("dacb"));
-    test(perm4.contains("dbac"));
-    test(perm4.contains("dbca"));
-    test(perm4.contains("dcab"));
-    test(perm4.contains("dcba"));
+    assertEquals(4 * 3 * 2, perm4.size()); // 4!
+    assertTrue(perm4.contains("abcd"));
+    assertTrue(perm4.contains("abdc"));
+    assertTrue(perm4.contains("acbd"));
+    assertTrue(perm4.contains("acdb"));
+    assertTrue(perm4.contains("adcb"));
+    assertTrue(perm4.contains("adbc"));
+    assertTrue(perm4.contains("bacd"));
+    assertTrue(perm4.contains("badc"));
+    assertTrue(perm4.contains("bcad"));
+    assertTrue(perm4.contains("bcda"));
+    assertTrue(perm4.contains("bdac"));
+    assertTrue(perm4.contains("bdca"));
+    assertTrue(perm4.contains("cabd"));
+    assertTrue(perm4.contains("cadb"));
+    assertTrue(perm4.contains("cbad"));
+    assertTrue(perm4.contains("cbda"));
+    assertTrue(perm4.contains("cdab"));
+    assertTrue(perm4.contains("cdba"));
+    assertTrue(perm4.contains("dabc"));
+    assertTrue(perm4.contains("dacb"));
+    assertTrue(perm4.contains("dbac"));
+    assertTrue(perm4.contains("dbca"));
+    assertTrue(perm4.contains("dcab"));
+    assertTrue(perm4.contains("dcba"));
 
 
     Set<String> perm5 = permutations("abcde");
-    test(perm5.size() == 5 * 4 * 3 * 2); // 5!
+    assertEquals(5 * 4 * 3 * 2, perm5.size()); // 5!
 
     Set<String> perm6 = permutations("abcdef");
-    test(perm6.size() == 6 * 5 * 4 * 3 * 2); // 6!
+    assertEquals(6 * 5 * 4 * 3 * 2, perm6.size()); // 6!
 
     Set<String> perm7 = permutations("abcdefg");
-    test(perm7.size() == 7 * 6 * 5 * 4 * 3 * 2); // 7!
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(7 * 6 * 5 * 4 * 3 * 2, perm7.size()); // 7!
   }
 }
