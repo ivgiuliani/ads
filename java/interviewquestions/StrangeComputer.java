@@ -16,7 +16,7 @@ package interviewquestions;
  *
  * Solve this question using bitmasks.
  */
-public class StrangeComputer {
+public class StrangeComputer extends TestCase {
   public int setMemory(String mem) {
     long memory = 0;
     int changes = 0;
@@ -56,21 +56,14 @@ public class StrangeComputer {
 
   public static void main(String[] args) {
     StrangeComputer cmp = new StrangeComputer();
-    test(cmp.setMemory("0011") == 1);
-    test(cmp.setMemory("000") == 0);
-    test(cmp.setMemory("0100") == 2);
-    test(cmp.setMemory("111000111") == 3);
+    assertEquals(1, cmp.setMemory("0011"));
+    assertEquals(0, cmp.setMemory("000"));
+    assertEquals(2, cmp.setMemory("0100"));
+    assertEquals(3, cmp.setMemory("111000111"));
 
-    test(cmp.setMemory2("0011") == 1);
-    test(cmp.setMemory2("000") == 0);
-    test(cmp.setMemory2("0100") == 2);
-    test(cmp.setMemory2("111000111") == 3);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals(1, cmp.setMemory2("0011"));
+    assertEquals(0, cmp.setMemory2("000"));
+    assertEquals(2, cmp.setMemory2("0100"));
+    assertEquals(3, cmp.setMemory2("111000111"));
   }
 }
