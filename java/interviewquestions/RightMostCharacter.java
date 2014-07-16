@@ -23,11 +23,4 @@ public class RightMostCharacter extends TestCase {
     assertEquals(15, rightmost("What is your name", 'm'));
     assertEquals(-1, rightmost("lKHFLOpCmu0bxE0AooKQ8gYcrvf7Go22pMVKjFCc7DU9qIpcd55 Px00SdUCV4fzSq", 'W'));
   }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
-  }
 }
