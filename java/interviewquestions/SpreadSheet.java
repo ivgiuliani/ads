@@ -10,7 +10,7 @@ package interviewquestions;
  *   26 -> Z
  *   27 -> AA
  */
-public class SpreadSheet {
+public class SpreadSheet extends TestCase {
   private final static char[] LETTERS = new char[] {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
     'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
@@ -38,34 +38,27 @@ public class SpreadSheet {
   }
 
   public static void main(String[] args) {
-    test(ordinalToLabel(1).compareTo("A") == 0);
-    test(ordinalToLabel(2).compareTo("B") == 0);
-    test(ordinalToLabel(3).compareTo("C") == 0);
-    test(ordinalToLabel(26).compareTo("Z") == 0);
-    test(ordinalToLabel(27).compareTo("AA") == 0);
-    test(ordinalToLabel(52).compareTo("AZ") == 0);
-    test(ordinalToLabel(442).compareTo("PZ") == 0);
-    test(ordinalToLabel(26 * 7).compareTo("FZ") == 0);
-    test(ordinalToLabel(26 * 27).compareTo("ZZ") == 0);
-    test(ordinalToLabel(26 * 27 + 1).compareTo("AAA") == 0);
+    assertEquals("A", ordinalToLabel(1));
+    assertEquals("B", ordinalToLabel(2));
+    assertEquals("C", ordinalToLabel(3));
+    assertEquals("Z", ordinalToLabel(26));
+    assertEquals("AA", ordinalToLabel(27));
+    assertEquals("AZ", ordinalToLabel(52));
+    assertEquals("PZ", ordinalToLabel(442));
+    assertEquals("FZ", ordinalToLabel(26 * 7));
+    assertEquals("ZZ", ordinalToLabel(26 * 27));
+    assertEquals("AAA", ordinalToLabel(26 * 27 + 1));
 
-    test(ordinalToLabelRecursive(1).compareTo("A") == 0);
-    test(ordinalToLabelRecursive(2).compareTo("B") == 0);
-    test(ordinalToLabelRecursive(3).compareTo("C") == 0);
-    test(ordinalToLabelRecursive(26).compareTo("Z") == 0);
-    test(ordinalToLabelRecursive(27).compareTo("AA") == 0);
-    test(ordinalToLabelRecursive(52).compareTo("AZ") == 0);
-    test(ordinalToLabelRecursive(442).compareTo("PZ") == 0);
-    test(ordinalToLabelRecursive(26 * 7).compareTo("FZ") == 0);
-    test(ordinalToLabelRecursive(26 * 27).compareTo("ZZ") == 0);
-    test(ordinalToLabelRecursive(26 * 27 + 1).compareTo("AAA") == 0);
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertEquals("A", ordinalToLabelRecursive(1));
+    assertEquals("B", ordinalToLabelRecursive(2));
+    assertEquals("C", ordinalToLabelRecursive(3));
+    assertEquals("Z", ordinalToLabelRecursive(26));
+    assertEquals("AA", ordinalToLabelRecursive(27));
+    assertEquals("AZ", ordinalToLabelRecursive(52));
+    assertEquals("PZ", ordinalToLabelRecursive(442));
+    assertEquals("FZ", ordinalToLabelRecursive(26 * 7));
+    assertEquals("ZZ", ordinalToLabelRecursive(26 * 27));
+    assertEquals("AAA", ordinalToLabelRecursive(26 * 27 + 1));
   }
 }
 
