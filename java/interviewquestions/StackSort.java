@@ -8,7 +8,7 @@ import java.util.*;
  * The following are the only functions that
  * should be used to write this program: push | pop | peek | isEmpty.
  */
-public class StackSort {
+public class StackSort extends TestCase {
   public static List<Integer> sort(Deque<Integer> stack) {
     List<Integer> sorted = new ArrayList<Integer>();
     Deque<Integer> s2 = new ArrayDeque<Integer>();
@@ -39,24 +39,17 @@ public class StackSort {
     stack.push(1);
 
     List<Integer> sorted = sort(stack);
-    test(sorted.size() == 9);
-    test(sorted.get(0) == 1);
-    test(sorted.get(1) == 1);
-    test(sorted.get(2) == 3);
-    test(sorted.get(3) == 4);
-    test(sorted.get(4) == 6);
-    test(sorted.get(5) == 10);
-    test(sorted.get(6) == 32);
-    test(sorted.get(7) == 45);
-    test(sorted.get(8) == 90);
+    assertEquals(9, sorted.size());
+    assertEquals(1, (int) sorted.get(0));
+    assertEquals(1, (int) sorted.get(1));
+    assertEquals(3, (int) sorted.get(2));
+    assertEquals(4, (int) sorted.get(3));
+    assertEquals(6, (int) sorted.get(4));
+    assertEquals(10, (int) sorted.get(5));
+    assertEquals(32, (int) sorted.get(6));
+    assertEquals(45, (int) sorted.get(7));
+    assertEquals(90, (int) sorted.get(8));
 
-    test(sort(new ArrayDeque<Integer>()).isEmpty());
-  }
-
-  public static void test(boolean condition) {
-    // assertions are disabled by default in java, mimic their behaviour here
-    if (!condition) {
-      throw new AssertionError("invalid test");
-    }
+    assertTrue(sort(new ArrayDeque<Integer>()).isEmpty());
   }
 }
