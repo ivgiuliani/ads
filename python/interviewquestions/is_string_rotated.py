@@ -21,8 +21,16 @@ def is_string_rotated(s1, s2, n=2):
 
     return True
 
+def is_string_rotated2(s1, s2, n=2):
+    """Alternative implementation"""
+    return s1 == (s2[-n:] + s2[:-n])
+
 
 class IsStringRotatedTest(unittest.TestCase):
     def test_is_string_rotated(self):
         self.assertTrue(is_string_rotated("amazon", "azonam"))
         self.assertFalse(is_string_rotated("quality", "lityqua"))
+
+    def test_is_string_rotated2(self):
+        self.assertTrue(is_string_rotated2("amazon", "azonam"))
+        self.assertFalse(is_string_rotated2("quality", "lityqua"))
