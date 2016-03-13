@@ -9,13 +9,16 @@ import java.util.Set;
  */
 public class Powersets extends TestCase {
   public static <T> Set<Set<T>> powerset(Set<T> set) {
-    Set<Set<T>> pset = new HashSet<Set<T>>();
-    Set<T> tmp;
+    Set<Set<T>> pset = new HashSet<>();
 
+    // The powerset of a set S is formed by S itself and the powersets we can
+    // build by removing one item at the time from S.
     pset.add(set);
+
     for (T item : set) {
-      tmp = new HashSet<T>(set);
+      Set<T> tmp = new HashSet<>(set);
       tmp.remove(item);
+
       pset.addAll(powerset(tmp));
     }
 
