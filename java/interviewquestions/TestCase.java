@@ -3,7 +3,7 @@ package interviewquestions;
 import java.util.Iterator;
 
 /**
- * A layman version of junit (just because I don't want to include a dependency)
+ * A layman version of junit (just because I don't want to include it as a dependency)
  */
 public abstract class TestCase {
   public static void assertTrue(boolean condition) {
