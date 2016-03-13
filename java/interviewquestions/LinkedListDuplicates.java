@@ -74,6 +74,28 @@ public class LinkedListDuplicates extends TestCase {
     }
   }
 
+  public static <E> void removeDuplicates4(LinkedList<E> input) {
+    removeDuplicates4(input, 0);
+  }
+
+  public static <E> void removeDuplicates4(LinkedList<E> input, int idx) {
+    if (idx >= input.size()) {
+      return;
+    }
+
+    // Assume everything before `idx` won't have duplicates.
+    E val = input.get(idx);
+    Iterator<E> it = input.listIterator(idx + 1);
+
+    while (it.hasNext()) {
+      if (val == it.next()) {
+        it.remove();
+      }
+    }
+
+    removeDuplicates4(input, idx + 1);
+  }
+
   static <E> LinkedList<E> list(E ... i) {
     return new LinkedList<E>(Arrays.asList(i));
   }
@@ -116,6 +138,22 @@ public class LinkedListDuplicates extends TestCase {
 
     lst = list();
     removeDuplicates3(lst);
+    assertEquals(new ArrayList<Integer>(), lst);
+
+    lst = list(1, 2, 3);
+    removeDuplicates4(lst);
+    assertEquals(Arrays.asList(1, 2, 3), lst);
+
+    lst = list(1, 2, 3, 1, 2, 3);
+    removeDuplicates4(lst);
+    assertEquals(Arrays.asList(1, 2, 3), lst);
+
+    lst = list(1, 1, 2, 2, 3, 3);
+    removeDuplicates4(lst);
+    assertEquals(Arrays.asList(1, 2, 3), lst);
+
+    lst = list();
+    removeDuplicates4(lst);
     assertEquals(new ArrayList<Integer>(), lst);
   }
 }
